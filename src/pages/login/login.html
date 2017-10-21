@@ -1,0 +1,35 @@
+<ion-content padding class="transparent-header">
+    <ion-header>
+      <ion-navbar>
+      </ion-navbar>
+    </ion-header>
+    <ion-row class="padding-top">
+      <img  class="center icon-b" src="assets/img/icon/icon-b.png">
+    </ion-row>
+    <ion-row>
+        <img  class="center written" src="assets/img/icon/written-b.png">
+    </ion-row>
+    <div padding>
+      <ion-item>
+        <ion-input type="text" placeholder="Email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="password" placeholder="Senha"></ion-input>
+      </ion-item>
+      <button ion-button block outline (click)="goToTabs()" color="light" class="login-button">Login</button>
+
+    </div>
+    <!--<div class="strike">
+      <span>OR</span>
+    </div>-->
+    <!--<button ion-button block clear (click)="login()" color="light" class="login-button"><ion-icon name="logo-facebook"></ion-icon> Login with Facebook</button>
+  </ion-content>-->
+  <ion-footer>
+    <ion-toolbar class="footer">
+      <!--<button ion-button full (click)="irFilmes()">-->
+      <div (click)="goToSignup()">
+        <span>Não tem uma conta? <strong>Inscreva-se!</strong></span>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
+  
