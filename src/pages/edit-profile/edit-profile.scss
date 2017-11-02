@@ -1,0 +1,140 @@
+page-edit-profile {
+
+    ion-content {
+        background: linear-gradient(0deg, #eeeef1 0%, white 80%, white 100%);
+    }
+    
+
+    .padding-title
+    {
+        padding: 4px 0px 10px 0px;        
+    }
+
+    .button-edit-posts
+    {
+        float: right;
+        border-radius: 200px;
+    }
+
+    button,
+    ion-button,
+    .button-md,
+    .button-ios {
+        text-transform: none !important;
+    }
+    p {
+        color: #444;
+    }
+    // Cover image
+    #profile-bg {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        margin-top: 9vh;
+        height: 160px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        text-align: center;
+    }
+    // Profile content
+    #content {
+        position: relative;
+        margin-top: 150px;
+        padding-top: 120px;
+        text-align: center;
+    }
+    #profile-image {
+        display: block;
+        border-radius: 50%;
+        width: auto;
+        height: 100px;
+        margin: -35vh auto 0;
+        box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
+    }
+    #profile-info {
+        position: relative;
+        margin-top: 35vh;
+        width: 100%;
+        z-index: 2;
+        text-align: center;
+        margin-left: 3vw;
+    }
+
+    #profile-info2 {
+        position: relative;
+        margin-top: 5vh;
+        width: 100%;
+        z-index: 2;
+    }
+
+    ion-item {
+        border-radius: 15px !important;
+        padding-left: 10px !important;
+        margin-bottom: 15px !important;
+        margin-bottom: 10px;
+        color: black !important;
+        background-color: rgba(255, 255, 255, .2) !important;
+        //font-size: 0.9em;
+        box-shadow: 0px 3px 10px rgba(87, 87, 87, 0.43) !important; 
+      }
+
+      ion-label {
+        color: black !important;
+      }
+
+    #profile-name {
+        color: #444;
+        font-size: 26px;
+    }
+    .profile-description {
+        font-size: 15px;
+        color: #888;
+    }
+    .follow-button {
+        text-transform: none;
+        border-radius: 3px !important;
+        ion-icon {
+        font-weight: bold;
+        padding-left: 5px;
+        font-size: 2.5rem;
+        }
+    }
+    // Following, Followers and all..
+    .profile-numbers {
+        p {
+        color: #444;
+        font-size: medium;
+        margin-bottom: 3px;
+        }
+        span {
+        font-weight: bold;
+        font-size: 2.4rem;
+        color: #34354c;
+        }
+    }
+    hr {
+        border: 0;
+        height: 1px;
+        background: #444;
+        background: -webkit-linear-gradient(left, hsla(0, 0%, 0%, 0) 0%, rgb(188, 198, 214) 50%, hsla(0, 0%, 0%, 0) 100%);
+    }
+    // Posts feed
+    #posts {
+        text-align: justify;
+    }
+
+    .pronto-button
+    {
+        background: linear-gradient(180deg, #ff2400, /*#e81d1d*/ #e8b71d, /*#e3e81d, #1de840, #1ddde8,*/ #621CD1, #dd00f3, #dd00f3);
+        font-size: 0.9em;
+        background-size: 1800% 1800%;
+        animation: rainbow 10s linear infinite;
+        //background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-color: transparent;
+        letter-spacing: 1px;
+        border-radius: 10px;
+    }
+}

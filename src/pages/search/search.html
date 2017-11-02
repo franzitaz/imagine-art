@@ -1,15 +1,27 @@
-<ion-content padding>
-  <ion-row class="margin center text">
-    <p>Digite o nome do usuário <br> que você procura!</p>
+<ion-content padding class="background">
+  <ion-row>
+    <!--<img  class="center icon-p" src="assets/img/icon/icon-pb.png">-->
   </ion-row>
 
+  <ion-row class="margin center text">
+    <p class="margin-bottom">Digite o que você procura!</p>
+  </ion-row>
+
+  <ion-item class="ion-select">
+      <!--<ion-label>Gênero</ion-label>-->
+      <ion-select interface="popover" placeholder="Título da Arte / Nome Artesão">
+        <ion-option value="nome" checked="true">Nome do artesão</ion-option>
+        <ion-option value="titulo">Título da arte</ion-option>
+      </ion-select>
+  </ion-item>
+
   <ion-item>
-      <ion-label floating>Nome</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-    <button ion-button icon-end color="dark" class="center margin size buscar-button text-transform">
-          Buscar
-        <ion-icon name="md-search" class="" ></ion-icon>
-    </button>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+   
+  <button ion-button icon-end color="dark" class="center size buscar-button text-transform">
+        Buscar
+      <ion-icon name="md-search" class="" ></ion-icon>
+  </button>
 
 </ion-content>

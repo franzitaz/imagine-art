@@ -5,6 +5,11 @@ import { ToastController } from 'ionic-angular';
 import {User} from '../../models/user/user.interface';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
+import {Http, Headers, RequestOptions} from "@angular/http";
+
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/catch';
+
 @IonicPage()
 @Component({
   selector: 'page-signup',
@@ -14,9 +19,11 @@ export class SignupPage {
 
   user = {} as User;
 
-  userRef$ : FirebaseListObservable<User[]>
+  userRef$ : FirebaseListObservable<User[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private database: AngularFireDatabase, public toastCtrl: ToastController) {
+  error = '';
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private database: AngularFireDatabase, public toastCtrl: ToastController,private http: Http) {
 
     this.userRef$ = this.database.list('user');
 
@@ -34,18 +41,61 @@ export class SignupPage {
   }
 
   register(user: User){
-    
-      this.userRef$.push({
-        nome: this.user.nome  || "",
-        email: this.user.email || "",
-        senha: this.user.senha || "",
-        genero: this.user.genero || ""
-      });
 
-      user = {} as User;
+      const userEmail = user.email;
+      const userSenha = user.senha;
+      const userNome = user.nome;
 
-      this.navCtrl.pop();
+      console.log(userEmail, 'USEREMAIL');
+      if (userEmail === undefined || userEmail === '' ||
+          userSenha === undefined || userSenha === '' ||
+          userNome === undefined  || userNome === '') {
+          
+          if(userEmail === undefined || userEmail === ''){
+            this.error = 'Necessita-se digitar o email';
+          }else{
+            this.error = '';
+          }
+      }else{
 
+        var headers = new Headers();
+        headers.append("Accept", 'application/json');
+        headers.append('Content-Type', 'application/json' );
+  
+          let options = new RequestOptions({ headers: headers });
+          
+          new Promise((resolve, reject) => {
+            this.http.post('https://imagine-art.herokuapp.com/user/signup/',JSON.stringify({
+              email: user.email,
+              password: user.senha,
+              name : user.nome,
+            }), options)
+            .toPromise()
+            .then((response) =>
+            {
+              console.log('API Response : ', response.json());
+              console.log("DATA")
+              localStorage.setItem('user', JSON.stringify(response));
+              resolve(response.json());
+              this.showToast('middle');
+              
+            })
+            .catch((error) =>
+            {
+              console.error('API Error : ', error.status);
+              console.error('API Error : ', JSON.stringify(error));
+              reject(error.json());
+            });
+          });
+          this.navCtrl.pop();
+        user = {} as User;
+  
+        
+  
+
+      }
+
+      
   }
 
   public type = 'password';

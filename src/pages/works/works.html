@@ -5,17 +5,17 @@
       </ion-navbar>
   </ion-header>
   <div class="pins">
-    <ion-card class="pin" *ngFor="let post of posts" (click)="goToProfile()">
-      <img [src]="post.image" />
-      <div *ngIf="post.description" class="post-description">
-        <small>{{ post.description }}</small>
+    <ion-card class="pin" *ngFor="let produto of produtos" (click)="goToShow(produto.productorID)">
+      <img src="{{produto.productImage}}"/>
+      <div *ngIf="produto.productDescription" class="post-description">
+        <small>{{ produto.productDescription }}</small>
       </div>
       <ion-item>
         <ion-avatar item-start>
           <img src="assets/img/avatar/marty-avatar.png">
         </ion-avatar>
-        <small>McFly</small>
-        <p><small>Category</small></p>
+        <small>{{ produto.productTitle }}</small>
+        <p><small>{{ produto.productCategory }}</small></p>
       </ion-item>
     </ion-card>
   </div>

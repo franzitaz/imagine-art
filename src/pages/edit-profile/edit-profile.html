@@ -1,0 +1,58 @@
+<ion-content padding>
+  <ion-header>
+    <ion-navbar>
+      <ion-title>Editando perfil...</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + user.coverImage +')'}"></div>
+  <div id="content">
+    <div style="margin-top: -10vh;">
+      <button ion-button color="dark" class="button-edit-posts" (click)="changePicture()">
+          <ion-icon name="md-brush"></ion-icon>
+      </button>
+    </div>
+
+    <hr style="margin-top: 10vh"/>
+
+    <div id="profile-info" padding>
+      <img id="profile-image" [src]="user.profileImage">
+    </div>
+    <div style="margin-top: -25vh;">
+      <button ion-button color="dark" class="button-edit-posts" (click)="changePicture()">
+          <ion-icon name="md-brush"></ion-icon>
+      </button>
+    </div>
+
+    <hr style="margin-top: 10vh"/>
+
+    <div id="profile-info2" padding>
+      <ion-item>
+        <ion-label>Nome:</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Cidade:</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Estado:</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Telefone:</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+     <!--<h3 id="profile-name">{{user.name}}</h3>
+      <p>{{user.occupation}} &bull; {{user.location}}</p>
+      <p class="profile-description">{{user.description}}</p>-->
+    </div>
+
+  <ion-row>
+      <button ion-button (click)="editProfile" class="pronto-button center">PRONTO</button>
+    </ion-row>
+
+</div>
+</ion-content>

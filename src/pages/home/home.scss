@@ -1,93 +1,165 @@
 page-home{
     
-.purple
-{
-    background-color: purple;
-    border-radius: 20px;
-    text-shadow: 0px -0px 10px #000000;  
-}
 
-.yellow
+.feltro
 {
-    background-color: #FFEE00;
-    border-radius: 20px;
+    position: relative;
+    background-image: url('../assets/img/background/feltro');
+    //border-radius: 20px;
     text-shadow: 0px -0px 10px #000000;  
-}
-
-.blue
-{
-    background-color: #4600A1;
-    border-radius: 20px;
-    text-shadow: 0px -0px 10px #000000;  
-}
-
-.pink
-{
-    background-color: #F35673;
-    border-radius: 20px;
-    text-shadow: 0px -0px 10px #000000;  
-}
-
-.orange
-{
-    background-color: #FF7B00;
-    border-radius: 20px;
-    text-shadow: 0px -0px 10px #000000;  
-}
-
-.cards-effect
-{
-    background: linear-gradient(180deg, #ff2400, /*#e81d1d*/ #e8b71d, /*#e3e81d, #1de840, #1ddde8,*/ #621CD1, #dd00f3, #dd00f3);
-    font-size: 0.9em;
-    background-size: 1800% 1800%;
-    animation: rainbow 10s linear infinite;
-    //background-size: cover;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-color: transparent;
-    border-radius: 20px;
 }
+
+.biscuit
+{
+    position: relative;
+    background-image: url('../assets/img/background/biscuit');
+    //border-radius: 20px;
+    text-shadow: 0px -0px 10px #000000;  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.madeira
+{
+    position: relative;
+    background-image: url('../assets/img/background/madeira');
+    //border-radius: 20px;
+    text-shadow: 0px -0px 10px #000000;  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;  
+}
+
+.bordado
+{
+    position: relative;
+    background-image: url('../assets/img/background/bordado');
+    //border-radius: 20px;
+    text-shadow: 0px -0px 10px #000000;  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;  
+}
+
+.scrapbook
+{
+    position: relative;
+    background-image: url('../assets/img/background/scrapbook');
+    //border-radius: 20px;
+    text-shadow: 0px -0px 10px #000000;  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bookpopup
+{
+    position: relative;
+    background-image: url('../assets/img/background/bookpopup2');
+    //border-radius: 20px;
+    text-shadow: 0px -0px 10px #000000;  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.corteecostura
+{
+    position: relative;
+    background-image: url('../assets/img/background/corteecostura');
+    //border-radius: 20px;
+    text-shadow: 0px -0px 10px #000000;  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;  
+}
+
+.decoupage
+{
+    position: relative;
+    background-image: url('../assets/img/background/decoupage');
+    //border-radius: 20px;
+    text-shadow: 0px -0px 10px #000000;  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;  
+}
+
+.patchwork
+{
+    position: relative;
+    background-image: url('../assets/img/background/patchwork');
+   // border-radius: 20px;
+    text-shadow: 0px -0px 10px #000000;  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.pintura
+{
+    position: relative;
+    background-image: url('../assets/img/background/pintura');
+   // border-radius: 20px;
+    text-shadow: 0px -0px 10px #000000;  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.reciclagem
+{
+    position: relative;
+    background-image: url('../assets/img/background/reciclagem');
+   // border-radius: 20px;
+    text-shadow: 0px -0px 10px #000000;  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;  
+}
+
 
 ion-card {
     position: relative;
     text-align: center;
-    box-shadow: 2px 4px 5px rgba(87, 87, 87, 0.43) !important;
+    box-shadow: 2px 4px 10px rgba(87, 87, 87, 0.699) !important;
   }
 
 
   .card-title {
+    //margin: 0;
     position: absolute;
-    margin-top: 40%;
-    font-size: 2.0em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    //margin-top: 40%;
+    margin: 0 auto 0;
+    //vertical-align: middle;
+    font-size: 1.6em;
     width: 100%;
     font-weight: bold;
     color: #fff;
     text-align: center;
   }
 
-  .card-subtitle {
-    font-size: 1.0em;
-    position: absolute;
-    top: 58%;
-    width: 100%;
-    color: #fff;
-  }
 
 .category
 {
-    width: 42%;
-    max-height: 150px;
-    min-height: 150px;
+    width: 47%;
+    max-height: 140px;
+    min-height: 140px;
     display: inline-block;
+    margin: 5px 1px 1px 5px;
 }
 
 .pin {
     display: inline-block;
 }
 
-.card {
-    margin-top: 10px;
-}
 
 ion-avatar {
     margin: 0 !important;

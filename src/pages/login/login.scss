@@ -73,7 +73,7 @@ page-login {
 
   .icon-b
   {
-    height: 12vh;
+    height: 15vh;
   }
 
   .written
@@ -88,11 +88,11 @@ page-login {
     text-align: center;
   }
 
-  .scroll-content {
+  /*.scroll-content {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-  }
+  }*/
   .logo {
     color: white;
     width: 50%;
@@ -131,7 +131,7 @@ page-login {
   }
  
   // HR with text in the middle effect
-  .strike {
+  /*.strike {
     display: block;
     text-align: center;
     overflow: hidden;
@@ -158,6 +158,6 @@ page-login {
   .strike>span:after {
     left: 100%;
     margin-left: 15px;
-  }
+  }*/
 }
 

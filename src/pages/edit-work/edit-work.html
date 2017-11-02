@@ -1,0 +1,58 @@
+<ion-header>
+    
+  <ion-navbar>
+    <ion-title>Editando sua arte...</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <div id="posts">
+      <ion-card *ngFor="let post of posts">
+        <img [src]="chosenPicture || placeholder" onerror="post.postImageUrl">
+        <!--<ion-card-content>
+          <h2 class="padding-title"><strong>{{post.title}}</strong></h2>
+          <p>{{post.text}}</p>
+        </ion-card-content>-->
+      </ion-card>
+
+        <button ion-button color="dark" class="button-edit-posts" (click)="changePicture()">
+            <ion-icon name="md-brush"></ion-icon>
+        </button>
+
+
+        <ion-item>
+          <ion-label>Título:</ion-label>
+            <ion-input type="text" [(ngModel)]='product.title'></ion-input>
+          </ion-item>
+
+      <ion-item>
+        <ion-label>Categoria:</ion-label>
+        <ion-select  [(ngModel)]="mes" interface="popover">
+            <ion-option value="bordado" checked="true">Bordado</ion-option>
+            <ion-option value="feltro">Feltro</ion-option>
+            <ion-option value="bookpopup">Book Pop-Up</ion-option>
+            <ion-option value="scrapbook">Scrap-Book</ion-option>
+            <ion-option value="Biscuit">Biscuit</ion-option>
+            <ion-option value="patchwork">Patchwork</ion-option>
+            <ion-option value="pinturas">Pinturas</ion-option>
+            <ion-option value="reciclagem">Reciclagem</ion-option>
+            <ion-option value="cec">Corte e Costura</ion-option>
+            <ion-option value="decoupage">Decoupage</ion-option>
+            <ion-option value="madeira">Madeira</ion-option>
+          </ion-select>
+      </ion-item>
+
+          <ion-item>  
+            <ion-label>Descrição:</ion-label>
+              <ion-textarea type="text" [(ngModel)]='product.description' autosize></ion-textarea>
+          </ion-item>           
+      
+          <button ion-button class="border-radius color-excluir" (click)="addProduto(product)">Excluir</button>
+
+          <button ion-button (click)="addProduto(product)" class="pronto-button right">PRONTO</button>
+      
+    </div>
+  </div>
+</ion-content>

@@ -4,7 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { ProfilePage } from '../profile/profile';
 import { SearchPage } from '../search/search';
-import { LoginPage } from '../login/login';
+import { AddWorkPage } from '../add-work/add-work';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -14,16 +14,13 @@ export class TabsPage {
   tab1Root = HomePage;
   tab2Root = SearchPage;
   tab3Root = ProfilePage;
-  tab4Root = SearchPage;
-  tab5Root = LoginPage;
+  tab4Root = AddWorkPage;
+  tab5Root = SearchPage;
 
   constructor(public navCtrl: NavController) {
   }
 
-  goToLogin()
-  {
-
-    this.navCtrl.push(LoginPage);
+  refreshPage() {
+    this.navCtrl.setRoot(this.navCtrl.getActive().component);
   }
-  
 }

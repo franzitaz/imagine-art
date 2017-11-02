@@ -2,6 +2,18 @@ page-profile {
     ion-content {
         background: linear-gradient(0deg, #eeeef1 0%, white 80%, white 100%);
     }
+    
+    .padding-title
+    {
+        padding: 4px 0px 10px 0px;        
+    }
+
+    .button-edit-posts
+    {
+        float: right;
+        border-radius: 200px;
+    }
+
     button,
     ion-button,
     .button-md,
@@ -23,6 +35,11 @@ page-profile {
         background-position: center;
         text-align: center;
     }
+
+    .margin-top{
+        margin-top: -25vh;
+    }
+
     // Profile content
     #content {
         position: relative;
@@ -52,6 +69,7 @@ page-profile {
     .profile-description {
         font-size: 15px;
         color: #888;
+        margin-top: -2vh;
     }
     .follow-button {
         text-transform: none;

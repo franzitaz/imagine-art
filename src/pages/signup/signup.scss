@@ -7,10 +7,10 @@ page-signup {
     background-position-x: 50%;
 }*/
 
-[scrollbar-y-auto] .scroll-content 
+/*[scrollbar-y-auto] .scroll-content 
 {
     overflow-y: hidden !important;
-}
+}*/
 
 .icon-pb
 {
@@ -55,6 +55,11 @@ ion-header {
     transform: translate3d(210px, -102px, 0px) scale(1); height: 240px; width: 240px; opacity: 0; transition: transform 415ms, opacity 291ms 124ms;
 }
 
+
+ion-select {
+    max-width: 100% !important;
+}
+
 .ion-select
 {
     padding-left: 7vw;
@@ -71,6 +76,7 @@ ion-header {
     background-repeat: no-repeat;
     border-color: transparent;
     letter-spacing: 1px;
+    border-radius: 10px;
 }
 
 .invert

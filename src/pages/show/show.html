@@ -1,0 +1,29 @@
+<div id="posts">
+  <ion-card *ngFor="let produto of produtos">
+    <img [src]="chosenPicture || placeholder" onerror="post.postImageUrl">
+    <ion-card-content>
+      <h2 class="padding-title"><strong>{{produto.productTitle}}</strong></h2>
+      <p>{{produto.productDescription}}</p>
+    </ion-card-content>
+    
+    <ion-row>
+      <ion-col col-4>
+        <button ion-button color="purple" clear small icon-left (click)="like(post)">
+            <ion-icon name='thumbs-up'></ion-icon>
+            post.likes Likes
+          </button>
+      </ion-col>
+      <ion-col col-5>
+        <button ion-button no-padding color="purple" clear small icon-left (click)="comment(post)">
+            <ion-icon name='text'></ion-icon>
+            Conversar!
+          </button>
+      </ion-col>
+      <ion-col col-3 align-self-center text-center *ngIf="userConfirm">
+          <button ion-button color="dark" class="button-edit-posts" (click)="goToAddWork()">
+              <ion-icon name="md-brush"></ion-icon>
+          </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</div>

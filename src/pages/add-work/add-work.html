@@ -1,0 +1,58 @@
+<ion-header>
+    
+  <ion-navbar>
+    <ion-title>Adicionando sua arte...</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="background">
+  <div>
+    <div id="posts">
+      <ion-card *ngFor="let post of posts">
+        <img [src]="chosenPicture || placeholder" onerror="post.postImageUrl">
+        <!--<ion-card-content>
+          <h2 class="padding-title"><strong>{{post.title}}</strong></h2>
+          <p>{{post.text}}</p>
+        </ion-card-content>-->
+      </ion-card>
+
+        <button ion-button color="dark" class="button-edit-posts" (click)="changePicture()">
+            <ion-icon name="md-brush"></ion-icon>
+        </button>
+
+
+        <ion-item>
+          <ion-label>Título:</ion-label>
+            <ion-input type="text" [(ngModel)]='product.title'></ion-input>
+          </ion-item>
+
+      <ion-item>
+        <ion-label>Categoria:</ion-label>
+        <ion-select  [(ngModel)]="product.categoria" interface="popover">
+            <ion-option value="Bordado" checked="true">Bordado</ion-option>
+            <ion-option value="Feltro">Feltro</ion-option>
+            <ion-option value="Book Pop-Up">Book Pop-Up</ion-option>
+            <ion-option value="Scrapbook">Scrapbook</ion-option>
+            <ion-option value="Biscuit">Biscuit</ion-option>
+            <ion-option value="Patchwork">Patchwork</ion-option>
+            <ion-option value="Pinturas">Pinturas</ion-option>
+            <ion-option value="Reciclagem">Reciclagem</ion-option>
+            <ion-option value="Corte e Costura">Corte e Costura</ion-option>
+            <ion-option value="Decoupage">Decoupage</ion-option>
+            <ion-option value="Madeira">Madeira</ion-option>
+          </ion-select>
+      </ion-item>
+
+          <ion-item>  
+            <ion-label>Descrição:</ion-label>
+              <ion-textarea type="text" [(ngModel)]='product.description' autosize></ion-textarea>
+          </ion-item>           
+
+  
+          <button ion-button (click)="addProduto(product)" class="pronto-button center">PRONTO</button>
+    
+
+    </div>
+  </div>
+</ion-content>

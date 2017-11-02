@@ -11,12 +11,15 @@
     </ion-row>
     <div padding>
       <ion-item>
-        <ion-input type="text" placeholder="Email"></ion-input>
+        <ion-input type="text" [(ngModel)]="user.email" placeholder="Email" required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="password" placeholder="Senha"></ion-input>
+        <ion-input type="password" [(ngModel)]="user.senha" placeholder="Senha" required></ion-input>
+        
       </ion-item>
-      <button ion-button block outline (click)="goToTabs()" color="light" class="login-button">Login</button>
+      <ion-label *ngIf="error"> Email ou senha incorretos </ion-label>
+      <button ion-button block outline (click)="goToTabs(user)" color="light" class="login-button" >Login</button>
+      
 
     </div>
     <!--<div class="strike">
