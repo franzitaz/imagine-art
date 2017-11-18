@@ -1,21 +1,30 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>{{ titlework }}</ion-title>
+    </ion-navbar>
+  </ion-header>
 
 <ion-content padding class="transparent-header">
-  <ion-header>
+  <!--<ion-header>
       <ion-navbar>
+        <p>{{ titlework }}</p>
       </ion-navbar>
-  </ion-header>
+  </ion-header>-->
   <div class="pins">
     <ion-card class="pin" *ngFor="let produto of produtos" (click)="goToShow(produto.productorID)">
-      <img src="{{produto.productImage}}"/>
-      <div *ngIf="produto.productDescription" class="post-description">
-        <small>{{ produto.productDescription }}</small>
-      </div>
-      <ion-item>
-        <ion-avatar item-start>
+      <img [src]="produto.productImage"/>
+      <!--<div *ngIf="produto.productDescription" class="post-description">
+        <small>{{ produto.productDescription }} {{ titlework }}</small>
+      </div>-->
+      <ion-item class="text1">
+        <!--<ion-avatar item-start>
           <img src="assets/img/avatar/marty-avatar.png">
-        </ion-avatar>
-        <small>{{ produto.productTitle }}</small>
-        <p><small>{{ produto.productCategory }}</small></p>
+        </ion-avatar>-->
+        <p class="text"><strong>{{ produto.productTitle }}</strong></p>
+        <!--<p><small>{{ produto.productCategory }}</small></p>-->
       </ion-item>
     </ion-card>
   </div>

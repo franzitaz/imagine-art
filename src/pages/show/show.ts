@@ -1,37 +1,61 @@
+import { ToastService } from '../../providers/util/toast.service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the ShowPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { NavController, IonicPage } from 'ionic-angular';
 
 @IonicPage()
 @Component({
   selector: 'page-show',
-  templateUrl: 'show.html',
+  templateUrl: 'show.html'
 })
 export class ShowPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ShowPage');
-  }
+  following = false;
+  user = {
+    name: 'Paula Bolliger',
+    profileImage: 'assets/img/avatar/girl-avatar.png',
+    coverImage: 'assets/img/background/background-5.jpg',
+    occupation: 'Designer',
+    location: 'Seattle, WA',
+    description: 'A wise man once said: The more you do something, the better you will become at it.',
+    followers: 456,
+    following: 1052,
+    posts: 35
+  };
 
   posts = [
     {
       postImageUrl: 'assets/img/background/background-2.jpg',
-      title: 'Título do Produto',
       text: `I believe in being strong when everything seems to be going wrong.
              I believe that happy girls are the prettiest girls.
              I believe that tomorrow is another day and I believe in miracles.`,
       date: 'November 5, 2016',
       likes: 12,
-      comments: 4
-    }
+      comments: 4,
+      timestamp: '11h ago'
+    },
   ];
+
+  constructor(public navCtrl: NavController, public toastCtrl: ToastService) { }
+
+  ionViewDidLoad() {
+    console.log('Hello ProfileFour Page');
+  }
+
+  follow() {
+    this.following = !this.following;
+    this.toastCtrl.create('Follow user clicked');
+  }
+
+  imageTapped(post) {
+    this.toastCtrl.create('Post image clicked');
+  }
+
+  comment(post) {
+    this.toastCtrl.create('Comments clicked');
+  }
+
+  like(post) {
+    this.toastCtrl.create('Like clicked');
+  }
+
 }

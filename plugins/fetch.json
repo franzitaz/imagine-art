@@ -105,5 +105,21 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "com-badrit-base64": {
+        "source": {
+            "type": "registry",
+            "id": "com-badrit-base64@^0.2.0"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "info.protonet.imageresizer": {
+        "source": {
+            "type": "registry",
+            "id": "https://github.com/protonet/cordova-plugin-image-resizer.git"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

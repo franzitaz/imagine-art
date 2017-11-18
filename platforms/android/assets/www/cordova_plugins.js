@@ -110,6 +110,22 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.barcodeScanner"
         ]
+    },
+    {
+        "id": "com-badrit-base64.Base64",
+        "file": "plugins/com-badrit-base64/www/Base64.js",
+        "pluginId": "com-badrit-base64",
+        "clobbers": [
+            "navigator.Base64"
+        ]
+    },
+    {
+        "id": "info.protonet.imageresizer.ImageResizer",
+        "file": "plugins/info.protonet.imageresizer/www/image_resizer.js",
+        "pluginId": "info.protonet.imageresizer",
+        "clobbers": [
+            "ImageResizer"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -127,7 +143,9 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.3.1",
     "cordova.plugins.diagnostic": "3.4.2",
     "ionic-plugin-keyboard": "2.2.1",
-    "phonegap-plugin-barcodescanner": "6.0.8"
+    "phonegap-plugin-barcodescanner": "6.0.8",
+    "com-badrit-base64": "0.2.0",
+    "info.protonet.imageresizer": "0.1.1"
 };
 // BOTTOM OF METADATA
 });

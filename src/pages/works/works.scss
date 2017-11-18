@@ -1,7 +1,9 @@
 page-works{
 
+
 .transparent-header
 {
+    .toolbar-content,
     .back-button
     {
         color: black !important;
@@ -9,17 +11,63 @@ page-works{
 }
 
 .pins {
-    column-count: 2;
-    margin-top: 5vh;
+        column-count: 2;
+        margin-left: -5vw;
+        margin-right: 1vw;
+        margin-top: -2vh;
+    }
+
+
+    .pin {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .card {
+        margin-top: 5px;
+    }
+
+    ion-avatar {
+        margin: 0 !important;
+    }
+
+    .item ion-avatar img {
+        width: 9vw ;
+        height: 9vw;
+    }
+
+    .text {
+    //font-size: 5vw; 
+    text-align: center;
 }
 
+/*
+.pins {
+    column-count: 1;
+    //margin-top: 1vh;
+    margin-left: -2vw;
+    margin-right: -4vw;
+    margin-top: -2vh;
+}
+
+.text1 {
+    margin: 0 auto 0;
+}
+
+.text {
+    font-size: 5vw; 
+    text-align: center;
+}
 
 .pin {
+    width: 47%;
+    max-height: 500px;
+    min-height: 200px;
     display: inline-block;
+    margin: 5px 1px 1px 5px;
 }
 
 ion-card {
-    margin-top: 10px;
     box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important; 
 }
 
@@ -32,10 +80,6 @@ ion-avatar {
     height: 9vw;
 }
 
-.post-description {
-    padding: 8px;
-    border-bottom: 1px solid #eee;
-}
 
 // Media queries
 @media (min-width: 480px) {
@@ -57,5 +101,5 @@ ion-avatar {
         height: 5vw !important;
         margin: 6px;
     }
-}
+}*/
 }

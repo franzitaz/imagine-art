@@ -43,6 +43,12 @@
         },
         "phonegap-plugin-barcodescanner": {
             "PACKAGE_NAME": "com.braga.advancedionic2components.app"
+        },
+        "com-badrit-base64": {
+            "PACKAGE_NAME": "com.braga.advancedionic2components.app"
+        },
+        "info.protonet.imageresizer": {
+            "PACKAGE_NAME": "com.braga.advancedionic2components.app"
         }
     },
     "dependent_plugins": {

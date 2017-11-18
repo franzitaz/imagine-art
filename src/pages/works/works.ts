@@ -17,7 +17,9 @@ import 'rxjs/add/operator/catch';
 })
 export class WorksPage {
 
+  titlework = '';
   produtos = [];
+  searchResult = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
       // public toastCtrl: ToastController,
@@ -25,14 +27,28 @@ export class WorksPage {
       public localstorage:Localstorage) {
 
     this.localstorage = localstorage;
-    this.getProdutos();
+    this.localstorage.getSearch().then((search) => {
+
+      if (search === undefined || search === null) {
+
+        this.getProdutos();
+        
+      } else {
+
+        console.log(search);
+        this.produtos = search;
+        this.localstorage.setSearch(undefined);
+  
+      }
+
+    });
 
   }
 
   goToShow():void {
     this.navCtrl.push(ShowPage);
   }
-
+    
   // tslint:disable-next-line:no-empty
   ionViewDidLoad() {
   }
@@ -53,12 +69,13 @@ export class WorksPage {
       let data = JSON.stringify({
         category: categoria
       });
-      
+
       new Promise((resolve, reject) => {
         this.http.post('https://imagine-art.herokuapp.com/product/getAllProductsByCategory/',data, options)
         .toPromise()
         .then((response) => {
 
+          this.titlework = categoria;
           console.log(response.json().data);
           this.produtos = response.json().data;
           resolve(response.json());

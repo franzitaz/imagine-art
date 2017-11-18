@@ -1,8 +1,13 @@
-<ion-content padding class="transparent-header">
-  <ion-header>
-    <ion-navbar>
-    </ion-navbar>
-  </ion-header>
+<ion-content>
+      <ion-header >
+          <ion-navbar >
+            <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title *ngIf="userConfirm === false">Perfil de {{user.name}}</ion-title>
+            <ion-title *ngIf="userConfirm === true">Meu Perfil</ion-title>
+          </ion-navbar>
+        </ion-header>
   <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + user.coverImage +')'}"></div>
   <div id="content">
 
@@ -55,7 +60,7 @@
               </button>
           </ion-col>
           <ion-col col-3 align-self-center text-center *ngIf="userConfirm">
-              <button ion-button color="dark" class="button-edit-posts" (click)="goToAddWork()">
+              <button ion-button color="dark" class="button-edit-posts" (click)="goToEditWork()">
                   <ion-icon name="md-brush"></ion-icon>
               </button>
           </ion-col>

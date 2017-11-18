@@ -31478,6 +31478,10 @@ page-edit-profile ion-content {
   background: linear-gradient(0deg, #eeeef1 0%, white 80%, white 100%);
 }
 
+page-edit-profile ion-select {
+  max-width: 100% !important;
+}
+
 page-edit-profile .padding-title {
   padding: 4px 0px 10px 0px;
 }
@@ -31770,18 +31774,13 @@ page-edit-work #posts {
   text-align: justify;
 }
 
-page-home .background {
-  background-image: url("../assets/img/background/tecido2.jpg");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
 page-home .feltro {
   position: relative;
   background-image: url("../assets/img/background/feltro");
-  border-radius: 20px;
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31790,8 +31789,10 @@ page-home .feltro {
 page-home .biscuit {
   position: relative;
   background-image: url("../assets/img/background/biscuit");
-  border-radius: 20px;
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31800,8 +31801,10 @@ page-home .biscuit {
 page-home .madeira {
   position: relative;
   background-image: url("../assets/img/background/madeira");
-  border-radius: 20px;
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31810,8 +31813,10 @@ page-home .madeira {
 page-home .bordado {
   position: relative;
   background-image: url("../assets/img/background/bordado");
-  border-radius: 20px;
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31820,8 +31825,10 @@ page-home .bordado {
 page-home .scrapbook {
   position: relative;
   background-image: url("../assets/img/background/scrapbook");
-  border-radius: 20px;
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31830,8 +31837,10 @@ page-home .scrapbook {
 page-home .bookpopup {
   position: relative;
   background-image: url("../assets/img/background/bookpopup2");
-  border-radius: 20px;
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31840,8 +31849,10 @@ page-home .bookpopup {
 page-home .corteecostura {
   position: relative;
   background-image: url("../assets/img/background/corteecostura");
-  border-radius: 20px;
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31850,8 +31861,10 @@ page-home .corteecostura {
 page-home .decoupage {
   position: relative;
   background-image: url("../assets/img/background/decoupage");
-  border-radius: 20px;
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31860,8 +31873,10 @@ page-home .decoupage {
 page-home .patchwork {
   position: relative;
   background-image: url("../assets/img/background/patchwork");
-  border-radius: 20px;
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31870,8 +31885,10 @@ page-home .patchwork {
 page-home .pintura {
   position: relative;
   background-image: url("../assets/img/background/pintura");
-  border-radius: 20px;
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31880,31 +31897,20 @@ page-home .pintura {
 page-home .reciclagem {
   position: relative;
   background-image: url("../assets/img/background/reciclagem");
-  border-radius: 20px;
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-page-home .cards-effect {
-  background: -webkit-gradient(linear, left top, left bottom, from(#ff2400), color-stop(#e8b71d), color-stop(#621CD1), color-stop(#dd00f3), to(#dd00f3));
-  background: linear-gradient(180deg, #ff2400, #e8b71d, #621CD1, #dd00f3, #dd00f3);
-  font-size: 0.9em;
-  background-size: 1800% 1800%;
-  -webkit-animation: rainbow 10s linear infinite;
-  animation: rainbow 10s linear infinite;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-color: transparent;
-  border-radius: 20px;
-}
-
 page-home ion-card {
   position: relative;
   text-align: center;
-  -webkit-box-shadow: 2px 4px 10px rgba(87, 87, 87, 0.699) !important;
-  box-shadow: 2px 4px 10px rgba(87, 87, 87, 0.699) !important;
+  -webkit-box-shadow: 2px 4px 10px rgba(87, 87, 87, 0.99) !important;
+  box-shadow: 2px 4px 10px rgba(87, 87, 87, 0.99) !important;
 }
 
 page-home .card-title {
@@ -31922,18 +31928,15 @@ page-home .card-title {
 }
 
 page-home .category {
-  width: 42%;
+  width: 47%;
   max-height: 140px;
   min-height: 140px;
   display: inline-block;
+  margin: 5px 1px 1px 5px;
 }
 
 page-home .pin {
   display: inline-block;
-}
-
-page-home .card {
-  margin-top: 10px;
 }
 
 page-home ion-avatar {
@@ -32058,11 +32061,8 @@ page-login .footer {
   text-align: center;
   background: rgba(255, 255, 255, 0.18);
   min-height: 47px;
-}
-
-page-login .footer-md::before {
-  border-top: 1px solid rgba(255, 255, 255, 0.6);
-  background-image: none;
+  position: absolute;
+  bottom: 0;
 }
 
 @-webkit-keyframes rainbow {
@@ -32260,8 +32260,8 @@ page-profile #posts {
 
 page-search {
   /*.background {
-        //background-color: rgba(255, 255, 255, 0.945); 
-        background-image: linear-gradient(10deg, rgb(255, 255, 255), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)), url('../assets/img/background/artesanato.jpg');
+        background-color: rgba(255, 255, 255, 0.945); 
+        background-image:url('../assets/img/background/artesanato.jpg');
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
@@ -32274,19 +32274,29 @@ page-search .margin-bottom {
 }
 
 page-search .background {
-  background-image: url("../assets/img/background/wood2.jpg");
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0))), url("../assets/img/background/s2.jpg");
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0)), url("../assets/img/background/s2.jpg");
   background-size: cover;
-  background-position: center center;
+  background-position: left;
   background-repeat: no-repeat;
+}
+
+page-search .input {
+  margin-top: 5px;
 }
 
 page-search ion-item {
   border-radius: 15px !important;
   padding-left: 10px !important;
   color: black !important;
-  background-color: rgba(255, 255, 255, 0.2) !important;
-  -webkit-box-shadow: 0px 3px 10px rgba(87, 87, 87, 0.43) !important;
-  box-shadow: 0px 3px 10px rgba(87, 87, 87, 0.43) !important;
+  background-color: white !important;
+  -webkit-box-shadow: 0px 8px 15px black !important;
+  box-shadow: 0px 8px 15px black !important;
+}
+
+page-search .ion-select {
+  position: relative;
+  margin: 0 auto 0;
 }
 
 page-search ion-label {
@@ -32296,8 +32306,9 @@ page-search ion-label {
 page-search .text {
   font-family: Roboto;
   font-size: 20px;
-  text-shadow: -1px 2px 2px rgba(87, 87, 87, 0.712) !important;
+  text-shadow: -1px 2px 1px black !important;
   margin-bottom: 2vh;
+  color: white;
 }
 
 page-search ion-select {
@@ -32305,7 +32316,7 @@ page-search ion-select {
 }
 
 page-search .margin {
-  margin-top: 17vh;
+  margin-top: 10vh;
 }
 
 page-search .center {
@@ -32334,12 +32345,130 @@ page-search .buscar-button {
   background-position: center;
   background-repeat: no-repeat;
   border-color: transparent;
+  -webkit-box-shadow: 0px 8px 15px black !important;
+  box-shadow: 0px 8px 15px black !important;
 }
 
-page-search .icon-p {
-  height: 10vh;
-  -webkit-transform: rotate(-40deg);
-  transform: rotate(-40deg);
+page-search .icon-b {
+  height: 20vh;
+  margin-bottom: 2vh;
+}
+
+page-show ion-content {
+  background: -webkit-gradient(linear, left bottom, left top, from(#eeeef1), color-stop(80%, white), to(white));
+  background: linear-gradient(0deg, #eeeef1 0%, white 80%, white 100%);
+}
+
+page-show .padding-title {
+  padding: 4px 0px 10px 0px;
+}
+
+page-show ion-header ion-icon.back-button-icon.icon,
+page-show ion-header span.back-button-text.back-button-text-ios {
+  color: black;
+}
+
+page-show .button-edit-posts {
+  float: right;
+  border-radius: 200px;
+}
+
+page-show button,
+page-show ion-button,
+page-show .button-md,
+page-show .button-ios {
+  text-transform: none !important;
+}
+
+page-show p {
+  color: #444;
+}
+
+page-show #profile-bg {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  margin-top: -16px;
+  height: 160px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+}
+
+page-show .margin-top {
+  margin-top: -25vh;
+}
+
+page-show #content {
+  position: relative;
+  margin-top: 150px;
+  padding-top: 120px;
+  text-align: center;
+}
+
+page-show #profile-image {
+  display: block;
+  border-radius: 50%;
+  width: auto;
+  height: 100px;
+  margin: 0 auto 0;
+  -webkit-box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
+  box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
+}
+
+page-show #profile-info {
+  position: absolute;
+  top: -95px;
+  width: 100%;
+  z-index: 2;
+  text-align: center;
+}
+
+page-show #profile-name {
+  color: #444;
+  font-size: 26px;
+}
+
+page-show .profile-description {
+  font-size: 15px;
+  color: #888;
+  margin-top: -2vh;
+}
+
+page-show .follow-button {
+  text-transform: none;
+  border-radius: 3px !important;
+}
+
+page-show .follow-button ion-icon {
+  font-weight: bold;
+  padding-left: 5px;
+  font-size: 2.5rem;
+}
+
+page-show .profile-numbers p {
+  color: #444;
+  font-size: medium;
+  margin-bottom: 3px;
+}
+
+page-show .profile-numbers span {
+  font-weight: bold;
+  font-size: 2.4rem;
+  color: #34354c;
+}
+
+page-show hr {
+  border: 0;
+  height: 1px;
+  background: #444;
+  background: -webkit-linear-gradient(left, transparent 0%, #bcc6d6 50%, transparent 100%);
+}
+
+page-show #posts {
+  margin-top: 7vh;
+  text-align: justify;
 }
 
 page-signup {
@@ -32634,22 +32763,93 @@ page-tabs .popup-menu-panel.in .popup-menu-item {
   transition-delay: 0.15s;
 }
 
+page-user .transparent-header .toolbar-content,
+page-user .transparent-header .back-button {
+  color: black !important;
+}
+
+page-user .pins {
+  -webkit-column-count: 1;
+  column-count: 1;
+  margin-top: 6vh;
+  margin-left: -2vw;
+  margin-right: -4vw;
+}
+
+page-user .pin {
+  width: 47%;
+  max-height: 500px;
+  min-height: 200px;
+  display: inline-block;
+  margin: 5px 1px 1px 5px;
+}
+
+page-user ion-card {
+  margin-top: 5px;
+  -webkit-box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important;
+  box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important;
+}
+
+page-user ion-avatar {
+  margin: 0 !important;
+}
+
+page-user .item ion-avatar img {
+  width: 9vw;
+  height: 9vw;
+}
+
+page-user .post-description {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+@media (min-width: 480px) {
+  page-user .pins {
+    -webkit-column-count: 3;
+    column-count: 3;
+  }
+  page-user .item ion-avatar img {
+    width: 7vw !important;
+    height: 7vw !important;
+  }
+}
+
+@media (min-width: 640px) {
+  page-user .pins {
+    -webkit-column-count: 4;
+    column-count: 4;
+  }
+  page-user .item ion-avatar img {
+    width: 5vw !important;
+    height: 5vw !important;
+    margin: 6px;
+  }
+}
+
+page-works .transparent-header .toolbar-content,
 page-works .transparent-header .back-button {
   color: black !important;
 }
 
 page-works .pins {
-  -webkit-column-count: 2;
-  column-count: 2;
-  margin-top: 5vh;
+  -webkit-column-count: 1;
+  column-count: 1;
+  margin-top: 6vh;
+  margin-left: -2vw;
+  margin-right: -4vw;
 }
 
 page-works .pin {
+  width: 47%;
+  max-height: 500px;
+  min-height: 200px;
   display: inline-block;
+  margin: 5px 1px 1px 5px;
 }
 
 page-works ion-card {
-  margin-top: 10px;
+  margin-top: 5px;
   -webkit-box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important;
   box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important;
 }

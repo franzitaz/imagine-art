@@ -39,19 +39,25 @@ page-login {
     background-image: none;
     border-bottom: 0;
   }
+
+  .label-error {
+    color: white;
+  }
+
   // Footer
   ion-footer {
     height: 47px;
   }
+
+
   .footer {
     text-align: center;
     background: rgba(255, 255, 255, 0.18);
     min-height: 47px;
+    position: absolute;
+    bottom: 0;
   }
-  .footer-md::before {
-    border-top: 1px solid $transparent-white;
-    background-image: none;
-  }
+  
   
   @keyframes rainbow {
     0% {

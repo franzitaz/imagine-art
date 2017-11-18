@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the SearchPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Http, Headers, RequestOptions } from '@angular/http' ;
+import { Localstorage } from '../../providers/localstorage';
+import { Search } from '../../models/searchmodel/search.interface';
+import { WorksPage } from '../works/works';
+import { UserPage } from '../user/user';
+
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/catch';
 
 @IonicPage()
 @Component({
@@ -15,11 +17,100 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SearchPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  search = {} as Search;
+
+  error = false;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              private http: Http, private localstorage:Localstorage) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
-  }
+  searchfn(search) {
 
+    const search1 = search.busca;
+
+    if (search1 === undefined || search1 === '' ) {
+      
+      this.error = true;
+    } else {
+
+      if (search.tipo === 'nome') {
+      // tslint:disable-next-line:no-var-keyword
+        var headers = new Headers();
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
+
+      // tslint:disable-next-line:object-literal-shorthand
+        let options = new RequestOptions({ headers: headers });
+
+      // tslint:disable-next-line:prefer-const
+        let data = JSON.stringify({
+          name: search.busca
+        });
+
+        new Promise((resolve, reject) => {
+          this.http.post('https://imagine-art.herokuapp.com/user/searchProfile/',data, options)
+        .toPromise()
+        .then((response) => {
+
+          this.localstorage.setSearch(response.json().user);
+          console.log(response.json());
+          this.navCtrl.push(UserPage);
+          resolve(response.json());
+          
+        })
+        .catch((error) => {
+          console.error('API Error : ', error.status);
+          console.error('API Error : ', JSON.stringify(error));
+          reject(error.json());
+        });
+        })
+      .catch((err) => {
+        // tslint:disable-next-line:quotemark
+        console.log("Error occurred :", err);
+      });
+      }
+
+    // ****************************************************************************
+    // **********************BUSCA  POR NOME DO PRODUTO****************************
+    // ****************************************************************************
+      if (search.tipo === 'titulo') {
+      // tslint:disable-next-line:no-var-keyword
+        var headers = new Headers();
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
+
+      // tslint:disable-next-line:object-literal-shorthand
+        let options = new RequestOptions({ headers: headers });
+
+      // tslint:disable-next-line:prefer-const
+        let data = JSON.stringify({
+          productTitle: search.busca
+        });
+
+        new Promise((resolve, reject) => {
+          this.http.post('https://imagine-art.herokuapp.com/product/searchProduct/',data, options)
+        .toPromise()
+        .then((response) => {
+
+          this.localstorage.setSearch(response.json().product);
+          
+          console.log(response.json());
+          this.navCtrl.push(WorksPage);
+          resolve(response.json());
+          
+        })
+        .catch((error) => {
+          console.error('API Error : ', error.status);
+          console.error('API Error : ', JSON.stringify(error));
+          reject(error.json());
+        });
+        })
+      .catch((err) => {
+        // tslint:disable-next-line:quotemark
+        console.log("Error occurred :", err);
+      });
+      }
+    }
+  }
 }

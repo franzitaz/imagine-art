@@ -1,10 +1,10 @@
 <ion-content padding>
   <ion-header>
     <ion-navbar>
-      <ion-title>Editando perfil...</ion-title>
+      <ion-title>✎ Editando perfil...</ion-title>
     </ion-navbar>
   </ion-header>
-  <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + user.coverImage +')'}"></div>
+  <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + coverImage +')'}"></div>
   <div id="content">
     <div style="margin-top: -10vh;">
       <button ion-button color="dark" class="button-edit-posts" (click)="changePicture()">
@@ -15,12 +15,12 @@
     <hr style="margin-top: 10vh"/>
 
     <div id="profile-info" padding>
-      <img id="profile-image" [src]="user.profileImage">
+      <img id="profile-image" [src]="">
     </div>
     <div style="margin-top: -25vh;">
       <button ion-button color="dark" class="button-edit-posts" (click)="changePicture()">
           <ion-icon name="md-brush"></ion-icon>
-      </button>
+      </button> 
     </div>
 
     <hr style="margin-top: 10vh"/>
@@ -28,7 +28,7 @@
     <div id="profile-info2" padding>
       <ion-item>
         <ion-label>Nome:</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="user.nome" value={{userObj.name}}></ion-input>
       </ion-item>
 
       <ion-item>
@@ -38,20 +38,62 @@
 
       <ion-item>
         <ion-label>Estado:</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" ></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Telefone:</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" ></ion-input>
       </ion-item>
-     <!--<h3 id="profile-name">{{user.name}}</h3>
-      <p>{{user.occupation}} &bull; {{user.location}}</p>
-      <p class="profile-description">{{user.description}}</p>-->
+
+      <ion-item class="ion-select">
+        <!--<ion-label>Gênero</ion-label>-->
+        <ion-select interface="popover" placeholder="Gênero" class="ion-select">
+          <ion-option class="ion-select" value="feminino">Feminino</ion-option>
+          <ion-option class="ion-select" value="masculino">Masculino</ion-option>
+          <ion-option class="ion-select" value="outro">Outro</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="ion-select">
+        <!--<ion-label>Gênero</ion-label>-->
+        <ion-select interface="popover" placeholder="Mês de Nascimento" class="ion-select">
+          <ion-option class="ion-select" value="01" checked="true">Janeiro</ion-option>
+          <ion-option class="ion-select" value="02">Fevereiro</ion-option>
+          <ion-option class="ion-select" value="03">Março</ion-option>
+          <ion-option class="ion-select" value="04">Abril</ion-option>
+          <ion-option class="ion-select" value="05">Maio</ion-option>
+          <ion-option class="ion-select" value="06">Junho</ion-option>
+          <ion-option class="ion-select" value="07">Julho</ion-option>
+          <ion-option class="ion-select" value="08">Agosto</ion-option>
+          <ion-option class="ion-select" value="09">Setembro</ion-option>
+          <ion-option class="ion-select" value="10">Outubro</ion-option>
+          <ion-option class="ion-select" value="11">Novembro</ion-option>
+          <ion-option class="ion-select" value="12">Dezembro</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="ion-select">
+        <!--<ion-label>Gênero</ion-label>-->
+        <ion-select interface="popover" placeholder="Ano de Nascimento" class="ion-select">
+            <ion-option class="ion-select">1989</ion-option>
+            <ion-option class="ion-select">1990</ion-option>
+            <ion-option class="ion-select">1991</ion-option>
+            <ion-option checked="true">1992</ion-option>
+            <ion-option class="ion-select">1993</ion-option>
+            <ion-option class="ion-select">1994</ion-option>
+            <ion-option class="ion-select">1995</ion-option>
+            <ion-option class="ion-select">1996</ion-option>
+            <ion-option class="ion-select">1997</ion-option>
+            <ion-option class="ion-select">1998</ion-option>
+            <ion-option class="ion-select">1999</ion-option>
+        </ion-select>
+      </ion-item>
+
     </div>
 
   <ion-row>
-      <button ion-button (click)="editProfile" class="pronto-button center">PRONTO</button>
+      <button ion-button (click)="editProfile" class="pronto-button center" (click)="updateProfile(user)">PRONTO</button>
     </ion-row>
 
 </div>

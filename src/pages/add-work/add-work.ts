@@ -1,23 +1,23 @@
 import { CameraProvider } from '../../providers/util/camera.provider';
 import { Component, Injectable } from '@angular/core';
-import {
-  NavController,
-  Platform,
-  ActionSheetController,
-  LoadingController,
-  IonicPage,
-  NavParams } from 'ionic-angular';
+import { NavController, Platform, ActionSheetController, LoadingController, IonicPage, NavParams, 
+  ToastController } from 'ionic-angular';
 
-import { ProfilePage } from '../profile/profile';
+import { TabsPage } from '../tabs/tabs';
 
 import { Product } from '../../models/product/product.interface';
-import { Http, Headers, RequestOptions } from "@angular/http";
+import { Http, Headers, RequestOptions } from '@angular/http';
 
-import {Localstorage} from '../../providers/localstorage';
-
+import { Localstorage } from '../../providers/localstorage';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
+
+import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer';
+
+// imagem base64
+import { Base64 } from '@ionic-native/base64';
+import { File, Camera, Transfer } from 'ionic-native';
 
 @IonicPage()
 @Component({
@@ -28,10 +28,9 @@ export class AddWorkPage {
 
   product = {} as Product;
 
-  placeholder = 'assets/img/avatar/girl-avatar.png';
+  placeholder = 'assets/img/background/artesanato.jpg';
   chosenPicture: any;
-
-  
+  imagem64;
 
   constructor(
     public navCtrl: NavController,
@@ -41,126 +40,159 @@ export class AddWorkPage {
     public loadingCtrl: LoadingController,
     public navParams: NavParams,
     private http: Http,
-    public localstorage:Localstorage
+    public localstorage:Localstorage,
+    private base64: Base64,
+    private imageResizer: ImageResizer,
+    public toastCtrl: ToastController
   ) {
 
     this.localstorage = localstorage;
 
   }
 
+  showToast (position: string) {
+    // tslint:disable-next-line:prefer-const
+    let toast = this.toastCtrl.create({
+      message: 'Projeto adicionado com SUCESSO!',
+      duration: 4000,
+      // tslint:disable-next-line:object-literal-shorthand
+      position: position
+    });
+
+    toast.present(toast);
+  }
+
+  showToast1 (position: string) {
+    // tslint:disable-next-line:prefer-const
+    let toast = this.toastCtrl.create({
+      message: 'Altere tudo para poder adicionar!',
+      duration: 4000,
+      // tslint:disable-next-line:object-literal-shorthand
+      position: position
+    });
+
+    toast.present(toast);
+  }
+
   changePicture() {
     
-        const actionsheet = this.actionsheetCtrl.create({
-          title: 'upload picture',
-          buttons: [
-            {
-              text: 'camera',
-              icon: !this.platform.is('ios') ? 'camera' : null,
-              handler: () => {
-                this.takePicture();
-              }
-            },
-            {
-              text: !this.platform.is('ios') ? 'gallery' : 'camera roll',
-              icon: !this.platform.is('ios') ? 'image' : null,
-              handler: () => {
-                this.getPicture();
-              }
-            },
-            {
-              text: 'cancel',
-              icon: !this.platform.is('ios') ? 'close' : null,
-              role: 'destructive',
-              handler: () => {
-                console.log('the user has cancelled the interaction.');
-              }
-            }
-          ]
-        });
-        return actionsheet.present();
+    const actionsheet = this.actionsheetCtrl.create({
+      title: 'upload picture',
+      buttons: [
+        {
+          text: 'camera',
+          icon: !this.platform.is('ios') ? 'camera' : null,
+          handler: () => {
+            this.takePicture();
+          }
+        },
+        {
+          text: !this.platform.is('ios') ? 'gallery' : 'camera roll',
+          icon: !this.platform.is('ios') ? 'image' : null,
+          handler: () => {
+            this.getPicture();
+          }
+        },
+        {
+          text: 'cancel',
+          icon: !this.platform.is('ios') ? 'close' : null,
+          role: 'destructive',
+          handler: () => {
+            console.log('the user has cancelled the interaction.');
+          }
+        }
+      ]
+    });
+    return actionsheet.present();
   }
     
-      takePicture() {
-        const loading = this.loadingCtrl.create();
+  takePicture() {
+    const loading = this.loadingCtrl.create();
     
-        loading.present();
-        return this.cameraProvider.getPictureFromCamera().then(picture => {
-          if (picture) {
-            this.chosenPicture = picture;
-          }
-          loading.dismiss();
-        }, error => {
-          alert(error);
-        });
+    loading.present();
+    return this.cameraProvider.getPictureFromCamera().then(picture => {
+      if (picture) {
+        this.chosenPicture = picture;
       }
+      loading.dismiss();
+    }, error => {
+      alert(error);
+    });
+  }
     
-      getPicture() {
-        const loading = this.loadingCtrl.create();
+  getPicture() {
+    const loading = this.loadingCtrl.create();
     
-        loading.present();
-        return this.cameraProvider.getPictureFromPhotoLibrary().then(picture => {
-          if (picture) {
-            this.chosenPicture = picture;
-          }
-          loading.dismiss();
-        }, error => {
-          alert(error);
-        });
+    loading.present();
+    return this.cameraProvider.getPictureFromPhotoLibrary().then(picture => {
+      if (picture) {
+        this.chosenPicture = picture;
       }
-
+      loading.dismiss();
+    }, error => {
+      alert(error);
+    });
+  }
 
   posts = [
     {
-      postImageUrl: 'assets/img/background/background-2.jpg',
-      title: 'Título do Produto',
-      text: `I believe in being strong when everything seems to be going wrong.
-             I believe that happy girls are the prettiest girls.
-             I believe that tomorrow is another day and I believe in miracles.`,
-      date: 'November 5, 2016',
-      likes: 12,
-      comments: 4
+      postImageUrl: 'assets/img/background/artesanato.jpg'
     },
   ];
 
+  tools_replaceAll(str, find, replace) {
+    return str.replace(new RegExp(find, 'g'), replace);
+  }
+
   addProduto(product : Product):void {
 
+    this.showToast1('middle');
 
-    
+    // let filePath: string = this.chosenPicture;
+    let filePath: string = this.chosenPicture;
+    this.base64.encodeFile(filePath).then((base64File: string) => {
+
+      this.imagem64 = base64File;
+
+      // tslint:disable-next-line:no-var-keyword
       var headers = new Headers();
-      headers.append("Accept", 'application/json');
-      headers.append('Content-Type', 'application/json' );
-  
+      headers.append('Accept', 'application/json');
+      headers.append('Content-Type', 'application/json');
+
+    // tslint:disable-next-line:prefer-const
       let options = new RequestOptions({ headers: headers });
 
-      
-
       this.localstorage.getUser('ts').then((dados) => {
-          let res = dados;
+      // tslint:disable-next-line:prefer-const
+        let res = dados;
 
-          
+      // tslint:disable-next-line:prefer-const
+        let data = JSON.stringify({
+          productTitle: product.title,
+          productorID: res._id,
+          productorName: res.name,
+          productCategory: product.categoria,
+          productDescription: product.description,
+          productImage: this.imagem64
+        });
 
-          let data = JSON.stringify({
-            productTitle: product.title,
-            productorID: res._id,
-            productorName: res.name,
-            productCategory: product.categoria,
-            productDescription: product.description,
-            productImage: 'goo.gl/awyHW5'
-          });
+        console.log('+++++++++++++++++');
+        console.log(data);
+        console.log('+++++++++++++++++');
           
-          new Promise((resolve, reject) => {
-            this.http.post('https://imagine-art.herokuapp.com/product/newproduct/',data, options)
+        new Promise((resolve, reject) => {
+          this.http.post('https://imagine-art.herokuapp.com/product/newproduct/',data, options)
             .toPromise()
-            .then((response) =>
-            {
+            .then((response) => {
               
-              
-
               if (response.json().code === 200) {
       
-                  // IMPORTAR PAGINA PARA IR PARA O PROFILE PAGE AQUI
-                  console.log(response.json().data);
-                  this.navCtrl.push(ProfilePage);
+                  // IMPORTAR PAGINA PARA IR PARA O TABS PAGE AQUI
+                console.log('----------------');
+                console.log(response.json());
+                console.log('----------------');
+                this.navCtrl.push(TabsPage);
+                this.showToast('middle');
                 
               }
               console.log(response.json());
@@ -168,24 +200,23 @@ export class AddWorkPage {
       
               resolve(response.json());
               
-              
             })
-            .catch((error) =>
-            {
+            .catch((error) => {
               console.error('API Error : ', error.status);
               console.error('API Error : ', JSON.stringify(error));
               reject(error.json());
             });
-          });
-
+        });
 
       })
       .catch((err) => {
-          console.log("Error occurred :", err);
+        console.log('Error occurred :', err);
       });
+
+    }, (err) => {
+      console.log(err);
+    });
       
-
-
   }
   
 }

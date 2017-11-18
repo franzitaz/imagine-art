@@ -49,6 +49,16 @@ export class Localstorage {
     	});
   }
 
+  setSearch(search) {
+    this.storage.set('search',search);
+  }
+
+  getSearch():any {
+    	return this.storage.get('search').then(search => {
+      return search;
+    	});
+  }
+
     // clear the whole local storage
   clearStorage() {
     	this.storage.clear().then(() => {

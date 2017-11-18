@@ -43,6 +43,8 @@ import { CapitalizePipe } from '../pipes/capitalize.pipe';
 import { SwingModule } from 'angular2-swing';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { Base64 } from '@ionic-native/base64';
+import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer';
 
 export const MODULES = [
   SwingModule,
@@ -75,7 +77,9 @@ export const PROVIDERS = [
   SplashScreen,
   GoogleMaps,
   Localstorage,
-  Storage
+  Storage,
+  Base64,
+  ImageResizer
 ];
 
 export const COMPONENTS = [

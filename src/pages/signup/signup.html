@@ -38,7 +38,7 @@
       <button *ngIf="showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()"> <ion-icon name="md-eye"></ion-icon></button>
     </ion-item>
 
-    <ion-item class="ion-select">
+    <!--<ion-item class="ion-select">
       <ion-label>Gênero</ion-label>
       <ion-select [(ngModel)]='user.genero' interface="popover">
         <ion-option value="f" checked="true">Feminino</ion-option>
@@ -50,7 +50,7 @@
     <ion-item class="ion-select">
       <ion-label style="color: #949494;">Data de Nascimento</ion-label>
     </ion-item>
-    <!--<ion-item class="ion-select">
+    <ion-item class="ion-select">
       <ion-label>Data</ion-label>
       <ion-select [(ngModel)]="data">
           <ion-option value="01" checked="true">1</ion-option>
@@ -85,7 +85,7 @@
           <ion-option value="30">30</ion-option>
           <ion-option value="31">31</ion-option>
       </ion-select>
-      </ion-item>-->
+      </ion-item>
 
       <ion-item style="padding-left: 14vw;">
       <ion-label>Mês</ion-label>
@@ -120,9 +120,11 @@
           <ion-option>1998</ion-option>
           <ion-option>1999</ion-option>
         </ion-select>
-    </ion-item>
+    </ion-item>-->
   </ion-list>
-  <ion-label *ngIf="error"> {{error}} </ion-label>
+  <ion-row>
+    <ion-label class="label-error" *ngIf="error"> {{error}} </ion-label>
+  </ion-row>
   <ion-buttons class="center">
     <button ion-button (click)="register(user)" class="pronto-button">Pronto</button>
   </ion-buttons>

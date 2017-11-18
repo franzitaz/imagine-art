@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { WorksPage } from '../works/works';
-import {Localstorage} from '../../providers/localstorage';
+import { Localstorage } from '../../providers/localstorage';
 
 @IonicPage()
 @Component({
@@ -15,18 +15,10 @@ export class HomePage {
     this.localstorage = localstorage;
   }
     
-    goToList(categoria):void
-    {
+  goToList(categoria):void {
 
-      console.log(categoria);
-
-      this.localstorage.setCategoria(categoria);
-      this.navCtrl.push(WorksPage);
-    }
-    
-    goToFeltro():void
-    {
-      this.navCtrl.push(WorksPage);
-    }
+    this.localstorage.setCategoria(categoria);
+    this.navCtrl.push(WorksPage);
+  }
 
 }

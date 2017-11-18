@@ -3,23 +3,31 @@
     <!--<img  class="center icon-p" src="assets/img/icon/icon-pb.png">-->
   </ion-row>
 
-  <ion-row class="margin center text">
-    <p class="margin-bottom">Digite o que você procura!</p>
-  </ion-row>
+  <ion-row class="padding-top">
+      <img  class="center icon-b" src="assets/img/icon/written-b.png">
+    </ion-row>
+
+  <!--<ion-row class="margin center text">
+    <p class="margin-bottom"></p>
+  </ion-row>-->
 
   <ion-item class="ion-select">
       <!--<ion-label>Gênero</ion-label>-->
-      <ion-select interface="popover" placeholder="Título da Arte / Nome Artesão">
-        <ion-option value="nome" checked="true">Nome do artesão</ion-option>
-        <ion-option value="titulo">Título da arte</ion-option>
+      <ion-select interface="popover" placeholder="Título da Arte / Nome Artesão" class="ion-select" [(ngModel)]="search.tipo">
+        <ion-option class="ion-select" value="nome">Nome do artesão</ion-option>
+        <ion-option class="ion-select" value="titulo">Título da arte</ion-option>
       </ion-select>
   </ion-item>
 
-  <ion-item>
-    <ion-input type="text"></ion-input>
+  <ion-item class="input">
+    <ion-input type="text" [(ngModel)]="search.busca"></ion-input>
   </ion-item>
    
-  <button ion-button icon-end color="dark" class="center size buscar-button text-transform">
+  <ion-row>
+      <ion-label  *ngIf="error"><p class="label-error">-Digite para buscar-</p></ion-label>
+  </ion-row>
+
+  <button ion-button icon-end color="dark" class="center size buscar-button text-transform" (click)="searchfn(search)">
         Buscar
       <ion-icon name="md-search" class="" ></ion-icon>
   </button>

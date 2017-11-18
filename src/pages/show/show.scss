@@ -3,9 +3,15 @@ page-show {
         background: linear-gradient(0deg, #eeeef1 0%, white 80%, white 100%);
     }
     
+    
     .padding-title
     {
         padding: 4px 0px 10px 0px;        
+    }
+
+    ion-header ion-icon.back-button-icon.icon, 
+    ion-header span.back-button-text.back-button-text-ios {
+       color: black;
     }
 
     .button-edit-posts
@@ -13,6 +19,7 @@ page-show {
         float: right;
         border-radius: 200px;
     }
+    
 
     button,
     ion-button,
@@ -101,6 +108,7 @@ page-show {
     }
     // Posts feed
     #posts {
+        margin-top: 7vh;
         text-align: justify;
     }
 }

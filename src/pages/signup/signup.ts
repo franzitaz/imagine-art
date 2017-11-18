@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
-import {User} from '../../models/user/user.interface';
+ // import { ToastController } from 'ionic-angular';
+
+import { User } from '../../models/user/user.interface';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
-import {Http, Headers, RequestOptions} from "@angular/http";
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
@@ -19,101 +20,135 @@ export class SignupPage {
 
   user = {} as User;
 
+  tamanhosenha = 0;
+
   userRef$ : FirebaseListObservable<User[]>;
 
   error = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private database: AngularFireDatabase, public toastCtrl: ToastController,private http: Http) {
+  // tslint:disable-next-line:max-line-length
+  constructor(public navCtrl: NavController, public navParams: NavParams, private database: AngularFireDatabase, public toastCtrl: ToastController, private http: Http) {
 
     this.userRef$ = this.database.list('user');
 
   }
 
-  
   showToast(position: string) {
+    // tslint:disable-next-line:prefer-const
     let toast = this.toastCtrl.create({
       message: 'Você se inscreveu com SUCESSO!',
       duration: 4000,
+      // tslint:disable-next-line:object-literal-shorthand
       position: position
     });
 
     toast.present(toast);
   }
 
-  register(user: User){
+  register(user: User) {
 
-      const userEmail = user.email;
-      const userSenha = user.senha;
-      const userNome = user.nome;
+    const userEmail = user.email;
+    const userSenha = user.senha;
+    const userNome = user.nome;
 
-      console.log(userEmail, 'USEREMAIL');
-      if (userEmail === undefined || userEmail === '' ||
-          userSenha === undefined || userSenha === '' ||
-          userNome === undefined  || userNome === '') {
+    // tslint:disable-next-line:no-empty
+    if (userSenha === undefined || userSenha === '') {
+
+    } else {
+      this.tamanhosenha = userSenha.length;
+      console.log(this.tamanhosenha);
+
+    }
+      
+    console.log(userEmail, 'USEREMAIL');
+    if (userNome === undefined  || userNome === '' ||
+        userEmail === undefined || userEmail === '' ||
+          userSenha === undefined || userSenha === '' || this.tamanhosenha <= 3
+          ) {
           
-          if(userEmail === undefined || userEmail === ''){
-            this.error = 'Necessita-se digitar o email';
-          }else{
-            this.error = '';
+      if (userNome === undefined || userNome === '') {
+        console.log('nome');
+        if (this.error === '') {
+          this.error = 'Necessário digitar o seu nome.';
+        }
+              
+      }else {
+        this.error = '';
+      }
+
+      if (userEmail === undefined || userEmail === '') {
+        console.log('email');
+        if (this.error === '') {
+          this.error = 'Necessário digitar o email.';
+        }
+      } else {
+        this.error = '';
+      }
+
+      if (userSenha === undefined || userSenha === '') {
+        console.log('senha');
+        if (this.error === '') {
+          this.error = 'Nessário digitar a senha. ';
+        }
+      } else {
+            
+        if (this.tamanhosenha <= 2) {
+          if (this.error === '') {
+            this.error = 'Senha de no mínimo 3 caracteres.';
           }
-      }else{
 
-        var headers = new Headers();
-        headers.append("Accept", 'application/json');
-        headers.append('Content-Type', 'application/json' );
-  
-          let options = new RequestOptions({ headers: headers });
+        } else {
+          this.error = '';
+        }
           
-          new Promise((resolve, reject) => {
-            this.http.post('https://imagine-art.herokuapp.com/user/signup/',JSON.stringify({
-              email: user.email,
-              password: user.senha,
-              name : user.nome,
-            }), options)
+      }
+
+    } else {
+
+      // tslint:disable-next-line:no-var-keyword
+      var headers = new Headers();
+      headers.append('Accept', 'application/json');
+      headers.append('Content-Type', 'application/json');
+  
+      // tslint:disable-next-line:prefer-const
+      let options = new RequestOptions({ headers: headers });
+          
+      new Promise((resolve, reject) => {
+        this.http.post('https://imagine-art.herokuapp.com/user/signup/',JSON.stringify({
+          email: user.email,
+          password: user.senha,
+          name : user.nome,
+        }), options)
             .toPromise()
-            .then((response) =>
-            {
+            .then((response) => {
               console.log('API Response : ', response.json());
-              console.log("DATA")
+              console.log('DATA');
               localStorage.setItem('user', JSON.stringify(response));
               resolve(response.json());
               this.showToast('middle');
               
             })
-            .catch((error) =>
-            {
+            .catch((error) => {
               console.error('API Error : ', error.status);
               console.error('API Error : ', JSON.stringify(error));
               reject(error.json());
             });
-          });
-          this.navCtrl.pop();
-        user = {} as User;
-  
-        
-  
-
-      }
-
-      
+      });
+      this.navCtrl.pop();
+      user = {} as User;
+    }
   }
 
   public type = 'password';
   public showPass = false;
  
- 
   showPassword() {
     this.showPass = !this.showPass;
  
-    if(this.showPass){
+    if (this.showPass) {
       this.type = 'text';
     } else {
       this.type = 'password';
     }
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
-  }
-
 }

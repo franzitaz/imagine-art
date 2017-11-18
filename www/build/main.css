@@ -31478,6 +31478,10 @@ page-edit-profile ion-content {
   background: linear-gradient(0deg, #eeeef1 0%, white 80%, white 100%);
 }
 
+page-edit-profile ion-select {
+  max-width: 100% !important;
+}
+
 page-edit-profile .padding-title {
   padding: 4px 0px 10px 0px;
 }
@@ -31770,10 +31774,29 @@ page-edit-work #posts {
   text-align: justify;
 }
 
+page-home {
+  /*.decoupage
+{
+    position: relative;
+    background-image: url('../assets/img/background/decoupage');
+    //border-radius: 20px;
+    text-shadow: 0px 0px 10px #000000;  
+    text-shadow: 0px 1px 5px #000000; 
+    text-shadow: 0px 2px 2px #000000; 
+    text-shadow: 1px 3px 2px #000000;   
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;  
+} */
+}
+
 page-home .feltro {
   position: relative;
   background-image: url("../assets/img/background/feltro");
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31782,7 +31805,10 @@ page-home .feltro {
 page-home .biscuit {
   position: relative;
   background-image: url("../assets/img/background/biscuit");
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31791,7 +31817,10 @@ page-home .biscuit {
 page-home .madeira {
   position: relative;
   background-image: url("../assets/img/background/madeira");
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31800,7 +31829,10 @@ page-home .madeira {
 page-home .bordado {
   position: relative;
   background-image: url("../assets/img/background/bordado");
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31809,7 +31841,10 @@ page-home .bordado {
 page-home .scrapbook {
   position: relative;
   background-image: url("../assets/img/background/scrapbook");
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31818,7 +31853,10 @@ page-home .scrapbook {
 page-home .bookpopup {
   position: relative;
   background-image: url("../assets/img/background/bookpopup2");
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31827,16 +31865,10 @@ page-home .bookpopup {
 page-home .corteecostura {
   position: relative;
   background-image: url("../assets/img/background/corteecostura");
-  text-shadow: 0px -0px 10px #000000;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-page-home .decoupage {
-  position: relative;
-  background-image: url("../assets/img/background/decoupage");
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31845,7 +31877,10 @@ page-home .decoupage {
 page-home .patchwork {
   position: relative;
   background-image: url("../assets/img/background/patchwork");
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31854,7 +31889,10 @@ page-home .patchwork {
 page-home .pintura {
   position: relative;
   background-image: url("../assets/img/background/pintura");
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31863,7 +31901,10 @@ page-home .pintura {
 page-home .reciclagem {
   position: relative;
   background-image: url("../assets/img/background/reciclagem");
-  text-shadow: 0px -0px 10px #000000;
+  text-shadow: 0px 0px 10px #000000;
+  text-shadow: 0px 1px 5px #000000;
+  text-shadow: 0px 2px 2px #000000;
+  text-shadow: 1px 3px 2px #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31872,8 +31913,8 @@ page-home .reciclagem {
 page-home ion-card {
   position: relative;
   text-align: center;
-  -webkit-box-shadow: 2px 4px 10px rgba(87, 87, 87, 0.699) !important;
-  box-shadow: 2px 4px 10px rgba(87, 87, 87, 0.699) !important;
+  -webkit-box-shadow: 2px 4px 10px rgba(87, 87, 87, 0.99) !important;
+  box-shadow: 2px 4px 10px rgba(87, 87, 87, 0.99) !important;
 }
 
 page-home .card-title {
@@ -32016,6 +32057,10 @@ page-login .toolbar-background-ios {
   border-bottom: 0;
 }
 
+page-login .label-error {
+  color: white;
+}
+
 page-login ion-footer {
   height: 47px;
 }
@@ -32024,11 +32069,8 @@ page-login .footer {
   text-align: center;
   background: rgba(255, 255, 255, 0.18);
   min-height: 47px;
-}
-
-page-login .footer-md::before {
-  border-top: 1px solid rgba(255, 255, 255, 0.6);
-  background-image: none;
+  position: absolute;
+  bottom: 0;
 }
 
 @-webkit-keyframes rainbow {
@@ -32226,8 +32268,8 @@ page-profile #posts {
 
 page-search {
   /*.background {
-        //background-color: rgba(255, 255, 255, 0.945); 
-        background-image: linear-gradient(10deg, rgb(255, 255, 255), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)), url('../assets/img/background/artesanato.jpg');
+        background-color: rgba(255, 255, 255, 0.945); 
+        background-image:url('../assets/img/background/artesanato.jpg');
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
@@ -32240,19 +32282,47 @@ page-search .margin-bottom {
 }
 
 page-search .background {
-  background-image: url("../assets/img/background/wood2.jpg");
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0))), url("../assets/img/background/s2.jpg");
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0)), url("../assets/img/background/s2.jpg");
   background-size: cover;
-  background-position: center center;
+  background-position: left;
   background-repeat: no-repeat;
+}
+
+page-search .label-error {
+  color: white;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 0px 1px 0px #000000;
+  text-shadow: -1px 2px 0px #000000;
+  text-shadow: 1px -2px 0px #000000;
+  text-shadow: 2px -1px 0px #000000;
+  text-shadow: 1px 2px 0px #000000;
+  text-shadow: -2px 3px 0px #000000;
+  text-shadow: 2px -3px 0px #000000;
+  text-shadow: 3px -2px 0px #000000;
+  text-shadow: 2px 3px 0px #000000;
+  text-shadow: 3px 4px 0px #000000;
+  text-shadow: 3px 4px 0px #000000;
+  text-shadow: 4px 3px 0px #000000;
+}
+
+page-search .input {
+  margin-top: 5px;
 }
 
 page-search ion-item {
   border-radius: 15px !important;
   padding-left: 10px !important;
   color: black !important;
-  background-color: rgba(255, 255, 255, 0.2) !important;
-  -webkit-box-shadow: 0px 3px 10px rgba(87, 87, 87, 0.43) !important;
-  box-shadow: 0px 3px 10px rgba(87, 87, 87, 0.43) !important;
+  background-color: white !important;
+  -webkit-box-shadow: 0px 8px 15px black !important;
+  box-shadow: 0px 8px 15px black !important;
+}
+
+page-search .ion-select {
+  position: relative;
+  margin: 0 auto 0;
 }
 
 page-search ion-label {
@@ -32262,8 +32332,9 @@ page-search ion-label {
 page-search .text {
   font-family: Roboto;
   font-size: 20px;
-  text-shadow: -1px 2px 2px rgba(87, 87, 87, 0.712) !important;
+  text-shadow: -1px 2px 1px black !important;
   margin-bottom: 2vh;
+  color: white;
 }
 
 page-search ion-select {
@@ -32271,7 +32342,7 @@ page-search ion-select {
 }
 
 page-search .margin {
-  margin-top: 17vh;
+  margin-top: 10vh;
 }
 
 page-search .center {
@@ -32300,12 +32371,13 @@ page-search .buscar-button {
   background-position: center;
   background-repeat: no-repeat;
   border-color: transparent;
+  -webkit-box-shadow: 0px 8px 15px black !important;
+  box-shadow: 0px 8px 15px black !important;
 }
 
-page-search .icon-p {
-  height: 10vh;
-  -webkit-transform: rotate(-40deg);
-  transform: rotate(-40deg);
+page-search .icon-b {
+  height: 20vh;
+  margin-bottom: 2vh;
 }
 
 page-show ion-content {
@@ -32315,6 +32387,11 @@ page-show ion-content {
 
 page-show .padding-title {
   padding: 4px 0px 10px 0px;
+}
+
+page-show ion-header ion-icon.back-button-icon.icon,
+page-show ion-header span.back-button-text.back-button-text-ios {
+  color: black;
 }
 
 page-show .button-edit-posts {
@@ -32416,6 +32493,7 @@ page-show hr {
 }
 
 page-show #posts {
+  margin-top: 7vh;
   text-align: justify;
 }
 
@@ -32445,11 +32523,11 @@ page-signup {
 }
 
 page-signup .icon-pb {
-  height: 6vh;
+  height: 16vh;
 }
 
 page-signup .written {
-  height: 13vh;
+  height: 18vh;
   margin-top: -4vh;
   margin-bottom: 1vh;
 }
@@ -32711,6 +32789,143 @@ page-tabs .popup-menu-panel.in .popup-menu-item {
   transition-delay: 0.15s;
 }
 
+page-user {
+  /*
+    // Media queries
+    @media (min-width: 480px) {
+        .pins {
+            column-count: 3;
+        }
+        .item ion-avatar img {
+            width:  7vw !important;
+            height: 7vw !important;
+        }
+    }
+    
+    @media (min-width: 640px) {
+        .pins {
+            column-count: 4;
+        }
+        .item ion-avatar img {
+            width:  5vw !important;
+            height: 5vw !important;
+            margin: 6px;
+        }
+    }*/
+}
+
+page-user .transparent-header .toolbar-content,
+page-user .transparent-header .back-button {
+  color: black !important;
+}
+
+page-user .pins {
+  -webkit-column-count: 0;
+  column-count: 0;
+  margin-left: -2vw;
+  margin-right: -4vw;
+}
+
+page-user .item {
+  margin-top: 2vh !important;
+}
+
+page-user .pin {
+  width: 95%;
+  max-height: 30vh;
+  min-height: 30vh;
+  display: inline-block;
+  margin: 5px 1px 1px 5px;
+  margin: 0 auto 0;
+}
+
+page-user .text {
+  font-size: 5vw;
+}
+
+page-user ion-card {
+  -webkit-box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important;
+  box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important;
+}
+
+page-user ion-avatar {
+  height: 15vh;
+}
+
+page-user .item ion-avatar img {
+  width: 30vw;
+  height: 30vw;
+}
+
+page-user .post-description {
+  border-bottom: 1px solid #eee;
+}
+
+page-works {
+  /*
+.pins {
+    column-count: 1;
+    //margin-top: 1vh;
+    margin-left: -2vw;
+    margin-right: -4vw;
+    margin-top: -2vh;
+}
+
+.text1 {
+    margin: 0 auto 0;
+}
+
+.text {
+    font-size: 5vw; 
+    text-align: center;
+}
+
+.pin {
+    width: 47%;
+    max-height: 500px;
+    min-height: 200px;
+    display: inline-block;
+    margin: 5px 1px 1px 5px;
+}
+
+ion-card {
+    box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important; 
+}
+
+ion-avatar {
+    margin: 0 !important;
+}
+
+.item ion-avatar img {
+    width: 9vw ;
+    height: 9vw;
+}
+
+
+// Media queries
+@media (min-width: 480px) {
+    .pins {
+        column-count: 3;
+    }
+    .item ion-avatar img {
+        width:  7vw !important;
+        height: 7vw !important;
+    }
+}
+
+@media (min-width: 640px) {
+    .pins {
+        column-count: 4;
+    }
+    .item ion-avatar img {
+        width:  5vw !important;
+        height: 5vw !important;
+        margin: 6px;
+    }
+}*/
+}
+
+page-works .transparent-header .toolbar-content,
 page-works .transparent-header .back-button {
   color: black !important;
 }
@@ -32718,17 +32933,18 @@ page-works .transparent-header .back-button {
 page-works .pins {
   -webkit-column-count: 2;
   column-count: 2;
-  margin-top: 5vh;
+  margin-left: -5vw;
+  margin-right: 1vw;
+  margin-top: -2vh;
 }
 
 page-works .pin {
   display: inline-block;
+  width: 100%;
 }
 
-page-works ion-card {
-  margin-top: 10px;
-  -webkit-box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important;
-  box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important;
+page-works .card {
+  margin-top: 5px;
 }
 
 page-works ion-avatar {
@@ -32740,30 +32956,6 @@ page-works .item ion-avatar img {
   height: 9vw;
 }
 
-page-works .post-description {
-  padding: 8px;
-  border-bottom: 1px solid #eee;
-}
-
-@media (min-width: 480px) {
-  page-works .pins {
-    -webkit-column-count: 3;
-    column-count: 3;
-  }
-  page-works .item ion-avatar img {
-    width: 7vw !important;
-    height: 7vw !important;
-  }
-}
-
-@media (min-width: 640px) {
-  page-works .pins {
-    -webkit-column-count: 4;
-    column-count: 4;
-  }
-  page-works .item ion-avatar img {
-    width: 5vw !important;
-    height: 5vw !important;
-    margin: 6px;
-  }
+page-works .text {
+  text-align: center;
 }

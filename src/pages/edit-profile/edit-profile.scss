@@ -4,6 +4,9 @@ page-edit-profile {
         background: linear-gradient(0deg, #eeeef1 0%, white 80%, white 100%);
     }
     
+    ion-select {
+        max-width: 100% !important;
+    }
 
     .padding-title
     {

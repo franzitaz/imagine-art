@@ -29,8 +29,11 @@ import { AddWorkPage } from '../pages/add-work/add-work';
 import { EditWorkPage } from '../pages/edit-work/edit-work';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ShowPage } from '../pages/show/show';
+import { UserPage } from '../pages/user/user';
 
 import { Localstorage } from '../providers/localstorage';
+import { Base64 } from '@ionic-native/base64';
+import { ImageResizer } from '@ionic-native/image-resizer';
 
 @NgModule({
   declarations: [
@@ -46,11 +49,12 @@ import { Localstorage } from '../providers/localstorage';
     AddWorkPage,
     EditWorkPage,
     EditProfilePage,
-    ShowPage
+    ShowPage,
+    UserPage
   ],
   imports: [
     MODULES,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, { tabsHideOnSubPages: true }),
     SharedModule,
     BrowserModule,
     AngularFireModule.initializeApp(FIREBASE_CREDENTIALS),
@@ -71,9 +75,10 @@ import { Localstorage } from '../providers/localstorage';
     AddWorkPage,
     EditWorkPage,
     EditProfilePage,
-    ShowPage
+    ShowPage,
+    UserPage
   ],
   providers: [PROVIDERS, StatusBar,
-    SplashScreen,{ provide: ErrorHandler, useClass: IonicErrorHandler },Localstorage, Storage]
+    SplashScreen,{ provide: ErrorHandler, useClass: IonicErrorHandler },Localstorage, Storage,Base64,ImageResizer]
 })
 export class AppModule { }

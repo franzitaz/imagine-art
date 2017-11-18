@@ -10,17 +10,33 @@ import { AddWorkPage } from '../add-work/add-work';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
+  reload: any;
+  refresh: any;
+  nav: any;
 
-  tab1Root = HomePage;
-  tab2Root = SearchPage;
-  tab3Root = ProfilePage;
-  tab4Root = AddWorkPage;
-  tab5Root = SearchPage;
+  tab1Root: any = HomePage;
+  tab2Root: any = SearchPage;
+  tab3Root: any = ProfilePage;
+  tab4Root: any = AddWorkPage;
+  tab5Root: any = SearchPage;
 
   constructor(public navCtrl: NavController) {
   }
 
-  refreshPage() {
-    this.navCtrl.setRoot(this.navCtrl.getActive().component);
+  /*ionViewCanEnter() {
+    if (undefined !== this.navCtrl.getActive()) {
+      if (this.navCtrl.length() > 1)
+        return false;
+    }
   }
+
+  ionSelect() {
+    this.navCtrl.setRoot(TabsPage);
+  }
+
+  ionSelected() {
+    //this.scrollArea.scrollToTop();
+    this.nav.getActive(TabsPage);
+  } */
+
 }

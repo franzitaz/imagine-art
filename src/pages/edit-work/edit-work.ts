@@ -11,10 +11,9 @@ import {
 import { ProfilePage } from '../profile/profile';
 
 import { Product } from '../../models/product/product.interface';
-import { Http, Headers, RequestOptions } from "@angular/http";
+import { Http, Headers, RequestOptions } from '@angular/http';
 
-import {Localstorage} from '../../providers/localstorage';
-
+import { Localstorage } from '../../providers/localstorage';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
@@ -30,8 +29,6 @@ export class EditWorkPage {
 
   placeholder = 'assets/img/avatar/girl-avatar.png';
   chosenPicture: any;
-
-  
 
   constructor(
     public navCtrl: NavController,
@@ -108,7 +105,6 @@ export class EditWorkPage {
         });
       }
 
-
   posts = [
     {
       postImageUrl: 'assets/img/background/background-2.jpg',
@@ -124,14 +120,11 @@ export class EditWorkPage {
 
   addProduto(product : Product):void {
 
-
-    
       var headers = new Headers();
       headers.append("Accept", 'application/json');
       headers.append('Content-Type', 'application/json' );
   
       let options = new RequestOptions({ headers: headers });
-
 
       this.localstorage.getUser('ts').then((dados) => {
           let res = dados;
@@ -160,7 +153,6 @@ export class EditWorkPage {
       
               resolve(response.json());
               
-              
             })
             .catch((error) =>
             {
@@ -170,14 +162,11 @@ export class EditWorkPage {
             });
           });
 
-
       })
       .catch((err) => {
           console.log("Error occurred :", err);
       });
       
-
-
   }
   
 }
