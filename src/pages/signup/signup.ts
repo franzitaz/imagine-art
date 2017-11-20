@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
- // import { ToastController } from 'ionic-angular';
-
 import { User } from '../../models/user/user.interface';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
@@ -26,8 +24,8 @@ export class SignupPage {
 
   error = '';
 
-  // tslint:disable-next-line:max-line-length
-  constructor(public navCtrl: NavController, public navParams: NavParams, private database: AngularFireDatabase, public toastCtrl: ToastController, private http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    private database: AngularFireDatabase, public toastCtrl: ToastController, private http: Http) {
 
     this.userRef$ = this.database.list('user');
 
@@ -39,7 +37,21 @@ export class SignupPage {
       message: 'Você se inscreveu com SUCESSO!',
       duration: 4000,
       // tslint:disable-next-line:object-literal-shorthand
-      position: position
+      position: position,
+      cssClass: 'center'
+    });
+
+    toast.present(toast);
+  }
+
+  showToast1(position: string) {
+    // tslint:disable-next-line:prefer-const
+    let toast = this.toastCtrl.create({
+      message: 'Algo deu errado! Verifique sua internet. =(',
+      duration: 4000,
+      // tslint:disable-next-line:object-literal-shorthand
+      position: position,
+      cssClass: 'center'
     });
 
     toast.present(toast);
@@ -63,7 +75,7 @@ export class SignupPage {
     console.log(userEmail, 'USEREMAIL');
     if (userNome === undefined  || userNome === '' ||
         userEmail === undefined || userEmail === '' ||
-          userSenha === undefined || userSenha === '' || this.tamanhosenha <= 3
+          userSenha === undefined || userSenha === '' || this.tamanhosenha <= 2
           ) {
           
       if (userNome === undefined || userNome === '') {
@@ -131,6 +143,7 @@ export class SignupPage {
             .catch((error) => {
               console.error('API Error : ', error.status);
               console.error('API Error : ', JSON.stringify(error));
+              // this.showToast1('middle');
               reject(error.json());
             });
       });

@@ -44,9 +44,9 @@ export class ProfilePage {
   ) {
     this.localstorage = localstorage;
 
-    this.localstorage.getProfileID().then((profileID) =>{
+    this.localstorage.getProfileID().then((profileID) => {
 
-      if (profileID === null || profileID === ''){
+      if (profileID === null || profileID === '') {
 
         this.getProfileInformation('');
 
@@ -185,10 +185,17 @@ export class ProfilePage {
   }
 
   goToEditProfile():void {  
+
+    
     this.navCtrl.push(EditProfilePage);
   }
 
-  goToEditWork():void {  
+  goToEditWork(productID):void {  
+    console.log('setProductID');
+    console.log(productID);
+    console.log('setProductID');
+
+    this.localstorage.setProductID(productID);
     this.navCtrl.push(EditWorkPage);
   }
 }

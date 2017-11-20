@@ -1,7 +1,7 @@
 import { CameraProvider } from '../../providers/util/camera.provider';
 import { Component, Injectable } from '@angular/core';
-import { NavController, Platform, ActionSheetController, LoadingController, IonicPage, NavParams, 
-  ToastController } from 'ionic-angular';
+import { NavController, Platform, ActionSheetController, LoadingController, 
+  IonicPage, NavParams, ToastController } from 'ionic-angular';
 
 import { TabsPage } from '../tabs/tabs';
 
@@ -56,7 +56,8 @@ export class AddWorkPage {
       message: 'Projeto adicionado com SUCESSO!',
       duration: 4000,
       // tslint:disable-next-line:object-literal-shorthand
-      position: position
+      position: position,
+      cssClass: 'center'
     });
 
     toast.present(toast);
@@ -68,7 +69,8 @@ export class AddWorkPage {
       message: 'Altere tudo para poder adicionar!',
       duration: 4000,
       // tslint:disable-next-line:object-literal-shorthand
-      position: position
+      position: position,
+      cssClass: 'center'
     });
 
     toast.present(toast);
@@ -146,76 +148,78 @@ export class AddWorkPage {
 
   addProduto(product : Product):void {
 
-    this.showToast1('middle');
+    //
 
-    // let filePath: string = this.chosenPicture;
-    let filePath: string = this.chosenPicture;
-    this.base64.encodeFile(filePath).then((base64File: string) => {
+    if (this.chosenPicture === undefined || this.chosenPicture === '' ||
+       product.categoria === undefined || product.categoria === '' ||
+       product.description === undefined || product.description === '' ||
+       product.title === undefined || product.title === '') {
 
-      this.imagem64 = base64File;
+      this.showToast1('middle');
 
-      // tslint:disable-next-line:no-var-keyword
-      var headers = new Headers();
-      headers.append('Accept', 'application/json');
-      headers.append('Content-Type', 'application/json');
+    } else {
 
-    // tslint:disable-next-line:prefer-const
-      let options = new RequestOptions({ headers: headers });
+      // let filePath: string = this.chosenPicture;
+      let filePath: string = this.chosenPicture;
+      this.base64.encodeFile(filePath).then((base64File: string) => {
 
-      this.localstorage.getUser('ts').then((dados) => {
+        this.imagem64 = base64File;
+
+        // tslint:disable-next-line:no-var-keyword
+        var headers = new Headers();
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
+
       // tslint:disable-next-line:prefer-const
-        let res = dados;
+        let options = new RequestOptions({ headers: headers });
 
-      // tslint:disable-next-line:prefer-const
-        let data = JSON.stringify({
-          productTitle: product.title,
-          productorID: res._id,
-          productorName: res.name,
-          productCategory: product.categoria,
-          productDescription: product.description,
-          productImage: this.imagem64
-        });
+        this.localstorage.getUser('ts').then((dados) => {
+        // tslint:disable-next-line:prefer-const
+          let res = dados;
 
-        console.log('+++++++++++++++++');
-        console.log(data);
-        console.log('+++++++++++++++++');
-          
-        new Promise((resolve, reject) => {
-          this.http.post('https://imagine-art.herokuapp.com/product/newproduct/',data, options)
-            .toPromise()
-            .then((response) => {
-              
-              if (response.json().code === 200) {
-      
-                  // IMPORTAR PAGINA PARA IR PARA O TABS PAGE AQUI
-                console.log('----------------');
-                console.log(response.json());
-                console.log('----------------');
-                this.navCtrl.push(TabsPage);
-                this.showToast('middle');
+        // tslint:disable-next-line:prefer-const
+          let data = JSON.stringify({
+            productTitle: product.title,
+            productorID: res._id,
+            productorName: res.name,
+            productCategory: product.categoria,
+            productDescription: product.description,
+            productImage: this.imagem64
+          });
+            
+          new Promise((resolve, reject) => {
+            this.http.post('https://imagine-art.herokuapp.com/product/newproduct/',data, options)
+              .toPromise()
+              .then((response) => {
                 
-              }
-              console.log(response.json());
-              product = {} as Product;
-      
-              resolve(response.json());
-              
-            })
-            .catch((error) => {
-              console.error('API Error : ', error.status);
-              console.error('API Error : ', JSON.stringify(error));
-              reject(error.json());
-            });
+                if (response.json().code === 200) {
+        
+                    // IMPORTAR PAGINA PARA IR PARA O TABS PAGE AQUI
+                  this.navCtrl.push(TabsPage);
+                  this.showToast('middle');
+                  
+                }
+                console.log(response.json());
+                product = {} as Product;
+        
+                resolve(response.json());
+                
+              })
+              .catch((error) => {
+                reject(error.json());
+              });
+          });
+
+        })
+        .catch((err) => {
+          console.log('Error occurred :', err);
         });
 
-      })
-      .catch((err) => {
-        console.log('Error occurred :', err);
+      }, (err) => {
+        console.log(err);
       });
 
-    }, (err) => {
-      console.log(err);
-    });
+    }
       
   }
   

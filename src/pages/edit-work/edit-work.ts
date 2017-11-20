@@ -1,14 +1,11 @@
 import { CameraProvider } from '../../providers/util/camera.provider';
 import { Component } from '@angular/core';
 import {
-  NavController,
-  Platform,
-  ActionSheetController,
-  LoadingController,
-  IonicPage,
-  NavParams } from 'ionic-angular';
+  NavController, Platform, ActionSheetController, LoadingController,
+  IonicPage, NavParams, ToastController } from 'ionic-angular';
 
 import { ProfilePage } from '../profile/profile';
+// import { HomePage } from '../home/home';
 
 import { Product } from '../../models/product/product.interface';
 import { Http, Headers, RequestOptions } from '@angular/http';
@@ -18,17 +15,28 @@ import { Localstorage } from '../../providers/localstorage';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 
+import { Base64 } from '@ionic-native/base64';
+// tslint:disable-next-line:no-duplicate-imports
+import { ChangeDetectorRef, ChangeDetectionStrategy  } from '@angular/core';
+import { TabsPage } from '../tabs/tabs';
+import { IonicTapInput } from 'ionic-angular/util/form';
+import { Tabs } from 'ionic-angular/components/tabs/tabs';
+
 @IonicPage()
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'page-edit-work',
   templateUrl: 'edit-work.html',
 })
 export class EditWorkPage {
+  myApp: any;
 
   product = {} as Product;
 
   placeholder = 'assets/img/avatar/girl-avatar.png';
   chosenPicture: any;
+  productInformation = [];
+  imagem64;
 
   constructor(
     public navCtrl: NavController,
@@ -38,135 +46,324 @@ export class EditWorkPage {
     public loadingCtrl: LoadingController,
     public navParams: NavParams,
     private http: Http,
-    public localstorage:Localstorage
+    public localstorage:Localstorage,
+    private base64: Base64,
+    public cdr:ChangeDetectorRef,
+    public toastCtrl: ToastController
   ) {
 
     this.localstorage = localstorage;
+    this.getProduto();
 
   }
+
+  // -----------------------------------------//
+  // ----------- IMAGEM DE PRODUTO -----------//
+  // -----------------------------------------//
 
   changePicture() {
     
-        const actionsheet = this.actionsheetCtrl.create({
-          title: 'upload picture',
-          buttons: [
-            {
-              text: 'camera',
-              icon: !this.platform.is('ios') ? 'camera' : null,
-              handler: () => {
-                this.takePicture();
-              }
-            },
-            {
-              text: !this.platform.is('ios') ? 'gallery' : 'camera roll',
-              icon: !this.platform.is('ios') ? 'image' : null,
-              handler: () => {
-                this.getPicture();
-              }
-            },
-            {
-              text: 'cancel',
-              icon: !this.platform.is('ios') ? 'close' : null,
-              role: 'destructive',
-              handler: () => {
-                console.log('the user has cancelled the interaction.');
-              }
-            }
-          ]
-        });
-        return actionsheet.present();
+    const actionsheet = this.actionsheetCtrl.create({
+      title: 'upload picture',
+      buttons: [
+        {
+          text: 'camera',
+          icon: !this.platform.is('ios') ? 'camera' : null,
+          handler: () => {
+            this.takePicture();
+          }
+        },
+        {
+          text: !this.platform.is('ios') ? 'gallery' : 'camera roll',
+          icon: !this.platform.is('ios') ? 'image' : null,
+          handler: () => {
+            this.getPicture();
+          }
+        },
+        {
+          text: 'cancel',
+          icon: !this.platform.is('ios') ? 'close' : null,
+          role: 'destructive',
+          handler: () => {
+            console.log('the user has cancelled the interaction.');
+          }
+        }
+      ]
+    });
+    return actionsheet.present();
   }
     
-      takePicture() {
-        const loading = this.loadingCtrl.create();
-    
-        loading.present();
-        return this.cameraProvider.getPictureFromCamera().then(picture => {
-          if (picture) {
-            this.chosenPicture = picture;
-          }
-          loading.dismiss();
-        }, error => {
-          alert(error);
-        });
+  takePicture() {
+    const loading = this.loadingCtrl.create();
+
+    loading.present();
+    return this.cameraProvider.getPictureFromCamera().then(picture => {
+      if (picture) {
+        this.chosenPicture = picture;
       }
-    
-      getPicture() {
-        const loading = this.loadingCtrl.create();
-    
-        loading.present();
-        return this.cameraProvider.getPictureFromPhotoLibrary().then(picture => {
-          if (picture) {
-            this.chosenPicture = picture;
-          }
-          loading.dismiss();
-        }, error => {
-          alert(error);
-        });
+      loading.dismiss();
+    }, error => {
+      alert(error);
+    });
+  }
+
+  getPicture() {
+    const loading = this.loadingCtrl.create();
+
+    loading.present();
+    return this.cameraProvider.getPictureFromPhotoLibrary().then(picture => {
+      if (picture) {
+        this.chosenPicture = picture;
       }
+      loading.dismiss();
+    }, error => {
+      alert(error);
+    });
+  }
 
-  posts = [
-    {
-      postImageUrl: 'assets/img/background/background-2.jpg',
-      title: 'Título do Produto',
-      text: `I believe in being strong when everything seems to be going wrong.
-             I believe that happy girls are the prettiest girls.
-             I believe that tomorrow is another day and I believe in miracles.`,
-      date: 'November 5, 2016',
-      likes: 12,
-      comments: 4
-    },
-  ];
+  // -----------------------------------------//
+  // --------FIM IMAGEM DE PRODUTO -----------//
+  // -----------------------------------------//
 
-  addProduto(product : Product):void {
+  // *****************************************//
 
+  // -----------------------------------------//
+  // ----------- GET ----- PRODUTO -----------//
+  // -----------------------------------------//
+
+  getProduto() {
+
+    this.localstorage.getProductID().then((productIDCallback) => {
+
+      // tslint:disable-next-line:no-var-keyword
       var headers = new Headers();
-      headers.append("Accept", 'application/json');
-      headers.append('Content-Type', 'application/json' );
+      headers.append('Accept', 'application/json');
+      headers.append('Content-Type', 'application/json');
   
+      // tslint:disable-next-line:object-literal-shorthand
       let options = new RequestOptions({ headers: headers });
 
-      this.localstorage.getUser('ts').then((dados) => {
-          let res = dados;
+      // tslint:disable-next-line:prefer-const
+      let data = JSON.stringify({
+        productID: productIDCallback
+      });
 
-          let data = JSON.stringify({
-            productTitle: product.title,
-            productorID: res._id,
-            productorName: res.name,
-            productDescription: product.description,
-            productImage: 'goo.gl/awyHW5'
-          });
+      new Promise((resolve, reject) => {
+        this.http.post('https://imagine-art.herokuapp.com/product/getUpdateProduct/',data, options)
+        .toPromise()
+        .then((response) => {
+
+          this.productInformation = response.json().product;
+          this.chosenPicture = response.json().product.productImage;
+          this.localstorage.setProduct(response.json().product);
+          resolve(response.json());
+          this.cdr.markForCheck();
+          return response.json().user;
           
-          new Promise((resolve, reject) => {
-            this.http.post('https://imagine-art.herokuapp.com/product/newproduct/',data, options)
-            .toPromise()
-            .then((response) =>
-            {
-              
-              if (response.json().code === 200) {
-      
-                  // IMPORTAR PAGINA PARA IR PARA O PROFILE PAGE AQUI
-                  console.log(response.json().data);
-                  this.navCtrl.push(ProfilePage);
-                
-              }
-      
-              resolve(response.json());
-              
-            })
-            .catch((error) =>
-            {
-              console.error('API Error : ', error.status);
-              console.error('API Error : ', JSON.stringify(error));
-              reject(error.json());
-            });
-          });
+        })
+        .catch((error) => {
+          console.error('API Error : ', error.status);
+          console.error('API Error : ', JSON.stringify(error));
+          reject(error.json());
+        });
+      });
+
+    });
+
+  }
+
+  // -----------------------------------------//
+  // --------FIM GET ----- PRODUTO -----------//
+  // -----------------------------------------//
+
+  // *****************************************//
+
+  // -----------------------------------------//
+  // ----------- REMOVER PRODUTO -----------//
+  // -----------------------------------------//
+
+  showToast (position: string) {
+    // tslint:disable-next-line:prefer-const
+    let toast = this.toastCtrl.create({
+      message: 'Um projeto foi excluído!',
+      duration: 4000,
+      // tslint:disable-next-line:object-literal-shorthand
+      position: position,
+      cssClass: 'center'
+    });
+
+    toast.present(toast);
+  }
+
+  removerProduto(removerProdutoID) {
+
+    // tslint:disable-next-line:no-var-keyword
+    var headers = new Headers();
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'application/json');
+
+    // tslint:disable-next-line:object-literal-shorthand
+    let options = new RequestOptions({ headers: headers });
+
+    // tslint:disable-next-line:prefer-const
+    let data = JSON.stringify({
+      productID: removerProdutoID
+    });
+
+    new Promise((resolve, reject) => {
+      this.http.post('https://imagine-art.herokuapp.com/product/deleteProduct/',data, options)
+      .toPromise()
+      .then((response) => {
+       
+        this.navCtrl.setRoot(ProfilePage);
+        this.showToast('middle');
+        return response.json().user;
 
       })
-      .catch((err) => {
-          console.log("Error occurred :", err);
+      .catch((error) => {
+        console.error('API Error : ', error.status);
+        console.error('API Error : ', JSON.stringify(error));
+        reject(error.json());
       });
-      
+    });
+
+  }
+
+  // -----------------------------------------//
+  // --------FIM REMOVER PRODUTO -------------//
+  // -----------------------------------------//
+
+  // *****************************************//
+
+  showToast1 (position: string) {
+    // tslint:disable-next-line:prefer-const
+    let toast = this.toastCtrl.create({
+      message: 'Um projeto foi editado!',
+      duration: 4000,
+      // tslint:disable-next-line:object-literal-shorthand
+      position: position,
+      cssClass: 'center'
+    });
+
+    toast.present(toast);
+  }
+
+  editProduto(produtoInformacao):void {
+
+    this.localstorage.getProductID().then((productIDCallback) => {
+
+      if (this.chosenPicture === null || this.chosenPicture === '') {
+
+        console.log('ADICIONAR IMAGEM');
+
+      } else {
+
+        this.localstorage.getProduct().then((produtoAntesEdicao) => {
+
+          if (this.chosenPicture === produtoAntesEdicao.productImage) {
+
+            // tslint:disable-next-line:no-var-keyword
+            var headers = new Headers();
+            headers.append('Accept', 'application/json');
+            headers.append('Content-Type', 'application/json');
+              
+            // tslint:disable-next-line:object-literal-shorthand
+            let options = new RequestOptions({ headers: headers });
+            
+            // tslint:disable-next-line:prefer-const
+            let data = JSON.stringify({
+              productID: productIDCallback,
+              productTitle: produtoInformacao.title,
+              productCategory: produtoInformacao.productCategory,
+              productImage: this.chosenPicture,
+              productDescription: produtoInformacao.description
+            });
+            
+            console.log('CONSOLE DATA', data);
+            
+            new Promise((resolve, reject) => {
+              this.http.post('https://imagine-art.herokuapp.com/product/updateProduct/',data, options)
+                    .toPromise()
+                    .then((response) => {
+            
+                      console.log('CONSOLE LOG DA VARIAVEL response.json()',response.json());
+            
+                      if (response.json().code === 200) {
+                        resolve(response.json());
+                      }
+                      this.navCtrl.setRoot(ProfilePage);
+                      this.showToast1('middle');
+                    })
+                    .catch((error) => {
+                      console.error('API Error : ', error.status);
+                      console.error('API Error : ', JSON.stringify(error));
+                      reject(error.json());
+                    });
+            });
+
+          } else {
+
+            // tslint:disable-next-line:prefer-const
+            let filePath: string = this.chosenPicture;
+            this.base64.encodeFile(filePath).then((base64File: string) => {
+            
+              console.log('productIDCallback', productIDCallback);
+              
+              // tslint:disable-next-line:no-var-keyword
+              var headers = new Headers();
+              headers.append('Accept', 'application/json');
+              headers.append('Content-Type', 'application/json');
+                
+              // tslint:disable-next-line:object-literal-shorthand
+              let options = new RequestOptions({ headers: headers });
+              
+              // tslint:disable-next-line:prefer-const
+              let data = JSON.stringify({
+                productID: productIDCallback,
+                productTitle: produtoInformacao.title,
+                productCategory: produtoInformacao.productCategory,
+                productImage: base64File,
+                productDescription: produtoInformacao.description
+              });
+              
+              console.log('CONSOLE DATA', data);
+              
+              new Promise((resolve, reject) => {
+                this.http.post('https://imagine-art.herokuapp.com/product/updateProduct/',data, options)
+                      .toPromise()
+                      .then((response) => {
+              
+                        console.log('CONSOLE LOG DA VARIAVEL response.json()',response.json());
+              
+                        if (response.json().code === 200) {
+                          resolve(response.json());
+                        }
+
+                        // REDIRECT
+                        this.navCtrl.setRoot(ProfilePage);
+                        this.showToast1('middle');
+                        
+                      })
+                      .catch((error) => {
+                        console.error('API Error : ', error.status);
+                        console.error('API Error : ', JSON.stringify(error));
+                        reject(error.json());
+                      });
+              });
+        
+            });
+
+          }
+
+        });
+
+      }
+
+    }).catch((err) => {
+      // tslint:disable-next-line:quotemark
+      console.log("Error occurred :", err);
+    });
+
   }
   
 }

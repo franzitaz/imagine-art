@@ -31473,6 +31473,10 @@ page-add-work #posts {
   text-align: justify;
 }
 
+.center {
+  text-align: center;
+}
+
 page-edit-profile ion-content {
   background: -webkit-gradient(linear, left bottom, left top, from(#eeeef1), color-stop(80%, white), to(white));
   background: linear-gradient(0deg, #eeeef1 0%, white 80%, white 100%);
@@ -31510,7 +31514,7 @@ page-edit-profile #profile-bg {
   height: 160px;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
   text-align: center;
 }
 
@@ -31524,7 +31528,7 @@ page-edit-profile #content {
 page-edit-profile #profile-image {
   display: block;
   border-radius: 50%;
-  width: auto;
+  max-width: 110px;
   height: 100px;
   margin: -35vh auto 0;
   -webkit-box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
@@ -31772,6 +31776,10 @@ page-edit-work hr {
 
 page-edit-work #posts {
   text-align: justify;
+}
+
+.center {
+  text-align: center;
 }
 
 page-home {
@@ -32184,11 +32192,11 @@ page-profile #profile-bg {
   position: absolute;
   left: 0;
   width: 100%;
-  margin-top: -16px;
+  margin-top: 0px;
   height: 160px;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
   text-align: center;
 }
 
@@ -32206,9 +32214,10 @@ page-profile #content {
 page-profile #profile-image {
   display: block;
   border-radius: 50%;
-  width: auto;
+  max-width: 110px;
   height: 100px;
   margin: 0 auto 0;
+  margin-top: 25px;
   -webkit-box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
   box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
 }
@@ -32289,24 +32298,6 @@ page-search .background {
   background-repeat: no-repeat;
 }
 
-page-search .label-error {
-  color: white;
-  text-align: center;
-  letter-spacing: 2px;
-  text-shadow: 0px 1px 0px #000000;
-  text-shadow: -1px 2px 0px #000000;
-  text-shadow: 1px -2px 0px #000000;
-  text-shadow: 2px -1px 0px #000000;
-  text-shadow: 1px 2px 0px #000000;
-  text-shadow: -2px 3px 0px #000000;
-  text-shadow: 2px -3px 0px #000000;
-  text-shadow: 3px -2px 0px #000000;
-  text-shadow: 2px 3px 0px #000000;
-  text-shadow: 3px 4px 0px #000000;
-  text-shadow: 3px 4px 0px #000000;
-  text-shadow: 4px 3px 0px #000000;
-}
-
 page-search .input {
   margin-top: 5px;
 }
@@ -32378,6 +32369,10 @@ page-search .buscar-button {
 page-search .icon-b {
   height: 20vh;
   margin-bottom: 2vh;
+}
+
+.center {
+  text-align: center;
 }
 
 page-show ion-content {
@@ -32597,6 +32592,10 @@ page-signup .invert {
 }
 
 page-signup .center {
+  text-align: center;
+}
+
+.center {
   text-align: center;
 }
 
@@ -32826,21 +32825,12 @@ page-user .pins {
   margin-right: -4vw;
 }
 
-page-user .item {
-  margin-top: 2vh !important;
-}
-
 page-user .pin {
   width: 95%;
   max-height: 30vh;
   min-height: 30vh;
   display: inline-block;
   margin: 5px 1px 1px 5px;
-  margin: 0 auto 0;
-}
-
-page-user .text {
-  font-size: 5vw;
 }
 
 page-user ion-card {
@@ -32848,17 +32838,19 @@ page-user ion-card {
   box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important;
 }
 
-page-user ion-avatar {
-  height: 15vh;
-}
-
 page-user .item ion-avatar img {
-  width: 30vw;
-  height: 30vw;
+  width: 38vw;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  margin: 0 auto 0;
 }
 
 page-user .post-description {
-  border-bottom: 1px solid #eee;
+  margin-top: -5px;
 }
 
 page-works {

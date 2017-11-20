@@ -16,7 +16,8 @@ page-user{
     }
     
     .item {
-        margin-top: 2vh !important; 
+        //margin-top: vh !important;
+        //height: 0vh; 
     }
     
     .pin {
@@ -25,11 +26,11 @@ page-user{
         min-height: 30vh;
         display: inline-block;
         margin: 5px 1px 1px 5px;
-        margin: 0 auto 0;
+        //margin: 0 auto 0;
     }
 
     .text {
-        font-size: 5vw;
+        //font-size: 5vw;
     }
     
     ion-card {
@@ -37,16 +38,23 @@ page-user{
     }
     
     ion-avatar {
-        height: 15vh;
+        //text-align: center;
     }
     
     .item ion-avatar img {
-        width: 30vw;
-        height: 30vw;
+        width: 38vw;
+        height: auto;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        top: 0;
+        margin: 0 auto 0;        
     }
     
     .post-description {
-        border-bottom: 1px solid #eee;
+        //position: relative;
+        margin-top: -5px;
     }
     
     /*

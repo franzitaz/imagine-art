@@ -2,14 +2,25 @@ import { ToastService } from '../../providers/util/toast.service';
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 
+import { Localstorage } from '../../providers/localstorage';
+import { Http, Headers, RequestOptions } from '@angular/http';
+
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/catch';
+
+// tslint:disable-next-line:no-duplicate-imports
+import { ChangeDetectorRef, ChangeDetectionStrategy  } from '@angular/core';
+
 @IonicPage()
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'page-show',
   templateUrl: 'show.html'
 })
 export class ShowPage {
 
-  following = false;
+  // following = false;
+  productInformation = [];
   user = {
     name: 'Paula Bolliger',
     profileImage: 'assets/img/avatar/girl-avatar.png',
@@ -22,26 +33,22 @@ export class ShowPage {
     posts: 35
   };
 
-  posts = [
-    {
-      postImageUrl: 'assets/img/background/background-2.jpg',
-      text: `I believe in being strong when everything seems to be going wrong.
-             I believe that happy girls are the prettiest girls.
-             I believe that tomorrow is another day and I believe in miracles.`,
-      date: 'November 5, 2016',
-      likes: 12,
-      comments: 4,
-      timestamp: '11h ago'
-    },
-  ];
+  constructor(public navCtrl: NavController, public toastCtrl: ToastService,
+              private http: Http, public localstorage:Localstorage,
+              public cdr:ChangeDetectorRef) { 
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastService) { }
+
+                console.log('TESTEEEEEEEEEEEEEEEEE');
+    this.localstorage = localstorage;
+    this.getProductInformation();
+
+  }
 
   ionViewDidLoad() {
     console.log('Hello ProfileFour Page');
   }
 
-  follow() {
+  /*follow() {
     this.following = !this.following;
     this.toastCtrl.create('Follow user clicked');
   }
@@ -56,6 +63,63 @@ export class ShowPage {
 
   like(post) {
     this.toastCtrl.create('Like clicked');
+  }*/
+
+  // ------------------------------------//
+  // - PEGAR INFORMACOES SOBRE O PRODUTO-//
+  // ------------------------------------//
+
+  getProductInformation() {
+
+    this.localstorage.getProductID().then((productIDCallback) => {
+
+      console.log('/-------------------------------/');
+      console.log(productIDCallback);
+      console.log('/-------------------------------/');
+
+      
+
+      // tslint:disable-next-line:no-var-keyword
+      var headers = new Headers();
+      headers.append('Accept', 'application/json');
+      headers.append('Content-Type', 'application/json');
+
+      // tslint:disable-next-line:object-literal-shorthand
+      let options = new RequestOptions({ headers: headers });
+
+      // tslint:disable-next-line:prefer-const
+      let data = JSON.stringify({
+        productID: productIDCallback
+      });
+
+      new Promise((resolve, reject) => {
+        this.http.post('https://imagine-art.herokuapp.com/product/getUpdateProduct/',data, options)
+        .toPromise()
+        .then((response) => {
+
+          this.productInformation = response.json().product;
+          console.log(response.json().product);
+          this.cdr.markForCheck();
+          resolve(response.json());
+          
+        })
+        .catch((error) => {
+          console.error('API Error : ', error.status);
+          console.error('API Error : ', JSON.stringify(error));
+          reject(error.json());
+        });
+      });
+
+    }).catch((err) => {
+      // tslint:disable-next-line:quotemark
+      console.log("Error occurred :", err);
+    });
+
   }
 
+  // ------------------------------------//
+  // FIM PEGAR INFORMACOES SOBRE PRODUTO //
+  // ------------------------------------//
+
+  // ************************************//
 }

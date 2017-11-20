@@ -31,7 +31,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-input type="{{type}}" [(ngModel)]='user.senha' placeholder="Senha"  required pattern=".{4,10}"></ion-input>
+      <ion-input type="{{type}}" [(ngModel)]='user.senha' placeholder="Senha"  required pattern=".{3,10}"></ion-input>
       <!--<ion-input type="{{type}}" name="password" ngModel #password="ngModel"></ion-input>-->
       
       <button *ngIf="!showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()"> <ion-icon name="md-eye-off"></ion-icon></button>

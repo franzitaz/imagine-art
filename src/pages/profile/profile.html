@@ -1,21 +1,22 @@
+<ion-header >
+  <ion-navbar >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="userConfirm === false">Perfil de {{user.name}}</ion-title>
+    <ion-title *ngIf="userConfirm === true">Meu Perfil</ion-title>
+  </ion-navbar>
+</ion-header>
+
 <ion-content>
-      <ion-header >
-          <ion-navbar >
-            <button ion-button menuToggle>
-              <ion-icon name="menu"></ion-icon>
-            </button>
-            <ion-title *ngIf="userConfirm === false">Perfil de {{user.name}}</ion-title>
-            <ion-title *ngIf="userConfirm === true">Meu Perfil</ion-title>
-          </ion-navbar>
-        </ion-header>
-  <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + user.coverImage +')'}"></div>
+  <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + user.backgroundimage +')'}"></div>
   <div id="content">
 
     <div id="profile-info" padding>
-      <img id="profile-image" [src]="user.profileImage">
+      <img id="profile-image" [src]="user.avatar">
       <h3 id="profile-name">{{user.name}}</h3>
-      <p>user.city &bull; user.state</p>
-      <p class="profile-description">user.phone</p>  
+      <p>{{user.city}} &bull; {{user.state}}</p>
+      <p class="profile-description">{{user.cellphone}}</p>  
       <!--<button ion-button *ngIf="!following" small color="purple" (click)="follow()">Follow</button>-->
       <div class="margin-top" *ngIf="userConfirm">
         <button ion-button color="dark" class="button-edit-posts" (click)="goToEditProfile()">
@@ -28,11 +29,11 @@
     <hr/>
 
     <ion-row class="profile-numbers">
-      <ion-col>
+      <!--<ion-col>
         <p>Likes</p>
         <span>user.likes</span>
-      </ion-col>
-      <ion-col style="margin-left: -30vw;">
+      </ion-col>-->
+      <ion-col style="margin-left: 0vw;">
         <p>Posts</p>
         <span>user.posts</span>
       </ion-col>
@@ -40,7 +41,7 @@
 
     <div id="posts">
       <ion-card *ngFor="let produto of produtos">
-        <img [src]="chosenPicture || placeholder" onerror="post.postImageUrl">
+        <img [src]="produto.productImage" onerror="">
         <ion-card-content>
           <h2 class="padding-title"><strong>{{produto.productTitle}}</strong></h2>
           <p>{{produto.productDescription}}</p>
@@ -60,7 +61,7 @@
               </button>
           </ion-col>
           <ion-col col-3 align-self-center text-center *ngIf="userConfirm">
-              <button ion-button color="dark" class="button-edit-posts" (click)="goToEditWork()">
+              <button ion-button color="dark" class="button-edit-posts" (click)="goToEditWork(produto._id)">
                   <ion-icon name="md-brush"></ion-icon>
               </button>
           </ion-col>

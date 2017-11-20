@@ -4,35 +4,36 @@
       </ion-navbar>
   </ion-header>
 <div id="posts">
-  <ion-card *ngFor="let post of posts">
+  <ion-card>
     <ion-item>
-      <ion-avatar item-start>
-        <img [src]="user.profileImage">
-      </ion-avatar>
-      <h2 class="sticky">{{user.name}}</h2>
-      <p>{{post.date}}</p>
+      <!--<ion-avatar item-start>
+        <img [src]="productInformation.productImage">
+      </ion-avatar>-->
+      <h2 class="sticky">{{productInformation.productorName}}</h2>
+      <p style="color:rgb(89, 117, 201);">Entrar no perfil</p>
     </ion-item>
-    <img [src]="post.postImageUrl" (click)="imageTapped(post)">
+    <img [src]="productInformation.productImage" (click)="imageTapped(post)">
     <ion-card-content>
-      <p>{{post.text}}</p>
+      <h2>{{productInformation.productTitle}}</h2>
+      <p>{{productInformation.productDescription}}</p>
     </ion-card-content>
     <ion-row>
-      <ion-col col-4>
+      <!--<ion-col col-4>
         <button ion-button color="purple" clear small icon-left (click)="like(post)">
             <ion-icon name='thumbs-up'></ion-icon>
             {{post.likes}} Likes
           </button>
-      </ion-col>
+      </ion-col>-->
       <ion-col col-5>
         <button ion-button no-padding color="purple" clear small icon-left (click)="comment(post)">
             <ion-icon name='text'></ion-icon>
-            {{post.comments}} Comments
+            productInformation.comments Comments
           </button>
       </ion-col>
       <ion-col col-3 align-self-center text-center>
-        <p>
+      <!--  <p>
           {{post.timestamp}}
-        </p>
+        </p>-->
       </ion-col>
     </ion-row>
   </ion-card>

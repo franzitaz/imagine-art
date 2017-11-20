@@ -45,8 +45,14 @@ export class WorksPage {
 
   }
 
-  goToShow():void {
+  goToShow(productorID):void {
+
+    console.log('kkkkkkkkkkkkkkkkkkkkkk');
+    console.log(productorID);
+    console.log('kkkkkkkkkkkkkkkkkkkkkk');    
+    this.localstorage.setProductID(productorID);
     this.navCtrl.push(ShowPage);
+    
   }
     
   // tslint:disable-next-line:no-empty

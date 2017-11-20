@@ -1,28 +1,24 @@
 <ion-header>
-    <ion-navbar>
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>Perfils</ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Perfils</ion-title>
+  </ion-navbar>
+</ion-header>
 
-  <ion-content padding class="transparent-header">
-      <div class="pins">
-        <div *ngFor="let user of users" style="width:48%; float:left; padding:0; margin:0;" >
-          <ion-card class="pin" *ngIf="user._id != currentlyUserID" (click)="goToProfile(user._id)" >
-            <!--<img src="{{user.productImage}}"/>-->
-            <ion-item class="item">
-              <ion-avatar item-start>
-                <img src="assets/img/avatar/marty-avatar.png">
-              </ion-avatar>
-            </ion-item>
-            
-            <ion-item style="text-align:center;" class="post-description">
-              <small class="text">{{ user.name }}</small>
-              <!--<p><small class="text">{{ user.name }}</small></p>-->
-            </ion-item>
-          </ion-card>
-        </div>
-      </div>
-    </ion-content>
+<ion-content padding class="transparent-header">
+  <div class="pins">
+    <div *ngFor="let user of users" style="width:48%; float:left; padding:0; margin:0;" >
+      <ion-card class="pin" *ngIf="user._id != currentlyUserID" (click)="goToProfile(user._id)" >
+        <!--<img src="{{user.productImage}}"/>-->
+            <img src="assets/img/avatar/marty-avatar.png">
+        
+        <ion-item style="text-align: center;" class="post-description">
+          <p class="text"><strong>{{ user.name }}</strong></p>
+          <!--<p><small class="text">{{ user.name }}</small></p>-->
+        </ion-item>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

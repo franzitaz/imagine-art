@@ -27,6 +27,17 @@ export class Localstorage {
     	});
   }
 
+  // store the email address
+  setProduct(product) {
+    this.storage.set('product',product);
+  }
+
+  getProduct():any {
+    	return this.storage.get('product').then(product => {
+      return product;
+    	});
+  }
+
   setCategoria(categoria: string) {
     this.storage.set('categoria',categoria);
   }
@@ -56,6 +67,16 @@ export class Localstorage {
   getSearch():any {
     	return this.storage.get('search').then(search => {
       return search;
+    	});
+  }
+
+  setProductID(productID) {
+    this.storage.set('productID',productID);
+  }
+
+  getProductID():any {
+    	return this.storage.get('productID').then(productID => {
+      return productID;
     	});
   }
 

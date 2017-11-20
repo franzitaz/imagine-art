@@ -14,7 +14,7 @@
       </ion-navbar>
   </ion-header>-->
   <div class="pins">
-    <ion-card class="pin" *ngFor="let produto of produtos" (click)="goToShow(produto.productorID)">
+    <ion-card class="pin" *ngFor="let produto of produtos" (click)="goToShow(produto._id)">
       <img [src]="produto.productImage"/>
       <!--<div *ngIf="produto.productDescription" class="post-description">
         <small>{{ produto.productDescription }} {{ titlework }}</small>

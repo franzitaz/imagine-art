@@ -9,8 +9,8 @@
 <ion-content padding>
   <div>
     <div id="posts">
-      <ion-card *ngFor="let post of posts">
-        <img [src]="chosenPicture || placeholder" onerror="post.postImageUrl">
+      <ion-card>
+        <img [src]="chosenPicture" onerror="">
         <!--<ion-card-content>
           <h2 class="padding-title"><strong>{{post.title}}</strong></h2>
           <p>{{post.text}}</p>
@@ -24,34 +24,33 @@
 
         <ion-item>
           <ion-label>Título:</ion-label>
-            <ion-input type="text" [(ngModel)]='product.title' [value]='product.title'></ion-input>
+            <ion-input type="text" [(ngModel)]='product.title' [value]='productInformation.productTitle'></ion-input>
           </ion-item>
 
       <ion-item>
         <ion-label>Categoria:</ion-label>
-        <ion-select  [(ngModel)]="mes" interface="popover">
-            <ion-option value="bordado" checked="true">Bordado</ion-option>
-            <ion-option value="feltro">Feltro</ion-option>
-            <ion-option value="bookpopup">Book Pop-Up</ion-option>
-            <ion-option value="scrapbook">Scrap-Book</ion-option>
-            <ion-option value="Biscuit">Biscuit</ion-option>
-            <ion-option value="patchwork">Patchwork</ion-option>
-            <ion-option value="pinturas">Pinturas</ion-option>
-            <ion-option value="reciclagem">Reciclagem</ion-option>
-            <ion-option value="cec">Corte e Costura</ion-option>
-            <ion-option value="decoupage">Decoupage</ion-option>
-            <ion-option value="madeira">Madeira</ion-option>
+        <ion-select  [(ngModel)]="product.productCategory"  interface="popover">
+          <ion-option value="Biscuit" checked="true">Biscuit</ion-option>
+          <ion-option value="Book Pop-Up">Book PopUP</ion-option>
+          <ion-option value="Bordado">Bordado</ion-option>
+          <ion-option value="Corte e Costura">Corte e Costura</ion-option>
+          <ion-option value="Feltro">Feltro</ion-option>
+          <ion-option value="Madeira">Madeira</ion-option>
+          <ion-option value="Patchwork">Patchwork</ion-option>
+          <ion-option value="Pinturas">Pinturas</ion-option>
+          <ion-option value="Reciclagem">Reciclagem</ion-option>
+          <ion-option value="Scrapbook">ScrapBook</ion-option>
           </ion-select>
       </ion-item>
 
           <ion-item>  
             <ion-label>Descrição:</ion-label>
-              <ion-textarea type="text" [(ngModel)]='product.description' autosize></ion-textarea>
+              <ion-textarea type="text" [(ngModel)]='product.description' [value]='productInformation.productDescription' autosize></ion-textarea>
           </ion-item>           
       
-          <button ion-button class="border-radius color-excluir" (click)="addProduto(product)">Excluir</button>
+          <button ion-button class="border-radius color-excluir" (click)="removerProduto(productInformation._id)">Excluir</button>
 
-          <button ion-button (click)="addProduto(product)" class="pronto-button right">PRONTO</button>
+          <button ion-button (click)="editProduto(product)" class="pronto-button right">PRONTO</button>
       
     </div>
   </div>

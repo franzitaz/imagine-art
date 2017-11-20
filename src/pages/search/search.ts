@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { Http, Headers, RequestOptions } from '@angular/http' ;
 import { Localstorage } from '../../providers/localstorage';
@@ -22,16 +22,29 @@ export class SearchPage {
   error = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              private http: Http, private localstorage:Localstorage) {
+              private http: Http, private localstorage:Localstorage,
+              public toastCtrl: ToastController) {
+  }
+
+  showToast (position: string) {
+    // tslint:disable-next-line:prefer-const
+    let toast = this.toastCtrl.create({
+      message: 'Digite algo para buscar!',
+      duration: 3000,
+      // tslint:disable-next-line:object-literal-shorthand
+      position: position,
+      cssClass: 'center'
+    });
+
+    toast.present(toast);
   }
 
   searchfn(search) {
 
     const search1 = search.busca;
 
-    if (search1 === undefined || search1 === '' ) {
-      
-      this.error = true;
+    if (search1 === undefined || search1 === '') {
+      this.showToast('middle');
     } else {
 
       if (search.tipo === 'nome') {

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { AddWorkPage } from './add-work';
-import { Localstorage} from '../../providers/localstorage';
+import { Localstorage } from '../../providers/localstorage';
 
 @NgModule({
   declarations: [

@@ -13,7 +13,7 @@
 
   <ion-item class="ion-select">
       <!--<ion-label>Gênero</ion-label>-->
-      <ion-select interface="popover" placeholder="Título da Arte / Nome Artesão" class="ion-select" [(ngModel)]="search.tipo">
+      <ion-select interface="popover" placeholder="Nome Artesão / Título da Arte" class="ion-select" [(ngModel)]="search.tipo">
         <ion-option class="ion-select" value="nome">Nome do artesão</ion-option>
         <ion-option class="ion-select" value="titulo">Título da arte</ion-option>
       </ion-select>
@@ -22,10 +22,6 @@
   <ion-item class="input">
     <ion-input type="text" [(ngModel)]="search.busca"></ion-input>
   </ion-item>
-   
-  <ion-row>
-      <ion-label  *ngIf="error"><p class="label-error">-Digite para buscar-</p></ion-label>
-  </ion-row>
 
   <button ion-button icon-end color="dark" class="center size buscar-button text-transform" (click)="searchfn(search)">
         Buscar
