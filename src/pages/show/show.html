@@ -5,16 +5,16 @@
   </ion-header>
 <div id="posts">
   <ion-card>
-    <ion-item>
+    <ion-item  (click)="goToPerfil(productInformation.productorID)">
       <!--<ion-avatar item-start>
         <img [src]="productInformation.productImage">
       </ion-avatar>-->
       <h2 class="sticky">{{productInformation.productorName}}</h2>
       <p style="color:rgb(89, 117, 201);">Entrar no perfil</p>
     </ion-item>
-    <img [src]="productInformation.productImage" (click)="imageTapped(post)">
+    <img [src]="productInformation.productImage">
     <ion-card-content>
-      <h2>{{productInformation.productTitle}}</h2>
+      <strong>{{productInformation.productTitle}}</strong>
       <p>{{productInformation.productDescription}}</p>
     </ion-card-content>
     <ion-row>
@@ -27,7 +27,7 @@
       <ion-col col-5>
         <button ion-button no-padding color="purple" clear small icon-left (click)="comment(post)">
             <ion-icon name='text'></ion-icon>
-            productInformation.comments Comments
+            {{productInformation.comments}} Comments
           </button>
       </ion-col>
       <ion-col col-3 align-self-center text-center>

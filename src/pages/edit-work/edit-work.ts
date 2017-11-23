@@ -33,7 +33,8 @@ export class EditWorkPage {
 
   product = {} as Product;
 
-  placeholder = 'assets/img/avatar/girl-avatar.png';
+  placeholder = 'assets/img/background/artesanato.jpg';
+  posts = {};
   chosenPicture: any;
   productInformation = [];
   imagem64;
@@ -133,6 +134,9 @@ export class EditWorkPage {
 
   getProduto() {
 
+    const loading = this.loadingCtrl.create();
+    loading.present();
+
     this.localstorage.getProductID().then((productIDCallback) => {
 
       // tslint:disable-next-line:no-var-keyword
@@ -156,6 +160,8 @@ export class EditWorkPage {
           this.productInformation = response.json().product;
           this.chosenPicture = response.json().product.productImage;
           this.localstorage.setProduct(response.json().product);
+          
+          loading.dismiss();
           resolve(response.json());
           this.cdr.markForCheck();
           return response.json().user;
@@ -186,7 +192,7 @@ export class EditWorkPage {
     // tslint:disable-next-line:prefer-const
     let toast = this.toastCtrl.create({
       message: 'Um projeto foi excluído!',
-      duration: 4000,
+      duration: 3000,
       // tslint:disable-next-line:object-literal-shorthand
       position: position,
       cssClass: 'center'
@@ -196,6 +202,9 @@ export class EditWorkPage {
   }
 
   removerProduto(removerProdutoID) {
+
+    const loading = this.loadingCtrl.create();
+    loading.present();
 
     // tslint:disable-next-line:no-var-keyword
     var headers = new Headers();
@@ -215,6 +224,7 @@ export class EditWorkPage {
       .toPromise()
       .then((response) => {
        
+        loading.dismiss();
         this.navCtrl.setRoot(ProfilePage);
         this.showToast('middle');
         return response.json().user;
@@ -239,7 +249,7 @@ export class EditWorkPage {
     // tslint:disable-next-line:prefer-const
     let toast = this.toastCtrl.create({
       message: 'Um projeto foi editado!',
-      duration: 4000,
+      duration: 3000,
       // tslint:disable-next-line:object-literal-shorthand
       position: position,
       cssClass: 'center'
@@ -249,6 +259,9 @@ export class EditWorkPage {
   }
 
   editProduto(produtoInformacao):void {
+
+    const loading = this.loadingCtrl.create();
+    loading.present();
 
     this.localstorage.getProductID().then((productIDCallback) => {
 
@@ -291,6 +304,8 @@ export class EditWorkPage {
                       if (response.json().code === 200) {
                         resolve(response.json());
                       }
+
+                      loading.dismiss();
                       this.navCtrl.setRoot(ProfilePage);
                       this.showToast1('middle');
                     })
@@ -336,10 +351,13 @@ export class EditWorkPage {
                         console.log('CONSOLE LOG DA VARIAVEL response.json()',response.json());
               
                         if (response.json().code === 200) {
+                          
+                          loading.dismiss();
                           resolve(response.json());
+
                         }
 
-                        // REDIRECT
+                        loading.dismiss();
                         this.navCtrl.setRoot(ProfilePage);
                         this.showToast1('middle');
                         

@@ -55,6 +55,11 @@ export class EditProfilePage {
     
   }
 
+  /*posts = {
+    profileImage: 'assets/img/icon/icon-o.png',
+    coverImage: 'assets/img/background/artesanato.jpg'
+  };*/
+
   showToast (position: string) {
     // tslint:disable-next-line:prefer-const
     let toast = this.toastCtrl.create({
@@ -79,6 +84,9 @@ export class EditProfilePage {
   // -----------------------------------------//
 
   updateProfile(userInformation) {
+
+    /*const loading = this.loadingCtrl.create();
+    loading.present();*/
 
     let data;
 
@@ -224,6 +232,9 @@ export class EditProfilePage {
 
   fnSalvarAlteracoes(data):any {
 
+    const loading = this.loadingCtrl.create();
+    loading.present();
+
     // tslint:disable-next-line:no-var-keyword prefer-const
     var headers = new Headers();
     headers.append('Accept', 'application/json');
@@ -242,6 +253,8 @@ export class EditProfilePage {
             .then((response) => {
     
               if (response.json().code === 200) {
+
+                loading.dismiss();
                 resolve(response.json());
                 this.navCtrl.setRoot(ProfilePage);
                 this.showToast('middle');
@@ -268,6 +281,9 @@ export class EditProfilePage {
   // -----------------------------------------//
 
   getProfileInfo():any {
+
+    const loading = this.loadingCtrl.create();
+    loading.present();
 
     this.localstorage.getUser('').then((user) => {
 
@@ -301,6 +317,8 @@ export class EditProfilePage {
             this.chosenAvatarPicture = response.json().user.avatar;
             this.chosenBackGroundPicture = response.json().user.backgroundimage;
             this.teste = response.json().user.name;
+
+            loading.dismiss();
             resolve(response.json());
             this.cdr.markForCheck();
             return response.json().user;

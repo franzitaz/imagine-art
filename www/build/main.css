@@ -31477,6 +31477,195 @@ page-add-work #posts {
   text-align: center;
 }
 
+page-chats ion-note {
+  font-size: 12px;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-top: 14px;
+}
+
+page-messages {
+  /* allows the bar-footer to be elastic /*
+/* optionally set a max-height */
+  /* maxlength on the textarea will prevent /*
+/* it from getting too large also */
+  /* fixes an ios bug bear */
+  /* loading */
+}
+
+page-messages .bar-footer {
+  overflow: visible !important;
+}
+
+page-messages .bar-footer textarea {
+  resize: none;
+  height: 25px;
+}
+
+page-messages button.ion-android-send {
+  padding-top: 2px;
+}
+
+page-messages .footer-btn {
+  font-size: x-large;
+}
+
+page-messages img.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+}
+
+page-messages img.profile-pic.left {
+  left: 10px;
+}
+
+page-messages img.profile-pic.right {
+  right: 10px;
+}
+
+page-messages .ion-email {
+  float: right;
+  font-size: 32px;
+  vertical-align: middle;
+}
+
+page-messages .message {
+  font-size: 14px;
+}
+
+page-messages .message-detail {
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+page-messages .bar.item-input-inset .item-input-wrapper input {
+  width: 100% !important;
+}
+
+page-messages .message-wrapper {
+  position: relative;
+}
+
+page-messages .message-wrapper:last-child {
+  margin-bottom: 10px;
+}
+
+page-messages .chat-bubble {
+  border-radius: 5px;
+  display: inline-block;
+  padding: 10px 18px;
+  position: relative;
+  margin: 10px;
+  max-width: 80%;
+}
+
+page-messages .chat-bubble:before {
+  content: "\00a0";
+  display: block;
+  height: 16px;
+  width: 9px;
+  position: absolute;
+  bottom: -7.5px;
+}
+
+page-messages .chat-bubble.left {
+  background-color: #e6e5eb;
+  float: left;
+  margin-left: 55px;
+}
+
+page-messages .chat-bubble.left:before {
+  background-color: #e6e5eb;
+  left: 10px;
+  -webkit-transform: rotate(70deg) skew(5deg);
+}
+
+page-messages .chat-bubble.right {
+  background-color: #158ffe;
+  color: #fff;
+  float: right;
+  margin-right: 55px;
+}
+
+page-messages .chat-bubble.right:before {
+  background-color: #158ffe;
+  right: 10px;
+  -webkit-transform: rotate(118deg) skew(-5deg);
+}
+
+page-messages .chat-bubble.right a.autolinker {
+  color: #fff;
+  font-weight: bold;
+}
+
+page-messages .user-messages-top-icon {
+  font-size: 28px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -3px;
+  right: 5px;
+}
+
+page-messages .msg-header-username {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -3px;
+}
+
+page-messages input, page-messages textarea, page-messages .item-input, page-messages .item-input-wrapper {
+  background-color: #f4f4f4 !important;
+}
+
+page-messages .bold {
+  font-weight: bold;
+}
+
+page-messages .cf {
+  clear: both !important;
+}
+
+page-messages a.autolinker {
+  color: #3b88c3;
+  text-decoration: none;
+}
+
+page-messages .loader-center {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-messages .loader .ion-loading-c {
+  font-size: 64px;
+}
+
 page-edit-profile ion-content {
   background: -webkit-gradient(linear, left bottom, left top, from(#eeeef1), color-stop(80%, white), to(white));
   background: linear-gradient(0deg, #eeeef1 0%, white 80%, white 100%);
@@ -32192,7 +32381,7 @@ page-profile #profile-bg {
   position: absolute;
   left: 0;
   width: 100%;
-  margin-top: 0px;
+  margin-top: 0 auto 0;
   height: 160px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -32201,7 +32390,7 @@ page-profile #profile-bg {
 }
 
 page-profile .margin-top {
-  margin-top: -25vh;
+  margin-top: -20.5vh;
 }
 
 page-profile #content {
@@ -32225,6 +32414,7 @@ page-profile #profile-image {
 page-profile #profile-info {
   position: absolute;
   top: -95px;
+  left: 5px;
   width: 100%;
   z-index: 2;
   text-align: center;

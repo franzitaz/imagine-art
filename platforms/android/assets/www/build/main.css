@@ -31473,6 +31473,199 @@ page-add-work #posts {
   text-align: justify;
 }
 
+.center {
+  text-align: center;
+}
+
+page-chats ion-note {
+  font-size: 12px;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-top: 14px;
+}
+
+page-messages {
+  /* allows the bar-footer to be elastic /*
+/* optionally set a max-height */
+  /* maxlength on the textarea will prevent /*
+/* it from getting too large also */
+  /* fixes an ios bug bear */
+  /* loading */
+}
+
+page-messages .bar-footer {
+  overflow: visible !important;
+}
+
+page-messages .bar-footer textarea {
+  resize: none;
+  height: 25px;
+}
+
+page-messages button.ion-android-send {
+  padding-top: 2px;
+}
+
+page-messages .footer-btn {
+  font-size: x-large;
+}
+
+page-messages img.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+}
+
+page-messages img.profile-pic.left {
+  left: 10px;
+}
+
+page-messages img.profile-pic.right {
+  right: 10px;
+}
+
+page-messages .ion-email {
+  float: right;
+  font-size: 32px;
+  vertical-align: middle;
+}
+
+page-messages .message {
+  font-size: 14px;
+}
+
+page-messages .message-detail {
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+page-messages .bar.item-input-inset .item-input-wrapper input {
+  width: 100% !important;
+}
+
+page-messages .message-wrapper {
+  position: relative;
+}
+
+page-messages .message-wrapper:last-child {
+  margin-bottom: 10px;
+}
+
+page-messages .chat-bubble {
+  border-radius: 5px;
+  display: inline-block;
+  padding: 10px 18px;
+  position: relative;
+  margin: 10px;
+  max-width: 80%;
+}
+
+page-messages .chat-bubble:before {
+  content: "\00a0";
+  display: block;
+  height: 16px;
+  width: 9px;
+  position: absolute;
+  bottom: -7.5px;
+}
+
+page-messages .chat-bubble.left {
+  background-color: #e6e5eb;
+  float: left;
+  margin-left: 55px;
+}
+
+page-messages .chat-bubble.left:before {
+  background-color: #e6e5eb;
+  left: 10px;
+  -webkit-transform: rotate(70deg) skew(5deg);
+}
+
+page-messages .chat-bubble.right {
+  background-color: #158ffe;
+  color: #fff;
+  float: right;
+  margin-right: 55px;
+}
+
+page-messages .chat-bubble.right:before {
+  background-color: #158ffe;
+  right: 10px;
+  -webkit-transform: rotate(118deg) skew(-5deg);
+}
+
+page-messages .chat-bubble.right a.autolinker {
+  color: #fff;
+  font-weight: bold;
+}
+
+page-messages .user-messages-top-icon {
+  font-size: 28px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -3px;
+  right: 5px;
+}
+
+page-messages .msg-header-username {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -3px;
+}
+
+page-messages input, page-messages textarea, page-messages .item-input, page-messages .item-input-wrapper {
+  background-color: #f4f4f4 !important;
+}
+
+page-messages .bold {
+  font-weight: bold;
+}
+
+page-messages .cf {
+  clear: both !important;
+}
+
+page-messages a.autolinker {
+  color: #3b88c3;
+  text-decoration: none;
+}
+
+page-messages .loader-center {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-messages .loader .ion-loading-c {
+  font-size: 64px;
+}
+
 page-edit-profile ion-content {
   background: -webkit-gradient(linear, left bottom, left top, from(#eeeef1), color-stop(80%, white), to(white));
   background: linear-gradient(0deg, #eeeef1 0%, white 80%, white 100%);
@@ -31510,7 +31703,7 @@ page-edit-profile #profile-bg {
   height: 160px;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
   text-align: center;
 }
 
@@ -31524,7 +31717,7 @@ page-edit-profile #content {
 page-edit-profile #profile-image {
   display: block;
   border-radius: 50%;
-  width: auto;
+  max-width: 110px;
   height: 100px;
   margin: -35vh auto 0;
   -webkit-box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
@@ -31774,6 +31967,26 @@ page-edit-work #posts {
   text-align: justify;
 }
 
+.center {
+  text-align: center;
+}
+
+page-home {
+  /*.decoupage
+{
+    position: relative;
+    background-image: url('../assets/img/background/decoupage');
+    //border-radius: 20px;
+    text-shadow: 0px 0px 10px #000000;  
+    text-shadow: 0px 1px 5px #000000; 
+    text-shadow: 0px 2px 2px #000000; 
+    text-shadow: 1px 3px 2px #000000;   
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;  
+} */
+}
+
 page-home .feltro {
   position: relative;
   background-image: url("../assets/img/background/feltro");
@@ -31849,18 +32062,6 @@ page-home .bookpopup {
 page-home .corteecostura {
   position: relative;
   background-image: url("../assets/img/background/corteecostura");
-  text-shadow: 0px 0px 10px #000000;
-  text-shadow: 0px 1px 5px #000000;
-  text-shadow: 0px 2px 2px #000000;
-  text-shadow: 1px 3px 2px #000000;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-page-home .decoupage {
-  position: relative;
-  background-image: url("../assets/img/background/decoupage");
   text-shadow: 0px 0px 10px #000000;
   text-shadow: 0px 1px 5px #000000;
   text-shadow: 0px 2px 2px #000000;
@@ -32053,6 +32254,10 @@ page-login .toolbar-background-ios {
   border-bottom: 0;
 }
 
+page-login .label-error {
+  color: white;
+}
+
 page-login ion-footer {
   height: 47px;
 }
@@ -32176,16 +32381,16 @@ page-profile #profile-bg {
   position: absolute;
   left: 0;
   width: 100%;
-  margin-top: -16px;
+  margin-top: 0 auto 0;
   height: 160px;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
   text-align: center;
 }
 
 page-profile .margin-top {
-  margin-top: -25vh;
+  margin-top: -20.5vh;
 }
 
 page-profile #content {
@@ -32198,9 +32403,10 @@ page-profile #content {
 page-profile #profile-image {
   display: block;
   border-radius: 50%;
-  width: auto;
+  max-width: 110px;
   height: 100px;
   margin: 0 auto 0;
+  margin-top: 25px;
   -webkit-box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
   box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
 }
@@ -32208,6 +32414,7 @@ page-profile #profile-image {
 page-profile #profile-info {
   position: absolute;
   top: -95px;
+  left: 5px;
   width: 100%;
   z-index: 2;
   text-align: center;
@@ -32354,6 +32561,10 @@ page-search .icon-b {
   margin-bottom: 2vh;
 }
 
+.center {
+  text-align: center;
+}
+
 page-show ion-content {
   background: -webkit-gradient(linear, left bottom, left top, from(#eeeef1), color-stop(80%, white), to(white));
   background: linear-gradient(0deg, #eeeef1 0%, white 80%, white 100%);
@@ -32497,11 +32708,11 @@ page-signup {
 }
 
 page-signup .icon-pb {
-  height: 6vh;
+  height: 16vh;
 }
 
 page-signup .written {
-  height: 13vh;
+  height: 18vh;
   margin-top: -4vh;
   margin-bottom: 1vh;
 }
@@ -32571,6 +32782,10 @@ page-signup .invert {
 }
 
 page-signup .center {
+  text-align: center;
+}
+
+.center {
   text-align: center;
 }
 
@@ -32763,68 +32978,133 @@ page-tabs .popup-menu-panel.in .popup-menu-item {
   transition-delay: 0.15s;
 }
 
+page-user {
+  /*
+    // Media queries
+    @media (min-width: 480px) {
+        .pins {
+            column-count: 3;
+        }
+        .item ion-avatar img {
+            width:  7vw !important;
+            height: 7vw !important;
+        }
+    }
+    
+    @media (min-width: 640px) {
+        .pins {
+            column-count: 4;
+        }
+        .item ion-avatar img {
+            width:  5vw !important;
+            height: 5vw !important;
+            margin: 6px;
+        }
+    }*/
+}
+
 page-user .transparent-header .toolbar-content,
 page-user .transparent-header .back-button {
   color: black !important;
 }
 
 page-user .pins {
-  -webkit-column-count: 1;
-  column-count: 1;
-  margin-top: 6vh;
+  -webkit-column-count: 0;
+  column-count: 0;
   margin-left: -2vw;
   margin-right: -4vw;
 }
 
 page-user .pin {
-  width: 47%;
-  max-height: 500px;
-  min-height: 200px;
+  width: 95%;
+  max-height: 30vh;
+  min-height: 30vh;
   display: inline-block;
   margin: 5px 1px 1px 5px;
 }
 
 page-user ion-card {
-  margin-top: 5px;
   -webkit-box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important;
   box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important;
 }
 
-page-user ion-avatar {
-  margin: 0 !important;
-}
-
 page-user .item ion-avatar img {
-  width: 9vw;
-  height: 9vw;
+  width: 38vw;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  margin: 0 auto 0;
 }
 
 page-user .post-description {
-  padding: 8px;
-  border-bottom: 1px solid #eee;
+  margin-top: -5px;
 }
 
+page-works {
+  /*
+.pins {
+    column-count: 1;
+    //margin-top: 1vh;
+    margin-left: -2vw;
+    margin-right: -4vw;
+    margin-top: -2vh;
+}
+
+.text1 {
+    margin: 0 auto 0;
+}
+
+.text {
+    font-size: 5vw; 
+    text-align: center;
+}
+
+.pin {
+    width: 47%;
+    max-height: 500px;
+    min-height: 200px;
+    display: inline-block;
+    margin: 5px 1px 1px 5px;
+}
+
+ion-card {
+    box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important; 
+}
+
+ion-avatar {
+    margin: 0 !important;
+}
+
+.item ion-avatar img {
+    width: 9vw ;
+    height: 9vw;
+}
+
+
+// Media queries
 @media (min-width: 480px) {
-  page-user .pins {
-    -webkit-column-count: 3;
-    column-count: 3;
-  }
-  page-user .item ion-avatar img {
-    width: 7vw !important;
-    height: 7vw !important;
-  }
+    .pins {
+        column-count: 3;
+    }
+    .item ion-avatar img {
+        width:  7vw !important;
+        height: 7vw !important;
+    }
 }
 
 @media (min-width: 640px) {
-  page-user .pins {
-    -webkit-column-count: 4;
-    column-count: 4;
-  }
-  page-user .item ion-avatar img {
-    width: 5vw !important;
-    height: 5vw !important;
-    margin: 6px;
-  }
+    .pins {
+        column-count: 4;
+    }
+    .item ion-avatar img {
+        width:  5vw !important;
+        height: 5vw !important;
+        margin: 6px;
+    }
+}*/
 }
 
 page-works .transparent-header .toolbar-content,
@@ -32833,25 +33113,20 @@ page-works .transparent-header .back-button {
 }
 
 page-works .pins {
-  -webkit-column-count: 1;
-  column-count: 1;
-  margin-top: 6vh;
-  margin-left: -2vw;
-  margin-right: -4vw;
+  -webkit-column-count: 2;
+  column-count: 2;
+  margin-left: -5vw;
+  margin-right: 1vw;
+  margin-top: -2vh;
 }
 
 page-works .pin {
-  width: 47%;
-  max-height: 500px;
-  min-height: 200px;
   display: inline-block;
-  margin: 5px 1px 1px 5px;
+  width: 100%;
 }
 
-page-works ion-card {
+page-works .card {
   margin-top: 5px;
-  -webkit-box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important;
-  box-shadow: 0px 5px 10px rgba(87, 87, 87, 0.43) !important;
 }
 
 page-works ion-avatar {
@@ -32863,30 +33138,6 @@ page-works .item ion-avatar img {
   height: 9vw;
 }
 
-page-works .post-description {
-  padding: 8px;
-  border-bottom: 1px solid #eee;
-}
-
-@media (min-width: 480px) {
-  page-works .pins {
-    -webkit-column-count: 3;
-    column-count: 3;
-  }
-  page-works .item ion-avatar img {
-    width: 7vw !important;
-    height: 7vw !important;
-  }
-}
-
-@media (min-width: 640px) {
-  page-works .pins {
-    -webkit-column-count: 4;
-    column-count: 4;
-  }
-  page-works .item ion-avatar img {
-    width: 5vw !important;
-    height: 5vw !important;
-    margin: 6px;
-  }
+page-works .text {
+  text-align: center;
 }

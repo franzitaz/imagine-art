@@ -1,8 +1,14 @@
 export interface User{
-    nome: string,
-    email: string,
-    senha: string,
-    cidade: string,
-    estado: string, 
-    telefone: string
+  // tslint:disable-next-line:semicolon
+  nome: string,
+  // tslint:disable-next-line:semicolon
+  email: string,
+  // tslint:disable-next-line:semicolon
+  senha: string,
+  // tslint:disable-next-line:semicolon
+  cidade: string,
+  // tslint:disable-next-line:semicolon
+  estado: string, 
+  // tslint:disable-next-line:semicolon
+  telefone: string
 }

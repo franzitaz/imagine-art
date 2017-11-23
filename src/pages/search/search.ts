@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 
 import { Http, Headers, RequestOptions } from '@angular/http' ;
 import { Localstorage } from '../../providers/localstorage';
@@ -23,14 +23,14 @@ export class SearchPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private http: Http, private localstorage:Localstorage,
-              public toastCtrl: ToastController) {
+              public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
   }
 
   showToast (position: string) {
     // tslint:disable-next-line:prefer-const
     let toast = this.toastCtrl.create({
       message: 'Digite algo para buscar!',
-      duration: 3000,
+      duration: 2000,
       // tslint:disable-next-line:object-literal-shorthand
       position: position,
       cssClass: 'center'
@@ -41,12 +41,14 @@ export class SearchPage {
 
   searchfn(search) {
 
+    const loading = this.loadingCtrl.create();
+    
     const search1 = search.busca;
 
     if (search1 === undefined || search1 === '') {
       this.showToast('middle');
     } else {
-
+      loading.present();
       if (search.tipo === 'nome') {
       // tslint:disable-next-line:no-var-keyword
         var headers = new Headers();
@@ -69,6 +71,7 @@ export class SearchPage {
           this.localstorage.setSearch(response.json().user);
           console.log(response.json());
           this.navCtrl.push(UserPage);
+          loading.dismiss();
           resolve(response.json());
           
         })
@@ -84,9 +87,9 @@ export class SearchPage {
       });
       }
 
-    // ****************************************************************************
-    // **********************BUSCA  POR NOME DO PRODUTO****************************
-    // ****************************************************************************
+    // **************************************************************************
+    // **********************BUSCA  POR NOME DO PRODUTO**************************
+    // **************************************************************************
       if (search.tipo === 'titulo') {
       // tslint:disable-next-line:no-var-keyword
         var headers = new Headers();
@@ -110,6 +113,7 @@ export class SearchPage {
           
           console.log(response.json());
           this.navCtrl.push(WorksPage);
+          loading.dismiss();
           resolve(response.json());
           
         })

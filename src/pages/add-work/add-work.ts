@@ -54,7 +54,7 @@ export class AddWorkPage {
     // tslint:disable-next-line:prefer-const
     let toast = this.toastCtrl.create({
       message: 'Projeto adicionado com SUCESSO!',
-      duration: 4000,
+      duration: 3000,
       // tslint:disable-next-line:object-literal-shorthand
       position: position,
       cssClass: 'center'
@@ -67,7 +67,7 @@ export class AddWorkPage {
     // tslint:disable-next-line:prefer-const
     let toast = this.toastCtrl.create({
       message: 'Altere tudo para poder adicionar!',
-      duration: 4000,
+      duration: 2000,
       // tslint:disable-next-line:object-literal-shorthand
       position: position,
       cssClass: 'center'
@@ -148,13 +148,15 @@ export class AddWorkPage {
 
   addProduto(product : Product):void {
 
-    //
+    const loading = this.loadingCtrl.create();
+    loading.present();
 
     if (this.chosenPicture === undefined || this.chosenPicture === '' ||
        product.categoria === undefined || product.categoria === '' ||
        product.description === undefined || product.description === '' ||
        product.title === undefined || product.title === '') {
 
+      loading.dismiss(); 
       this.showToast1('middle');
 
     } else {
@@ -193,15 +195,16 @@ export class AddWorkPage {
               .then((response) => {
                 
                 if (response.json().code === 200) {
-        
-                    // IMPORTAR PAGINA PARA IR PARA O TABS PAGE AQUI
+                  
+                  loading.dismiss(); 
                   this.navCtrl.push(TabsPage);
                   this.showToast('middle');
                   
                 }
                 console.log(response.json());
                 product = {} as Product;
-        
+                
+                loading.dismiss(); 
                 resolve(response.json());
                 
               })

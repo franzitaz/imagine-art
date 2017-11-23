@@ -10,7 +10,7 @@
   <div>
     <div id="posts">
       <ion-card>
-        <img [src]="chosenPicture" onerror="">
+        <img [src]="chosenPicture || placeholder" onerror="post.postImageUrl">
         <!--<ion-card-content>
           <h2 class="padding-title"><strong>{{post.title}}</strong></h2>
           <p>{{post.text}}</p>
@@ -30,8 +30,9 @@
       <ion-item>
         <ion-label>Categoria:</ion-label>
         <ion-select  [(ngModel)]="product.productCategory"  interface="popover">
-          <ion-option value="Biscuit" checked="true">Biscuit</ion-option>
-          <ion-option value="Book Pop-Up">Book PopUP</ion-option>
+          <ion-option *ngIf="productInformation.productCategory" value="productInformation.productCategory" [selected]=true >{{productInformation.productCategory}}</ion-option>
+          <ion-option value="Biscuit">Biscuit</ion-option>
+          <ion-option value="Book Pop-Up">Book PopUp</ion-option>
           <ion-option value="Bordado">Bordado</ion-option>
           <ion-option value="Corte e Costura">Corte e Costura</ion-option>
           <ion-option value="Feltro">Feltro</ion-option>
@@ -40,7 +41,7 @@
           <ion-option value="Pinturas">Pinturas</ion-option>
           <ion-option value="Reciclagem">Reciclagem</ion-option>
           <ion-option value="Scrapbook">ScrapBook</ion-option>
-          </ion-select>
+        </ion-select>
       </ion-item>
 
           <ion-item>  

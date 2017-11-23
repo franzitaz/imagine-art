@@ -23,15 +23,27 @@ import 'rxjs/add/operator/catch';
 })
 export class ProfilePage {
 
-  placeholder = 'assets/img/avatar/girl-avatar.png';
   chosenPicture: any;
 
   data = '';
   produtos = [];
-  user = [];
+  
+  // user = [];
+  
+  user = [{
+    // avatar: 'assets/img/icon/icon-o.png',
+    // backgroundimage: 'assets/img/background/wood2.jpg'
+    city: 'Cidade',
+    state: 'Estado',
+    cellphone: '(99) 99999-9999'
+  }];
+
   // tslint:disable-next-line:max-line-length
   userConfirm = false; // Esta variavel vai verificar se o usuario eh o mesmo do perfil, para liberar os botoes de editar
   currentlyUserID;
+
+  placeholder = 'assets/img/icon/icon-o.png';
+  placeholder1 = 'assets/img/background/wood2.jpg';  
 
   constructor(
     public navCtrl: NavController,
@@ -63,6 +75,9 @@ export class ProfilePage {
 
   getProfileInformation(profileID):void {
     console.log('AKIII');
+
+    const loading = this.loadingCtrl.create();
+    loading.present();
     
     this.localstorage.getUser('').then((userID) => {
     
@@ -110,6 +125,7 @@ export class ProfilePage {
                     this.produtos = response.json().product;
                     this.user = response.json().user;
     
+                    loading.dismiss(); 
                     resolve(response.json());
     
                   })
@@ -128,6 +144,9 @@ export class ProfilePage {
   }
     
   getOwnProfileInformation():void {
+
+    const loading = this.loadingCtrl.create();
+    loading.present();
 
     this.localstorage.getProfileID().then((profileID) => {
 
@@ -167,6 +186,7 @@ export class ProfilePage {
                 this.produtos = response.json().product;
                 this.user = response.json().user;
 
+                loading.dismiss();
                 resolve(response.json());
 
               })
@@ -186,7 +206,6 @@ export class ProfilePage {
 
   goToEditProfile():void {  
 
-    
     this.navCtrl.push(EditProfilePage);
   }
 

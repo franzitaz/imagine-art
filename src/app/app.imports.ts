@@ -29,7 +29,9 @@ import { ExpandableHeader } from '../components/expandable-header/expandable-hea
 import { FlashCardComponent } from '../components/flash-card/flash-card';
 import { AccordionListComponent } from '../components/accordion-list/accordion-list';
 import { TimelineComponent } from '../components/timeline/timeline';
+// tslint:disable-next-line:no-duplicate-imports
 import { TimelineItemComponent } from '../components/timeline/timeline';
+// tslint:disable-next-line:no-duplicate-imports
 import { TimelineTimeComponent } from '../components/timeline/timeline';
 
 // Pipes

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 // import { ToastController } from 'ionic-angular';
 
 // import { ProfilePage } from '../profile/profile';
@@ -20,11 +20,13 @@ export class WorksPage {
   titlework = '';
   produtos = [];
   searchResult = [];
+  searchConfirm;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
       // public toastCtrl: ToastController,
       private http: Http,
-      public localstorage:Localstorage) {
+      public localstorage:Localstorage,
+      public loadingCtrl: LoadingController) {
 
     this.localstorage = localstorage;
     this.localstorage.getSearch().then((search) => {
@@ -37,7 +39,9 @@ export class WorksPage {
 
         console.log(search);
         this.produtos = search;
+        this.searchConfirm = true;
         this.localstorage.setSearch(undefined);
+
   
       }
 
@@ -60,6 +64,8 @@ export class WorksPage {
   }
 
   getProdutos() {
+    const loading = this.loadingCtrl.create();
+    loading.present();
 
     this.localstorage.getCategoria().then((categoria) => {
 
@@ -84,6 +90,7 @@ export class WorksPage {
           this.titlework = categoria;
           console.log(response.json().data);
           this.produtos = response.json().data;
+          loading.dismiss();          
           resolve(response.json());
           
         })

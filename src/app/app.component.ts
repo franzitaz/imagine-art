@@ -1,5 +1,5 @@
 import { AppState } from './app.global';
-import {Localstorage } from '../providers/localstorage';
+import { Localstorage } from '../providers/localstorage';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';

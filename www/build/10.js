@@ -1,14 +1,15 @@
 webpackJsonp([10],{
 
-/***/ 582:
+/***/ 584:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddWorkPageModule", function() { return AddWorkPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_work__ = __webpack_require__(155);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessagesPageModule", function() { return MessagesPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_shared_module__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__messages__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(13);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +19,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AddWorkPageModule = (function () {
-    function AddWorkPageModule() {
+
+var MessagesPageModule = (function () {
+    function MessagesPageModule() {
     }
-    return AddWorkPageModule;
+    return MessagesPageModule;
 }());
-AddWorkPageModule = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+MessagesPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__add_work__["a" /* AddWorkPage */],
+            __WEBPACK_IMPORTED_MODULE_1__messages__["a" /* MessagesPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__add_work__["a" /* AddWorkPage */]),
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_1__messages__["a" /* MessagesPage */]),
+            __WEBPACK_IMPORTED_MODULE_0__app_shared_module__["a" /* SharedModule */],
         ],
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_1__messages__["a" /* MessagesPage */]
+        ]
     })
-], AddWorkPageModule);
+], MessagesPageModule);
 
-//# sourceMappingURL=add-work.module.js.map
+//# sourceMappingURL=messages.module.js.map
 
 /***/ })
 

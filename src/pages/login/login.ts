@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 
 import { SignupPage } from '../signup/signup';
 import { TabsPage } from '../tabs/tabs';
@@ -28,21 +28,37 @@ export class LoginPage {
   test : FirebaseListObservable<any>;
 
   constructor (public navCtrl: NavController, private database: AngularFireDatabase, private http: Http, 
-  private localstorage:Localstorage) {
+  private localstorage:Localstorage, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
+  }
+
+  showToast (position: string) {
+    // tslint:disable-next-line:prefer-const
+    let toast = this.toastCtrl.create({
+      message: 'Algo deu errado! Verifique sua internet.',
+      duration: 2000,
+      // tslint:disable-next-line:object-literal-shorthand
+      position: position,
+      cssClass: 'center'
+    });
+
+    toast.present(toast);
   }
 
   goToSignup():void {
-
     this.navCtrl.push(SignupPage);
   }
 
   goToTabs(user: User):void {
 
+    const loading = this.loadingCtrl.create();
+    loading.present();
+
     const email = user.email;
     const senha = user.senha;
   
-    if (email === undefined || senha === undefined) {
+    if (email === undefined || senha === undefined || email === '' || senha === '') {
 
+      loading.dismiss(); 
       this.error = true;
     
     } else {
@@ -79,13 +95,15 @@ export class LoginPage {
             }else {
               this.error = true;
             }
-
+            loading.dismiss(); 
             resolve(response.json());
             
           })
           .catch((error) => {
             console.error('API Error : ', error.status);
             console.error('API Error : ', JSON.stringify(error));
+            loading.dismiss(); 
+            this.showToast('middle');
             reject(error.json());
           });
       });

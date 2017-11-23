@@ -28,7 +28,7 @@ page-profile {
         position: absolute;
         left: 0;
         width: 100%;
-        margin-top: 0px;
+        margin-top: 0 auto 0;
         height: 160px;
         background-size: cover;
         background-repeat: no-repeat;
@@ -37,7 +37,7 @@ page-profile {
     }
 
     .margin-top{
-        margin-top: -25vh;
+        margin-top: -20.5vh;
     }
 
     // Profile content
@@ -60,6 +60,7 @@ page-profile {
     #profile-info {
         position: absolute;
         top: -95px;
+        left: 5px;
         width: 100%;
         z-index: 2;
         text-align: center;

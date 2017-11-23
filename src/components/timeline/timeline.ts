@@ -6,7 +6,8 @@ import { Component, Input } from '@angular/core';
 })
 export class TimelineComponent {
   @Input('endIcon') endIcon = 'ionic';
-  constructor() { }
+  // tslint:disable-next-line:no-empty
+  constructor() {}
 
 }
 
@@ -15,7 +16,8 @@ export class TimelineComponent {
   template: '<ng-content></ng-content>'
 })
 export class TimelineItemComponent{
-  constructor() { }
+  // tslint:disable-next-line:no-empty
+  constructor() {}
 }
 
 @Component({
@@ -24,5 +26,6 @@ export class TimelineItemComponent{
 })
 export class TimelineTimeComponent{
   @Input('time') time = {};
-  constructor() { }
+  // tslint:disable-next-line:no-empty
+  constructor() {}
 }

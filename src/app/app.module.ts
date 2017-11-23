@@ -30,6 +30,8 @@ import { EditWorkPage } from '../pages/edit-work/edit-work';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ShowPage } from '../pages/show/show';
 import { UserPage } from '../pages/user/user';
+import { ChatsPage } from '../pages/chat/chats';
+import { MessagesPage } from '../pages/chat/messages/messages';
 
 import { Localstorage } from '../providers/localstorage';
 import { Base64 } from '@ionic-native/base64';
@@ -50,7 +52,9 @@ import { ImageResizer } from '@ionic-native/image-resizer';
     EditWorkPage,
     EditProfilePage,
     ShowPage,
-    UserPage
+    UserPage,
+    ChatsPage,
+    MessagesPage
   ],
   imports: [
     MODULES,
@@ -76,7 +80,9 @@ import { ImageResizer } from '@ionic-native/image-resizer';
     EditWorkPage,
     EditProfilePage,
     ShowPage,
-    UserPage
+    UserPage,
+    ChatsPage,
+    MessagesPage
   ],
   providers: [PROVIDERS, StatusBar,
     SplashScreen,{ provide: ErrorHandler, useClass: IonicErrorHandler },Localstorage, Storage,Base64,ImageResizer]

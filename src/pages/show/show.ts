@@ -1,9 +1,11 @@
 import { ToastService } from '../../providers/util/toast.service';
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, IonicPage, LoadingController } from 'ionic-angular';
 
 import { Localstorage } from '../../providers/localstorage';
 import { Http, Headers, RequestOptions } from '@angular/http';
+
+import { ProfilePage } from '../profile/profile';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
@@ -19,8 +21,10 @@ import { ChangeDetectorRef, ChangeDetectionStrategy  } from '@angular/core';
 })
 export class ShowPage {
 
-  // following = false;
   productInformation = [];
+
+  // following = false;
+  /*
   user = {
     name: 'Paula Bolliger',
     profileImage: 'assets/img/avatar/girl-avatar.png',
@@ -31,21 +35,16 @@ export class ShowPage {
     followers: 456,
     following: 1052,
     posts: 35
-  };
+  };*/
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastService,
               private http: Http, public localstorage:Localstorage,
-              public cdr:ChangeDetectorRef) { 
+              public cdr:ChangeDetectorRef, public loadingCtrl: LoadingController) { 
 
-
-                console.log('TESTEEEEEEEEEEEEEEEEE');
+    console.log('TESTEEEEEEEEEEEEEEEEE');
     this.localstorage = localstorage;
     this.getProductInformation();
 
-  }
-
-  ionViewDidLoad() {
-    console.log('Hello ProfileFour Page');
   }
 
   /*follow() {
@@ -71,13 +70,14 @@ export class ShowPage {
 
   getProductInformation() {
 
+    const loading = this.loadingCtrl.create();
+    loading.present();
+
     this.localstorage.getProductID().then((productIDCallback) => {
 
       console.log('/-------------------------------/');
       console.log(productIDCallback);
       console.log('/-------------------------------/');
-
-      
 
       // tslint:disable-next-line:no-var-keyword
       var headers = new Headers();
@@ -100,6 +100,7 @@ export class ShowPage {
           this.productInformation = response.json().product;
           console.log(response.json().product);
           this.cdr.markForCheck();
+          loading.dismiss(); 
           resolve(response.json());
           
         })
@@ -122,4 +123,19 @@ export class ShowPage {
   // ------------------------------------//
 
   // ************************************//
+
+  // ------------------------------------//
+  // --- IR PARA PERFIL DO PRODUTOR -----//
+  // ------------------------------------//
+
+  goToPerfil(produtorID): void {
+    this.localstorage.setProfileID(produtorID);
+    this.navCtrl.push(ProfilePage);
+  }
+
+  // ------------------------------------//
+  // -- FIM IR PARA PERFIL DO PRODUTOR --//
+  // ------------------------------------//
+
+   // ************************************//
 }
