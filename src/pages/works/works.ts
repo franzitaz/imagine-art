@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-// import { ToastController } from 'ionic-angular';
+// tslint:disable-next-line:no-duplicate-imports
+import { ChangeDetectorRef, ChangeDetectionStrategy  } from '@angular/core';
 
-// import { ProfilePage } from '../profile/profile';
 import { ShowPage } from '../show/show';
+import { MessagesPage } from '../../pages/chat/messages/messages';
 import { Localstorage } from '../../providers/localstorage';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
@@ -22,27 +23,28 @@ export class WorksPage {
   searchResult = [];
   searchConfirm;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-      // public toastCtrl: ToastController,
+  constructor(public navCtrl: NavController, public navParams: NavParams,
       private http: Http,
       public localstorage:Localstorage,
-      public loadingCtrl: LoadingController) {
+      public loadingCtrl: LoadingController,
+      public cdr:ChangeDetectorRef) {
 
     this.localstorage = localstorage;
+
     this.localstorage.getSearch().then((search) => {
 
       if (search === undefined || search === null) {
 
         this.getProdutos();
+        this.searchConfirm = false;
         
       } else {
 
-        console.log(search);
+        // console.log(search);
         this.produtos = search;
         this.searchConfirm = true;
         this.localstorage.setSearch(undefined);
 
-  
       }
 
     });
@@ -50,10 +52,7 @@ export class WorksPage {
   }
 
   goToShow(productorID):void {
-
-    console.log('kkkkkkkkkkkkkkkkkkkkkk');
-    console.log(productorID);
-    console.log('kkkkkkkkkkkkkkkkkkkkkk');    
+   
     this.localstorage.setProductID(productorID);
     this.navCtrl.push(ShowPage);
     
@@ -88,7 +87,11 @@ export class WorksPage {
         .then((response) => {
 
           this.titlework = categoria;
-          console.log(response.json().data);
+          // // console.log ('categoria!!!!!!!');
+          // console.log (categoria);
+          // console.log ('categoria!!!!!!!');
+          this.cdr.markForCheck();
+          // console.log(response.json().data);
           this.produtos = response.json().data;
           loading.dismiss();          
           resolve(response.json());

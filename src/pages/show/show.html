@@ -24,16 +24,11 @@
             {{post.likes}} Likes
           </button>
       </ion-col>-->
-      <ion-col col-5>
-        <button ion-button no-padding color="purple" clear small icon-left (click)="comment(post)">
+      <ion-col col-5 *ngIf="userID !== productInformation.productorID">
+        <button ion-button no-padding color="purple" clear small icon-left (click)="goToMessages(productInformation)">
             <ion-icon name='text'></ion-icon>
-            {{productInformation.comments}} Comments
+              Conversar
           </button>
-      </ion-col>
-      <ion-col col-3 align-self-center text-center>
-      <!--  <p>
-          {{post.timestamp}}
-        </p>-->
       </ion-col>
     </ion-row>
   </ion-card>

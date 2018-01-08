@@ -23,15 +23,15 @@
   
   <ion-list>
     <ion-item>
-      <ion-input type="text" [(ngModel)]='user.nome' placeholder="Nome"></ion-input>
+      <ion-input type="text" [(ngModel)]='user.nome' placeholder="Nome" [attr.maxlength]="20"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input type="email" [(ngModel)]='user.email' placeholder="Email" style="height: -10%;"></ion-input>
+      <ion-input type="email" [(ngModel)]='user.email' placeholder="Email" style="height: -10%;" [attr.maxlength]="104"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input type="{{type}}" [(ngModel)]='user.senha' placeholder="Senha"  required pattern=".{3,10}"></ion-input>
+      <ion-input type="{{type}}" [(ngModel)]='user.senha' placeholder="Senha"  required pattern=".{3,10}" [attr.maxlength]="104"></ion-input>
       <!--<ion-input type="{{type}}" name="password" ngModel #password="ngModel"></ion-input>-->
       
       <button *ngIf="!showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()"> <ion-icon name="md-eye-off"></ion-icon></button>
@@ -128,6 +128,7 @@
   <ion-buttons class="center">
     <button ion-button (click)="register(user)" class="pronto-button">Pronto</button>
   </ion-buttons>
+</ion-content>
 
 <ion-footer class="ion-footer-shadow">
   <ion-toolbar>

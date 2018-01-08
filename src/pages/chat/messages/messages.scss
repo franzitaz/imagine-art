@@ -71,7 +71,8 @@ img.profile-pic.right {
   padding: 10px 18px;
   position: relative;
   margin: 10px;
-  max-width: 80%;
+  max-width: 85%;
+  min-width: 85%;
 }
 
 .chat-bubble:before {
@@ -86,7 +87,7 @@ img.profile-pic.right {
 .chat-bubble.left {
   background-color: #e6e5eb;
   float: left;
-  margin-left: 55px;
+  margin-right: 55px;
 }
 
 .chat-bubble.left:before {
@@ -99,7 +100,7 @@ img.profile-pic.right {
   background-color: #158ffe;
   color: #fff;
   float: right;
-  margin-right: 55px;
+  margin-left: 55px;
 }
 
 .chat-bubble.right:before {

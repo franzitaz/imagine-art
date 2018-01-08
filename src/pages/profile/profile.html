@@ -16,31 +16,33 @@
   <div id="content">
 
     <div id="profile-info" padding>
-      <img id="profile-image" [src]="user.avatar || placeholder">
+      <img id="profile-image" [src]="user.avatar">
       <h3 id="profile-name">{{user.name}}</h3>
       <p>{{user.city}} &bull; {{user.state}}</p>
       <p class="profile-description">{{user.cellphone}}</p>  
       <!--<button ion-button *ngIf="!following" small color="purple" (click)="follow()">Follow</button>-->
+      <ion-row>
       <div class="margin-top" *ngIf="userConfirm">
         <button ion-button color="dark" class="button-edit-posts" (click)="goToEditProfile()">
             <ion-icon name="md-brush"></ion-icon>
         </button>
     </div>
+  </ion-row>
       <!--<button ion-button *ngIf="following" class="follow-button" small color="purple" (click)="follow()">Following<ion-icon name="checkmark"></ion-icon></button>-->
     </div>
 
     <hr/>
 
-    <ion-row class="profile-numbers">
-      <!--<ion-col>
+    <!--<ion-row class="profile-numbers">
+      <ion-col>
         <p>Likes</p>
         <span>user.likes</span>
-      </ion-col>-->
+      </ion-col>
       <ion-col style="margin-left: 0vw;">
         <p>Posts</p>
         <span>user.posts</span>
       </ion-col>
-    </ion-row>
+    </ion-row>-->
 
     <div id="posts">
       <ion-card *ngFor="let produto of produtos">
@@ -57,13 +59,13 @@
                 post.likes Likes
               </button>
           </ion-col>-->
-          <ion-col col-5>
-            <button ion-button no-padding color="purple" clear small icon-left (click)="comment(post)">
+          <ion-col col-5 *ngIf="!userConfirm">
+            <button ion-button no-padding color="purple" clear small icon-left (click)="goToMessages(produto)">
                 <ion-icon name='text'></ion-icon>
                 Conversar!
               </button>
           </ion-col>
-          <ion-col col-3 align-self-center text-center *ngIf="userConfirm">
+          <ion-col col-15 align-self-center text-center *ngIf="userConfirm">
               <button ion-button color="dark" class="button-edit-posts" (click)="goToEditWork(produto._id)">
                   <ion-icon name="md-brush"></ion-icon>
               </button>

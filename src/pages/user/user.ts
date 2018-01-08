@@ -40,11 +40,11 @@ export class UserPage {
           this.users = search;
           this.currentlyUserID = user._id;
 
-          console.log('++++++++++++++++');
-          console.log(search);
-          console.log('------------------');
-          console.log(this.currentlyUserID);
-          console.log('++++++++++++++++');
+          // console.log('++++++++++++++++');
+          // console.log(search);
+          // console.log('------------------');
+          // console.log(this.currentlyUserID);
+          // console.log('++++++++++++++++');
 
           this.localstorage.setSearch(undefined);
 
@@ -83,7 +83,7 @@ export class UserPage {
           .toPromise()
           .then((response) => {
   
-            console.log(response.json().data);
+            // console.log(response.json().data);
             this.users = response.json().data;
             resolve(response.json());
             

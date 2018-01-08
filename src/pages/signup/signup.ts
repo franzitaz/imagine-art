@@ -117,18 +117,18 @@ export class SignupPage {
 
       } else {
         this.tamanhosenha = userSenha.length;
-        console.log(this.tamanhosenha);
+        // console.log(this.tamanhosenha);
 
       }
         
-      console.log(userEmail, 'USEREMAIL');
+      // console.log(userEmail, 'USEREMAIL');
       if (userNome === undefined  || userNome === '' ||
           userEmail === undefined || userEmail === '' ||
             userSenha === undefined || userSenha === '' || this.tamanhosenha <= 2
             ) {
             
         if (userNome === undefined || userNome === '') {
-          console.log('nome');
+          // console.log('nome');
           if (this.error === '') {
             this.error = 'Necessário digitar o seu nome.';
           }
@@ -138,7 +138,7 @@ export class SignupPage {
         }
 
         if (userSenha === undefined || userSenha === '') {
-          console.log('senha');
+          // console.log('senha');
           if (this.error === '') {
             this.error = 'Nessário digitar a senha.';
           }
@@ -178,8 +178,8 @@ export class SignupPage {
                   
                 } else {
 
-                  console.log('API Response : ', response.json());
-                  console.log('DATA');
+                  // console.log('API Response : ', response.json());
+                  // console.log('DATA');
                   localStorage.setItem('user', JSON.stringify(response));
                   resolve(response.json());
                   this.showToast('middle');

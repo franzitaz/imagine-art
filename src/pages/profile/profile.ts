@@ -9,6 +9,7 @@ import {
 
 import { EditWorkPage } from '../edit-work/edit-work';
 import { EditProfilePage } from '../edit-profile/edit-profile';
+import { MessagesPage } from '../../pages/chat/messages/messages';
 
 import { Localstorage } from '../../providers/localstorage';
 import { Http, Headers, RequestOptions } from '@angular/http';
@@ -27,7 +28,7 @@ export class ProfilePage {
 
   data = '';
   produtos = [];
-  
+  productInformation = [];
   // user = [];
   
   user = [{
@@ -74,14 +75,14 @@ export class ProfilePage {
   }
 
   getProfileInformation(profileID):void {
-    console.log('AKIII');
+   // console.log('AKIII');
 
     const loading = this.loadingCtrl.create();
     loading.present();
     
     this.localstorage.getUser('').then((userID) => {
     
-      console.log('profileID:', profileID);
+     // console.log('profileID:', profileID);
           
           // tslint:disable-next-line:no-var-keyword
       var headers = new Headers();
@@ -91,16 +92,16 @@ export class ProfilePage {
           // tslint:disable-next-line:prefer-const
       let options = new RequestOptions({ headers: headers });
           
-      console.log(profileID);
+      // console.log(profileID);
     
           // tslint:disable-next-line:prefer-const
       if (profileID === null || profileID === '') {
-        console.log('Profile ID está nulo. estamos dentro do if nulo:', userID);
+        // console.log('Profile ID está nulo. estamos dentro do if nulo:', userID);
         this.data = JSON.stringify({
           userID: userID._id
         });
       } else {
-        console.log('Profile ID está nao nulo. estamos dentro do if nao nulo:', profileID);
+        // console.log('Profile ID está nao nulo. estamos dentro do if nao nulo:', profileID);
         this.data = JSON.stringify({
           userID: profileID
         });
@@ -113,8 +114,8 @@ export class ProfilePage {
     
                     this.localstorage.getUser('').then((userLoggedID) => {
                        
-                      console.log(profileID, '++++++++++++++++');
-                      console.log(userLoggedID._id, '++++++++++++++++');
+                      // console.log(profileID, '++++++++++++++++');
+                      // console.log(userLoggedID._id, '++++++++++++++++');
     
                       if (response.json().user._id === userLoggedID._id) {
                         this.userConfirm = true;
@@ -150,7 +151,7 @@ export class ProfilePage {
 
     this.localstorage.getProfileID().then((profileID) => {
 
-      console.log('profileID:', profileID);
+      // console.log('profileID:', profileID);
       
       // tslint:disable-next-line:no-var-keyword
       var headers = new Headers();
@@ -160,7 +161,7 @@ export class ProfilePage {
       // tslint:disable-next-line:prefer-const
       let options = new RequestOptions({ headers: headers });
       
-      console.log(profileID);
+      // console.log(profileID);
 
       // tslint:disable-next-line:prefer-const
       let data = JSON.stringify({
@@ -174,8 +175,8 @@ export class ProfilePage {
 
                 this.localstorage.getUser('').then((userLoggedID) => {
                    
-                  console.log(profileID, '++++++++++++++++');
-                  console.log(userLoggedID._id, '++++++++++++++++');
+                  // console.log(profileID, '++++++++++++++++');
+                  // console.log(userLoggedID._id, '++++++++++++++++');
 
                   if (profileID === userLoggedID._id) {
                     this.userConfirm = true;
@@ -210,11 +211,30 @@ export class ProfilePage {
   }
 
   goToEditWork(productID):void {  
-    console.log('setProductID');
-    console.log(productID);
-    console.log('setProductID');
+    // console.log('setProductID');
+    // console.log(productID);
+    // console.log('setProductID');
 
     this.localstorage.setProductID(productID);
     this.navCtrl.push(EditWorkPage);
+  }
+
+  goToMessages(productorCallback) {
+    
+    const produtor = {
+      productorID : productorCallback.productorID,
+      productorName: productorCallback. productorName,
+      productTitle: productorCallback.productTitle
+    }; 
+        
+    this.localstorage.setChatID('');
+
+    // console.log('-----------------');
+    // console.log(produtor);
+    // console.log('-----------------');
+    
+    this.localstorage.setProductor(produtor);
+    this.navCtrl.push(MessagesPage);
+        
   }
 }

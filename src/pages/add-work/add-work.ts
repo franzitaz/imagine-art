@@ -31,6 +31,7 @@ export class AddWorkPage {
   placeholder = 'assets/img/background/artesanato.jpg';
   chosenPicture: any;
   imagem64;
+  cordova: any;
 
   constructor(
     public navCtrl: NavController,
@@ -54,7 +55,20 @@ export class AddWorkPage {
     // tslint:disable-next-line:prefer-const
     let toast = this.toastCtrl.create({
       message: 'Projeto adicionado com SUCESSO!',
-      duration: 3000,
+      duration: 2000,
+      // tslint:disable-next-line:object-literal-shorthand
+      position: position,
+      cssClass: 'center'
+    });
+
+    toast.present(toast);
+  }
+
+  showToastFuck (position: string) {
+    // tslint:disable-next-line:prefer-const
+    let toast = this.toastCtrl.create({
+      message: 'Não foi possível salvar a imagem!',
+      duration: 2000,
       // tslint:disable-next-line:object-literal-shorthand
       position: position,
       cssClass: 'center'
@@ -166,6 +180,11 @@ export class AddWorkPage {
       this.base64.encodeFile(filePath).then((base64File: string) => {
 
         this.imagem64 = base64File;
+
+        if (this.imagem64 === undefined || this.imagem64 === '' 
+      || this.imagem64 === null) { 
+          this.showToastFuck('middle');
+        }
 
         // tslint:disable-next-line:no-var-keyword
         var headers = new Headers();

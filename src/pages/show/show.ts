@@ -6,6 +6,7 @@ import { Localstorage } from '../../providers/localstorage';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 import { ProfilePage } from '../profile/profile';
+import { MessagesPage } from '../../pages/chat/messages/messages';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
@@ -22,6 +23,8 @@ import { ChangeDetectorRef, ChangeDetectionStrategy  } from '@angular/core';
 export class ShowPage {
 
   productInformation = [];
+  workConfirm;
+  userID;
 
   // following = false;
   /*
@@ -41,10 +44,31 @@ export class ShowPage {
               private http: Http, public localstorage:Localstorage,
               public cdr:ChangeDetectorRef, public loadingCtrl: LoadingController) { 
 
-    console.log('TESTEEEEEEEEEEEEEEEEE');
     this.localstorage = localstorage;
+
+    this.localstorage.getUser('').then((userInformation) => {
+      this.userID = userInformation._id;
+    });
+
+    this.localstorage.setChatID('');
     this.getProductInformation();
 
+  }
+
+  goToMessages(productorCallback) {
+
+    // console.log(')))))))))))))))))');
+    // console.log(productorCallback);
+    // console.log(')))))))))))))))))');
+    const produtor = {
+      productorID : productorCallback.productorID,
+      productorName: productorCallback. productorName,
+      productTitle: productorCallback.productTitle
+    }; 
+    
+    this.localstorage.setProductor(produtor);
+    this.navCtrl.push(MessagesPage);
+    
   }
 
   /*follow() {
@@ -75,10 +99,6 @@ export class ShowPage {
 
     this.localstorage.getProductID().then((productIDCallback) => {
 
-      console.log('/-------------------------------/');
-      console.log(productIDCallback);
-      console.log('/-------------------------------/');
-
       // tslint:disable-next-line:no-var-keyword
       var headers = new Headers();
       headers.append('Accept', 'application/json');
@@ -98,7 +118,7 @@ export class ShowPage {
         .then((response) => {
 
           this.productInformation = response.json().product;
-          console.log(response.json().product);
+          // console.log(response.json().product);
           this.cdr.markForCheck();
           loading.dismiss(); 
           resolve(response.json());

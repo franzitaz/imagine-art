@@ -14,7 +14,6 @@ export class TabsPage {
 
   tab1Root = HomePage;
   tab2Root = ChatsPage;
-  // tab2Root = SearchPage;
   tab3Root = ProfilePage;
   tab4Root = AddWorkPage;
   tab5Root = SearchPage;

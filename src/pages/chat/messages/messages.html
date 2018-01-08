@@ -1,38 +1,58 @@
+<!--<ion-header>
+	<ion-navbar>
+	  <ion-title>Chat</ion-title>
+	</ion-navbar>
+  </ion-header>
+  <ion-content padding>
+	<ion-list>
+	  <ion-item>
+		<ion-label floating>Mensagem</ion-label>
+		<ion-input type="text" [(ngModel)]="mensagem"></ion-input>
+	  </ion-item>
+	  <ion-item>
+		<button ion-button (click)="enviar()">Enviar</button>
+	  </ion-item>
+	  <ion-item *ngFor="let item of lista | async">
+		<p>{{item.texto}}</p>
+		<ion-note item-right>
+		  {{item.data | date:'HH:mm'}}
+		</ion-note>
+	  </ion-item>
+	</ion-list>
+  </ion-content>-->
+
 <ion-header>
 	<ion-navbar>
-		<ion-title>Chat</ion-title>
+		<ion-title>{{chatNome}}</ion-title>
 	</ion-navbar>
 </ion-header>
 <ion-content>
-	<div *ngFor="let message of messages" class="message-wrapper" on-hold="onMessageHold($event, $index, message)">
-		<div *ngIf="user._id !== message.userId">
-			<img (click)="viewProfile(message)" class="profile-pic left" [src]="toUser.pic" onerror="onProfilePicError(this)" />
-			<!--  wave-->
-			<div class="chat-bubble left slide-left">
+	<div *ngIf="messages">
+		<div  *ngFor="let item of messages" class="message-wrapper" on-hold="onMessageHold($event, $index, message)">
+			<div *ngIf="item.senderID !== userID">
+				<!--<img  class="profile-pic left" onerror="onProfilePicError(this)" />-->
+				<!--  wave-->
+				<div class="chat-bubble left slide-left">
 
-				<div class="message" [innerHTML]="message.text" autolinker>
+					<div class="message" [innerHTML]="item.text" autolinker>
+							
+					</div>
+					
+
 				</div>
-
-				<div class="message-detail">
-					<span (click)="viewProfile(message)" class="bold">{{toUser.username}}</span>,
-					<span>{{message.date | moment:"ago" | lowercase}}</span>
-				</div>
-
 			</div>
-		</div>
 
-		<div *ngIf="user._id === message.userId">
+			<div *ngIf="item.senderID === userID">
 
-			<img (click)="viewProfile(message)" class="profile-pic right" [src]="user.pic" onerror="onProfilePicError(this)" />
+				<!--<img  class="profile-pic right"  onerror="onProfilePicError(this)" />-->
 
-			<div class="chat-bubble right slide-right">
+				<div class="chat-bubble right slide-right">
 
-				<div class="message" [innerHTML]="message.text" autolinker>
-				</div>
+					<div class="message" [innerHTML]="item.text" autolinker>
+							
+					</div>
+				
 
-				<div class="message-detail">
-					<span (click)="viewProfile(message)" class="bold">{{user.username}}</span>,
-					<span>{{message.date | moment:"ago" | lowercase}}</span>
 				</div>
 
 			</div>
@@ -44,10 +64,10 @@
 	</div>
 </ion-content>
 <ion-footer>
-	<form [formGroup]="messageForm" (submit)="send(chatBox)" novalidate>
+
 		<ion-item>
-			<ion-input formControlName="message" [(ngModel)]="chatBox" placeholder="Send {{toUser.username}} a message..."></ion-input>
-			<button ion-button clear (click)="send(chatBox)" item-end><ion-icon class="footer-btn" name="send"></ion-icon></button>
+			<ion-input type="text" [(ngModel)]="mensagem" placeholder="Send  a message..."></ion-input>
+			<button ion-button clear (click)="sendMessage(mensagem)" item-end><ion-icon class="footer-btn" name="send"></ion-icon></button>
 		</ion-item>
-	</form>
+
 </ion-footer>

@@ -24,7 +24,6 @@ import { Tabs } from 'ionic-angular/components/tabs/tabs';
 
 @IonicPage()
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'page-edit-work',
   templateUrl: 'edit-work.html',
 })
@@ -38,6 +37,7 @@ export class EditWorkPage {
   chosenPicture: any;
   productInformation = [];
   imagem64;
+  cordova: any;
 
   constructor(
     public navCtrl: NavController,
@@ -267,7 +267,7 @@ export class EditWorkPage {
 
       if (this.chosenPicture === null || this.chosenPicture === '') {
 
-        console.log('ADICIONAR IMAGEM');
+        // console.log('ADICIONAR IMAGEM');
 
       } else {
 
@@ -292,7 +292,7 @@ export class EditWorkPage {
               productDescription: produtoInformacao.description
             });
             
-            console.log('CONSOLE DATA', data);
+            // console.log('CONSOLE DATA', data);
             
             new Promise((resolve, reject) => {
               this.http.post('https://imagine-art.herokuapp.com/product/updateProduct/',data, options)
@@ -322,7 +322,7 @@ export class EditWorkPage {
             let filePath: string = this.chosenPicture;
             this.base64.encodeFile(filePath).then((base64File: string) => {
             
-              console.log('productIDCallback', productIDCallback);
+              // console.log('productIDCallback', productIDCallback);
               
               // tslint:disable-next-line:no-var-keyword
               var headers = new Headers();
@@ -341,14 +341,14 @@ export class EditWorkPage {
                 productDescription: produtoInformacao.description
               });
               
-              console.log('CONSOLE DATA', data);
+              // console.log('CONSOLE DATA', data);
               
               new Promise((resolve, reject) => {
                 this.http.post('https://imagine-art.herokuapp.com/product/updateProduct/',data, options)
                       .toPromise()
                       .then((response) => {
               
-                        console.log('CONSOLE LOG DA VARIAVEL response.json()',response.json());
+                        // console.log('CONSOLE LOG DA VARIAVEL response.json()',response.json());
               
                         if (response.json().code === 200) {
                           

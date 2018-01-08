@@ -1,131 +1,262 @@
 import { FormControl, FormBuilder } from '@angular/forms';
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, Content } from 'ionic-angular';
+import { IonicPage, NavController, Content, LoadingController } from 'ionic-angular';
+
+import { AngularFireDatabase, FirebaseListObservable, } from 'angularfire2/database';
+
+import { Localstorage } from '../../../providers/localstorage';
+import { Http, Headers, RequestOptions } from '@angular/http';
+
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/catch';
+
+// tslint:disable-next-line:no-duplicate-imports
+import { ChangeDetectorRef, ChangeDetectionStrategy  } from '@angular/core';
+// import { FormGroup } from '@angular/forms/src/model';
 
 @IonicPage()
 @Component({
+
   selector: 'page-messages',
   templateUrl: 'messages.html'
 })
 export class MessagesPage {
-  toUser = {
-    _id: '534b8e5aaa5e7afc1b23e69b',
-    pic: 'assets/img/avatar/ian-avatar.png',
-    username: 'Venkman',
-  };
 
-  user = {
-    _id: '534b8fb2aa5e7afc1b23e69c',
-    pic: 'assets/img/avatar/marty-avatar.png',
-    username: 'Marty',
-  };
+  lista = [];
+  mensagem: any;
+  messages = [];
+  userID;
+  data;
+  chatID = [];
+  chatNome;
 
-  doneLoading = false;
-
-  messages = [
-    {
-      _id: 1,
-      date: new Date(),
-      userId: this.user._id,
-      username: this.user.username,
-      pic: this.user.pic,
-      text: 'OH CRAP!!'
-    },
-    {
-      _id: 2,
-      date: new Date(),
-      userId: this.toUser._id,
-      username: this.toUser.username,
-      pic: this.toUser.pic,
-      text: 'what??'
-    },
-    {
-      _id: 3,
-      date: new Date(),
-      userId: this.toUser._id,
-      username: this.toUser.username,
-      pic: this.toUser.pic,
-      text: 'Pretty long message with lots of content'
-    },
-    {
-      _id: 4,
-      date: new Date(),
-      userId: this.user._id,
-      username: this.user.username,
-      pic: this.user.pic,
-      text: 'Pretty long message with even way more of lots and lots of content'
-    },
-    {
-      _id: 5,
-      date: new Date(),
-      userId: this.user._id,
-      username: this.user.username,
-      pic: this.user.pic,
-      text: 'what??'
-    },
-    {
-      _id: 6,
-      date: new Date(),
-      userId: this.toUser._id,
-      username: this.toUser.username,
-      pic: this.toUser.pic,
-      text: 'yes!'
-    }
-  ];
+  public messageForm: any;
 
   @ViewChild(Content) content: Content;
 
-  public messageForm: any;
-  chatBox: any;
+  constructor(public navCtrl: NavController,private http: Http,public cdr:ChangeDetectorRef,
+    public localstorage: Localstorage, public loadingCtrl: LoadingController,public formBuilder: FormBuilder) {
+    
+    this.localstorage = localstorage;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder) {
-    this.messageForm = formBuilder.group({
-      message: new FormControl('')
+    this.localstorage.getProductor().then((produtorInformation) => {
+
+      this.localstorage.getChatID().then((chatCallback) => {
+
+        if (produtorInformation === null || produtorInformation === undefined || !produtorInformation) {
+
+          this.getMessages();
+
+        }else {
+          
+          this.chatPeloProduto(produtorInformation);
+          
+        }
+
+      });
+
     });
-    this.chatBox = '';
+
+    this.mensagem = '';
+    this.scrollToBottom();
 
   }
 
-  send(message) {
-    if (message && message !== '') {
-      // this.messageService.sendMessage(chatId, message);
+  onPageWillLeave() {
+    // enable the root left menu when leaving the tutorial page
+    // console.log('SAINDO DA PAGINA');
+  }
 
-      const messageData =
-        {
-          toId: this.toUser._id,
-          _id: 6,
-          date: new Date(),
-          userId: this.user._id,
-          username: this.toUser.username,
-          pic: this.toUser.pic,
-          text: message
-        };
+  chatPeloProduto(produtorInformation) {
 
-      this.messages.push(messageData);
-      this.scrollToBottom();
+    const loading = this.loadingCtrl.create();
+    loading.present();
 
-      setTimeout(() => {
-        const replyData =
-          {
-            toId: this.toUser._id,
-            _id: 6,
-            date: new Date(),
-            userId: this.toUser._id,
-            username: this.toUser.username,
-            pic: this.toUser.pic,
-            text: 'Just a quick reply'
+    const product = produtorInformation;
+
+    const messageText = ('Olá, gostaria de conversar sobre o produto: ' + produtorInformation.productTitle);
+    
+    this.localstorage.getUser('').then((userInformation) => {
+      
+      this.userID = userInformation._id;
+
+      // tslint:disable-next-line:no-var-keyword
+      var headers = new Headers();
+      headers.append('Accept', 'application/json');
+      headers.append('Content-Type', 'application/json');
+
+      // tslint:disable-next-line:object-literal-shorthand
+      let options = new RequestOptions({ headers: headers });
+
+      // tslint:disable-next-line:prefer-const
+      this.data = JSON.stringify({
+        chatID: '',
+        senderID: userInformation._id,
+        senderName: userInformation.name,
+        personTwo: product.productorID,
+        personTwoName: product.productorName,
+        text: messageText
+
+      });
+
+      new Promise((resolve, reject) => {
+        this.http.post('https://imagine-art.herokuapp.com/message/newMessage/',this.data, options)
+        .toPromise()
+        .then((response) => {
+
+          this.messages = response.json().Message;
+          const chatInfo = { 
+            chatID : response.json().chat.chat._id, 
+            personTwoName: response.json().chat.chat.personTwoName, 
+            personTwo: response.json().chat.chat.personTwo, 
+            personOneName: response.json().chat.chat.personOneName, 
+            personOne: response.json().chat.chat.personOne
           };
-        this.messages.push(replyData);
-        this.scrollToBottom();
-      }, 1000);
-    }
-    this.chatBox = '';
+
+          if (chatInfo.personTwoName === userInformation) {
+            this.chatNome = chatInfo.personOneName;
+          } else {
+            this.chatNome = chatInfo.personTwoName;
+          }
+
+          this.localstorage.setChatID('');
+          this.localstorage.setChatID(chatInfo);
+          
+          this.localstorage.setProductor('');
+          this.cdr.markForCheck();
+          this.scrollToBottom();
+
+          loading.dismiss();  
+          resolve(response.json());
+          
+        })
+        .catch((error) => {
+          console.error('API Error : ', error.status);
+          console.error('API Error : ', JSON.stringify(error));
+          reject(error.json());
+        });
+      });
+
+    });
   }
 
   scrollToBottom() {
     setTimeout(() => {
       this.content.scrollToBottom();
     }, 100);
+  }
+
+  sendMessage(message) {
+
+    this.localstorage.getChatID().then((chatCallback) => {
+      
+      this.localstorage.getUser('').then((userInformation) => {
+
+        this.userID = userInformation._id;
+
+        // tslint:disable-next-line:no-var-keyword
+        var headers = new Headers();
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
+
+        // tslint:disable-next-line:object-literal-shorthand
+        let options = new RequestOptions({ headers: headers });
+
+        // tslint:disable-next-line:prefer-const
+        this.data = JSON.stringify({
+          chatID: chatCallback.chatID,
+          senderID: userInformation._id,
+          senderName: userInformation.name,
+          text: message
+        });
+
+        new Promise((resolve, reject) => {
+          this.http.post('https://imagine-art.herokuapp.com/message/newMessage/',this.data, options)
+          .toPromise()
+          .then((response) => {
+
+            const setMessage = {
+              chatID: chatCallback.chatID,
+              senderID: userInformation._id,
+              senderName: userInformation.name,
+              text: message
+            };
+
+            console.log(response.json());
+            this.messages.push(setMessage);
+            // this.localstorage.setChatID('');
+            this.mensagem = '';
+            this.cdr.markForCheck();
+            this.scrollToBottom();
+            resolve(response.json());
+            
+          })
+          .catch((error) => {
+            console.error('API Error : ', error.status);
+            console.error('API Error : ', JSON.stringify(error));
+            reject(error.json());
+          });
+        });
+
+      });
+
+    });
+
+  }
+
+  getMessages() {
+
+    const loading = this.loadingCtrl.create();
+    loading.present();
+
+    this.localstorage.getUser('').then((userInformation) => {
+
+      this.userID = userInformation._id;
+
+      this.localstorage.getChatID().then((chatIDCallback) => {
+
+        if (chatIDCallback.title === userInformation) {
+          this.chatNome = 'Você mesmo';
+        } else {
+          this.chatNome = chatIDCallback.title;
+        }
+
+      // tslint:disable-next-line:no-var-keyword
+        var headers = new Headers();
+        headers.append('Accept', 'application/json');
+        headers.append('Content-Type', 'application/json');
+
+      // tslint:disable-next-line:object-literal-shorthand
+        let options = new RequestOptions({ headers: headers });
+
+      // tslint:disable-next-line:prefer-const
+        let data = JSON.stringify({
+          chatID: chatIDCallback.chatID
+        });
+
+        new Promise((resolve, reject) => {
+          this.http.post('https://imagine-art.herokuapp.com/message/getAllMessagesByMember/',data, options)
+        .toPromise()
+        .then((response) => {
+          
+          this.messages = response.json().Message;
+          this.scrollToBottom();
+
+          loading.dismiss();  
+          resolve(response.json());
+          
+        })
+        .catch((error) => {
+          console.error('API Error : ', error.status);
+          console.error('API Error : ', JSON.stringify(error));
+          reject(error.json());
+        });
+        });
+
+      });
+
+    });
+     
   }
 
 }

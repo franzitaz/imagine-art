@@ -37,6 +37,15 @@ import { Localstorage } from '../providers/localstorage';
 import { Base64 } from '@ionic-native/base64';
 import { ImageResizer } from '@ionic-native/image-resizer';
 
+export const firebaseConfig = {
+  apiKey: 'AIzaSyBV0Ok42A28Bk-Una68NNbtvZvVIfMaYzg',
+  authDomain: 'imagine-art.firebaseapp.com',
+  databaseURL: 'https://imagine-art.firebaseio.com',
+  projectId: 'imagine-art',
+  storageBucket: 'imagine-art.appspot.com',
+  messagingSenderId: '652379659523'
+};
+
 @NgModule({
   declarations: [
     // App Core
@@ -61,7 +70,8 @@ import { ImageResizer } from '@ionic-native/image-resizer';
     IonicModule.forRoot(MyApp, { tabsHideOnSubPages: true }),
     SharedModule,
     BrowserModule,
-    AngularFireModule.initializeApp(FIREBASE_CREDENTIALS),
+    // AngularFireModule.initializeApp(FIREBASE_CREDENTIALS),
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     IonicStorageModule.forRoot(),
     HttpModule

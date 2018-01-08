@@ -64,11 +64,13 @@ export class LoginPage {
     } else {
 
       // tslint:disable-next-line:no-var-keyword
+      // tslint:disable-next-line:prefer-const
       var headers = new Headers();
       headers.append('Accept', 'application/json');
       headers.append('Content-Type', 'application/json');
     
       // tslint:disable-next-line:prefer-const
+      // tslint:disable-next-line:object-literal-shorthand
       let options = new RequestOptions({ headers: headers });
         
       // tslint:disable-next-line:prefer-const
@@ -86,9 +88,9 @@ export class LoginPage {
       
               this.localstorage.setUser(response.json().user);
               this.localstorage.setSearch(undefined);
-              console.log(response.json().user, 'este é o user bro');
+              // console.log(response.json().user, 'este é o user bro');
               this.localstorage.getUser('').then((userID) => {
-                console.log('Esta eh a resposta do localstorage getuser brow', userID);
+                // console.log('Esta eh a resposta do localstorage getuser brow', userID);
               });
               this.navCtrl.push(TabsPage);
     

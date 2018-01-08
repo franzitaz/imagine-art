@@ -80,6 +80,26 @@ export class Localstorage {
     	});
   }
 
+  setProductor(productor) {
+    this.storage.set('productor',productor);
+  }
+
+  getProductor():any {
+    	return this.storage.get('productor').then(productor => {
+      return productor;
+    	});
+  }
+
+  setChatID(chatID) {
+    this.storage.set('chatID',chatID);
+  }
+
+  getChatID():any {
+    	return this.storage.get('chatID').then(chatID => {
+      return chatID;
+    	});
+  }
+
     // clear the whole local storage
   clearStorage() {
     	this.storage.clear().then(() => {

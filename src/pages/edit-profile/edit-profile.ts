@@ -19,13 +19,13 @@ import 'rxjs/add/operator/catch';
 
 @IonicPage()
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'page-edit-profile',
   templateUrl: 'edit-profile.html'
 })
 export class EditProfilePage {
 
-  placeholder = 'assets/img/avatar/girl-avatar.png';
+  placeholder = 'assets/img/icon/icon-o.png';
+  placeholder1 = 'assets/img/icon/icon-o.png';
   chosenBackGroundPicture: any;
   chosenAvatarPicture: any;
   imagem64;
@@ -35,6 +35,8 @@ export class EditProfilePage {
     avatar: '' }];
   
   teste;
+
+  cordova: any;
 
   user = {} as User;
 
@@ -55,16 +57,11 @@ export class EditProfilePage {
     
   }
 
-  /*posts = {
-    profileImage: 'assets/img/icon/icon-o.png',
-    coverImage: 'assets/img/background/artesanato.jpg'
-  };*/
-
   showToast (position: string) {
     // tslint:disable-next-line:prefer-const
     let toast = this.toastCtrl.create({
       message: 'Seu perfil foi editado!',
-      duration: 3000,
+      duration: 2000,
       // tslint:disable-next-line:object-literal-shorthand
       position: position,
       cssClass: 'center'
@@ -89,8 +86,6 @@ export class EditProfilePage {
     loading.present();*/
 
     let data;
-
-    console.log('UPDATE PROFILE');
 
     this.localstorage.getUser('').then((userLocalStorage) => {
 
@@ -173,26 +168,16 @@ export class EditProfilePage {
          
       // Se usuario vai alterar imagem de background e avatar
       } else {
-
-        console.log('ELSEEEEEEEEEEEEEEEEEEEEEEE');
     
         // transforma a imagem selecionada do background em base64
         // tslint:disable-next-line:prefer-const
         let fileBackGroundPath: string = this.chosenBackGroundPicture;
         this.base64.encodeFile(fileBackGroundPath).then((base64BackGroundFile: string) => {
-
-          console.log('+9+9+9++++++++++++++++++++');
-          console.log(base64BackGroundFile);
-          console.log('+9+9+9++++++++++++++++++++');
           
           // transforma a imagem selecionada do avatar em base64
           // tslint:disable-next-line:prefer-const
           let fileAvatarPath: string = this.chosenAvatarPicture;
           this.base64.encodeFile(fileAvatarPath).then((base64AvatarFile: string) => {
-
-            console.log('+9+9+9++++++++++++++++++++');
-            console.log(base64BackGroundFile);
-            console.log('+9+9+9++++++++++++++++++++');
   
             // tslint:disable-next-line:prefer-const
             data = JSON.stringify({
@@ -242,10 +227,6 @@ export class EditProfilePage {
       
     // tslint:disable-next-line:object-literal-shorthand
     let options = new RequestOptions({ headers: headers });
-
-    console.log('fnSalvarAlteracoes');
-    console.log('CONSOLE DATA', data);
-    console.log('fnSalvarAlteracoes');
     
     new Promise((resolve, reject) => {
       this.http.post('https://imagine-art.herokuapp.com/user/updateProfile/',data, options)
@@ -287,8 +268,6 @@ export class EditProfilePage {
 
     this.localstorage.getUser('').then((user) => {
 
-      console.log('getProfileInfo', user);
-
       // tslint:disable-next-line:no-var-keyword
       var headers = new Headers();
       headers.append('Accept', 'application/json');
@@ -302,14 +281,12 @@ export class EditProfilePage {
         userID: user._id
       });
 
-      console.log('CONSOLE DATA', data);
-
       new Promise((resolve, reject) => {
         this.http.post('https://imagine-art.herokuapp.com/user/getUpdateProfile/',data, options)
         .toPromise()
         .then((response) => {
 
-          console.log('CONSOLE LOG DA VARIAVEL response.json()',response.json());
+          // console.log('CONSOLE LOG DA VARIAVEL response.json()',response.json());
 
           if (response.json().code === 200) {
 
@@ -388,6 +365,7 @@ export class EditProfilePage {
     return this.cameraProvider.getPictureFromCamera().then(picture => {
       if (picture) {
         this.chosenBackGroundPicture = picture;
+        this.cdr.markForCheck();
       }
       loading.dismiss();
     }, error => {
@@ -402,6 +380,7 @@ export class EditProfilePage {
     return this.cameraProvider.getPictureFromPhotoLibrary().then(picture => {
       if (picture) {
         this.chosenBackGroundPicture = picture;
+        this.cdr.markForCheck();
       }
       loading.dismiss();
     }, error => {
@@ -458,6 +437,7 @@ export class EditProfilePage {
     return this.cameraProvider.getPictureFromCamera().then(picture => {
       if (picture) {
         this.chosenAvatarPicture = picture;
+        this.cdr.markForCheck();
       }
       loading.dismiss();
     }, error => {
@@ -472,6 +452,7 @@ export class EditProfilePage {
     return this.cameraProvider.getPictureFromPhotoLibrary().then(picture => {
       if (picture) {
         this.chosenAvatarPicture = picture;
+        this.cdr.markForCheck();
       }
       loading.dismiss();
     }, error => {
