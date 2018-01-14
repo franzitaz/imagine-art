@@ -6,23 +6,14 @@ page-search {
         margin-bottom: 8vh;
     }
 
-    .background {
-        background-image: linear-gradient(0deg, rgba(255, 255, 255, 0)), url('../assets/img/background/s2.jpg');
+    .background-1 {
+        background: url('../assets/img/background/background-4.jpg');
         background-size: cover;
         background-position: left;
         background-repeat: no-repeat;
         
     }
 
-
-    /*.background {
-        background-color: rgba(255, 255, 255, 0.945); 
-        background-image:url('../assets/img/background/artesanato.jpg');
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        
-    }*/
 
     .input {
         margin-top: 5px;
