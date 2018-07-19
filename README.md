@@ -6,7 +6,6 @@ https://franzitaz.github.io/imagine-art/www/
 username: f@h.com
 password: 123
 
-"Tela de Login"
 ![1-tela de login](https://user-images.githubusercontent.com/11142312/34911814-112769c2-f8b9-11e7-9853-bff4f672521e.png)
 ![2-tela inicial](https://user-images.githubusercontent.com/11142312/34911815-11467588-f8b9-11e7-9473-0c2056989ae5.png)
 ![3-dentro dos menus da tela inicial](https://user-images.githubusercontent.com/11142312/34911816-1164347e-f8b9-11e7-91d1-a6fa75ed7c5f.png)
